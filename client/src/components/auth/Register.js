@@ -59,7 +59,7 @@ class Register extends Component {
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
           <div class="container">
             <a class="navbar-brand logo" href="/">
-              Tech Fest
+              Arnav Gupta
             </a>
             <button
               data-toggle="collapse"

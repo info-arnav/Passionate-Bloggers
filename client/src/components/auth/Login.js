@@ -57,7 +57,7 @@ class Login extends Component {
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
           <div class="container">
             <a class="navbar-brand logo" href="/">
-              Tech Fest
+              Arnav Gupta
             </a>
             <button
               data-toggle="collapse"
@@ -65,7 +65,7 @@ class Login extends Component {
               data-target="#navbarNav"
             >
               <span class="sr-only">Navigation</span>
-              <span class="navbar-toggler-icon"></span>
+              <span class="navbar-toggler-icon" />
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="nav navbar-nav ml-auto">
@@ -106,7 +106,7 @@ class Login extends Component {
                     <div
                       className="col s12"
                       style={{ paddingLeft: "11.250px" }}
-                    ></div>
+                    />
                     <div className="form-group">
                       <label htmlFor="email">Email</label>
                       <input
@@ -174,4 +174,7 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { loginUser })(Login);
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);

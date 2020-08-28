@@ -11,7 +11,7 @@ const Navigation = () => {
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
       <div class="container">
         <a class="navbar-brand logo" href="/">
-          Tech Fest
+          Arnav Gupta
         </a>
         <button
           data-toggle="collapse"
@@ -19,7 +19,7 @@ const Navigation = () => {
           data-target="#navbarNav"
         >
           <span class="sr-only">Navigation</span>
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon" />
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="nav navbar-nav ml-auto">
