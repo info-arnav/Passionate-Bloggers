@@ -77,8 +77,8 @@ class Register extends Component {
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/events">
-                    Events
+                  <a class="nav-link" href="/projects">
+                    Projects
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -106,7 +106,7 @@ class Register extends Component {
                   </div>
                   <form noValidate onSubmit={this.onSubmit}>
                     <div className="form-group">
-                      <label htmlFor="name">School Name</label>
+                      <label htmlFor="name">Name</label>
                       <input
                         onChange={this.onChange}
                         value={this.state.name}

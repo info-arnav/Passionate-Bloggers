@@ -75,8 +75,8 @@ class Login extends Component {
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/events">
-                    Events
+                  <a class="nav-link" href="/projects">
+                    Projects
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -142,8 +142,7 @@ class Login extends Component {
                       style={{ paddingLeft: "11.250px" }}
                     >
                       <p className="grey-text text-darken-1">
-                        Don't have an account?{" "}
-                        <Link to="/register">Register</Link>
+                        <a href="/register">Don't have an account? </a>
                       </p>
                       <button
                         type="submit"

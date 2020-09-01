@@ -26,8 +26,8 @@ const Contact = () => {
                 </a>
               </li>
               <li class="nav-item" role="presentation">
-                <a class="nav-link" href="/events">
-                  Events
+                <a class="nav-link" href="/projects">
+                  Projects
                 </a>
               </li>
               <li class="nav-item" role="presentation">

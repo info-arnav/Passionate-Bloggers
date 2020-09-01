@@ -26,8 +26,8 @@ const Event = () => {
                 </a>
               </li>
               <li class="nav-item" role="presentation">
-                <a class="nav-link" href="/events">
-                  Events
+                <a class="nav-link" href="/projects">
+                  Projects
                 </a>
               </li>
               <li class="nav-item" role="presentation">
@@ -49,7 +49,7 @@ const Event = () => {
         <section class="portfolio-block project-no-images">
           <div class="container">
             <div class="heading">
-              <h2>Events</h2>
+              <h2>Projects</h2>
             </div>
             <div class="row">
               <div class="col-md-6 col-lg-4">
