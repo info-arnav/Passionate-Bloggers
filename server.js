@@ -91,15 +91,15 @@ app.post("/teams/submit", (req, res) => {
             if (cbody) {
               res.redirect("/login");
             } else {
-              console.log("error");
+              res.redirect("/login");
             }
           });
         } else {
-          console.log("error");
+          res.redirect("/login");
         }
       });
     } else {
-      console.log("error");
+      res.redirect("/login");
     }
   });
 });
