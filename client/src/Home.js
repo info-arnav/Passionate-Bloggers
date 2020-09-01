@@ -46,6 +46,18 @@ const Home = () => {
         </div>
       </nav>
       <main class="page lanidng-page">
+        <section class="portfolio-block block-intro">
+          <div class="container">
+            <div class="avatar" id="img1">
+              {
+                //style='background-image:url("assets/img/avatars/avatar.jpg");'
+              }
+            </div>
+            <div class="about-me">
+              <p>Arnav Gupta</p>
+            </div>
+          </div>
+        </section>
         <section class="portfolio-block call-to-action border-bottom">
           <div class="container">
             <div class="d-flex justify-content-center align-items-center content">
