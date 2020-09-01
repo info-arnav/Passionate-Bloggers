@@ -50,104 +50,29 @@ class Dashboard extends Component {
                       value={user.name}
                       className="form-control item"
                       type="text"
-                      id="school"
-                      name="school"
+                      id="name"
+                      name="name"
                       hidden
                     />
                   </div>
                   <div className="form-group">
-                    <h4>Coding</h4>
-                    <label for="e1m1">member 1 name</label>
+                    <label for="subject">Subject</label>
                     <input
                       className="form-control item"
                       type="text"
-                      id="e1m1"
-                      name="e1m1"
+                      id="subject"
+                      name="subject"
+                      required
                     />
                   </div>
                   <div className="form-group">
-                    <label for="e1e1">member 1 email</label>
+                    <label for="blog">Blog</label>
                     <input
                       className="form-control item"
                       type="text"
-                      id="e1e1"
-                      name="e1e1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <h4>Designing</h4>
-                    <label for="e2n1">member 1 name</label>
-                    <input
-                      className="form-control item"
-                      type="text"
-                      id="e2n1"
-                      name="e2n1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label for="e2e1">member 1 email</label>
-                    <input
-                      className="form-control item"
-                      type="text"
-                      id="e2e1"
-                      name="e2e1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <h4>Quizing</h4>
-                    <label for="e3n1">member 1 name</label>
-                    <input
-                      className="form-control item"
-                      type="text"
-                      id="e3n1"
-                      name="e3n1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label for="e3e1">member 1 email</label>
-                    <input
-                      className="form-control item"
-                      type="text"
-                      id="e3e1"
-                      name="e3e1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <h4>Movie Making</h4>
-                    <label for="e4n1">member 1 name</label>
-                    <input
-                      className="form-control item"
-                      type="text"
-                      id="e4n1"
-                      name="e4n1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label for="e4e1">member 1 email</label>
-                    <input
-                      className="form-control item"
-                      type="text"
-                      id="e4e1"
-                      name="e4e1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <h4>Gaming</h4>
-                    <label for="e5n1">member 1 name</label>
-                    <input
-                      className="form-control item"
-                      type="text"
-                      id="e5n1"
-                      name="e5n1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label for="e5e1">member 1 email</label>
-                    <input
-                      className="form-control item"
-                      type="text"
-                      id="e5e1"
-                      name="e5e1"
+                      id="blog"
+                      name="blog"
+                      required
                     />
                   </div>
                   <div className="form-group">

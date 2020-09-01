@@ -19,17 +19,9 @@ const mg = mailgun({
 });
 
 const eventRegisteration = new mongoose.Schema({
-  school: String,
-  e1n1: String,
-  e1e1: String,
-  e2n1: String,
-  e2e1: String,
-  e3n1: String,
-  e3e1: String,
-  e4n1: String,
-  e4e1: String,
-  e5n1: String,
-  e5ee1: String,
+  name: String,
+  subject: String,
+  blog: String,
 });
 
 const eventModel = mongoose.model("eventModel", eventRegisteration);
@@ -89,7 +81,7 @@ app.post("/teams/submit", (req, res) => {
           const teamdata = {
             from: "Mailgun Sandbox <no-reply@arnavgupta.net>",
             to: `${user.email} , info@arnavgupta.net`,
-            subject: "Team Ammended",
+            subject: "Data Ammended",
             template: "confirmed",
             "h:X-Mailgun-Variables": {
               test: "test",
@@ -108,6 +100,14 @@ app.post("/teams/submit", (req, res) => {
       });
     } else {
       console.log("error");
+    }
+  });
+});
+
+app.get("/all/posts", (req, res) => {
+  eventModel.find({}, (error, data) => {
+    if (data) {
+      res.json(data);
     }
   });
 });

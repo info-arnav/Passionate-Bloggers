@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 
 const Event = () => {
+  const [posts, updater] = useState([]);
+  useEffect(() => {
+    fetch("/all/posts")
+      .then((e) => e.json())
+      .then((e) => updater(e));
+  });
   return (
     <div>
       <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
@@ -52,89 +58,24 @@ const Event = () => {
               <h2>Projects</h2>
             </div>
             <div class="row">
-              <div class="col-md-6 col-lg-4">
-                <div class="project-card-no-image">
-                  <h3>Coding</h3>
-                  <h4>Data</h4>
-                  <a
-                    class="btn btn-outline-primary btn-sm"
-                    role="button"
-                    href="#"
-                  >
-                    See More
-                  </a>
-                  <div class="tags">
-                    <a href="#" />
+              {posts.map((e) => (
+                <div class="col-md-6 col-lg-4">
+                  <div class="project-card-no-image">
+                    <h3>{e.subject}</h3>
+                    <h4>{e.name}</h4>
+                    <a
+                      class="btn btn-outline-primary btn-sm"
+                      role="button"
+                      href="#"
+                    >
+                      See More
+                    </a>
+                    <div class="tags">
+                      <a href="#" />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="project-card-no-image">
-                  <h3>Designing</h3>
-                  <h4>
-                    Data
-                    <br />
-                  </h4>
-                  <a
-                    class="btn btn-outline-primary btn-sm"
-                    role="button"
-                    href="#"
-                  >
-                    See More
-                  </a>
-                  <div class="tags">
-                    <a href="#" />
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="project-card-no-image">
-                  <h3>Quizing</h3>
-                  <h4>Data</h4>
-                  <a
-                    class="btn btn-outline-primary btn-sm"
-                    role="button"
-                    href="#"
-                  >
-                    See More
-                  </a>
-                  <div class="tags">
-                    <a href="#" />
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="project-card-no-image">
-                  <h3>Movie Making</h3>
-                  <h4>Data</h4>
-                  <a
-                    class="btn btn-outline-primary btn-sm"
-                    role="button"
-                    href="#"
-                  >
-                    See More
-                  </a>
-                  <div class="tags">
-                    <a href="#" />
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="project-card-no-image">
-                  <h3>Gaming</h3>
-                  <h4>Data</h4>
-                  <a
-                    class="btn btn-outline-primary btn-sm"
-                    role="button"
-                    href="#"
-                  >
-                    See More
-                  </a>
-                  <div class="tags">
-                    <a href="#" />
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
