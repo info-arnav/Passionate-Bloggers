@@ -47,15 +47,15 @@ class Dashboard extends Component {
                     </a>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/dashboards">
+                    <a class="nav-link" href="/dashboard">
                       New Post
                     </a>
                   </li>
                   <li class="nav-item" role="presentation">
                     <a
                       class="nav-link"
-                      onClick={this.onLogoutClick}
                       href="/login"
+                      onClick={this.onLogoutClick}
                     >
                       {user.name.split(" ")[0]} - logout
                     </a>
