@@ -14,7 +14,8 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    fetch(`/posts/user/${this.props.auth.name}`)
+    const { user } = this.props.auth;
+    fetch(`/posts/user/${user.name}`)
       .then((e) => e.json())
       .then((e) => this.setState({ data: e }));
   }
@@ -106,12 +107,11 @@ class Dashboard extends Component {
               </div>
             </section>
           </main>
-          <h1>FEED</h1>
           <main class="page projets-page">
             <section class="portfolio-block project-no-images">
               <div class="container">
                 <div class="heading">
-                  <h2>Projects</h2>
+                  <h2>Feed</h2>
                 </div>
                 <div class="row">
                   {data.map((e) => (
