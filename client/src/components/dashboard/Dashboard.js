@@ -42,9 +42,14 @@ class Dashboard extends Component {
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/login">
-                      {user.name.split(" ")[0]}
+                    <a class="nav-link" href="/feed">
+                      Feed
                     </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" onClick={this.onLogoutClick}>
+                      {user.name.split(" ")[0]} - logout
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -95,44 +100,7 @@ class Dashboard extends Component {
                       Submit Form
                     </button>
                   </div>
-                  <div className="form-group">
-                    <button
-                      onClick={this.onLogoutClick}
-                      className="btn btn-primary btn-block btn-lg"
-                    >
-                      Logout
-                    </button>
-                  </div>
                 </form>
-              </div>
-            </section>
-          </main>
-          <main class="page projets-page">
-            <section class="portfolio-block project-no-images">
-              <div class="container">
-                <div class="heading">
-                  <h2>Feed</h2>
-                </div>
-                <div class="row">
-                  {data.map((e) => (
-                    <div class="col-md-6 col-lg-4">
-                      <div class="project-card-no-image">
-                        <h3>{e.subject}</h3>
-                        <h4>{e.name}</h4>
-                        <a
-                          class="btn btn-outline-primary btn-sm"
-                          role="button"
-                          href="#"
-                        >
-                          See More
-                        </a>
-                        <div class="tags">
-                          <a href="#" />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </section>
           </main>

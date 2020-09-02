@@ -21,6 +21,7 @@ import Home from "./Home";
 import Event from "./Event";
 import Contact from "./Contact";
 import Team from "./Team";
+import Feed from "./Feed";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -52,6 +53,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route path="/projects" component={Event} />
             <Route path="/contact" component={Contact} />
+            <Route path="/feed" component={Feed} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
