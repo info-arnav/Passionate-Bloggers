@@ -20,7 +20,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { userPosts } = this.state;
+    const { data } = this.state;
     const { user } = this.props.auth;
     return (
       <div>
@@ -114,7 +114,7 @@ class Dashboard extends Component {
                   <h2>Projects</h2>
                 </div>
                 <div class="row">
-                  {userPosts.map((e) => (
+                  {data.map((e) => (
                     <div class="col-md-6 col-lg-4">
                       <div class="project-card-no-image">
                         <h3>{e.subject}</h3>
