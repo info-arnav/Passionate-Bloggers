@@ -47,9 +47,14 @@ class Feed extends Component {
                     </a>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" onClick={this.onLogoutClick}>
+                    <a class="nav-link" href="/dashboards">
+                      New Post
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" onClick={this.onLogoutClick}>
                       {user.name.split(" ")[0]} - logout
-                    </button>
+                    </a>
                   </li>
                 </ul>
               </div>
