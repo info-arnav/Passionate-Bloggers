@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "./actions/authActions";
+import Dashboard from "./components/dashboard/Dashboard";
 
 class Feed extends Component {
   onLogoutClick = (e) => {
@@ -99,7 +100,7 @@ class Feed extends Component {
   }
 }
 
-Feed.propTypes = {
+Dashboard.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 };
