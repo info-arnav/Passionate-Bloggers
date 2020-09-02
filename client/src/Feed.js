@@ -52,7 +52,11 @@ class Feed extends Component {
                     </a>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" onClick={this.onLogoutClick}>
+                    <a
+                      class="nav-link"
+                      onClick={this.onLogoutClick}
+                      href="/login"
+                    >
                       {user.name.split(" ")[0]} - logout
                     </a>
                   </li>
