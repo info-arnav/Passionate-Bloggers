@@ -8,14 +8,14 @@ class Dashboard extends Component {
     e.preventDefault();
     this.props.logoutUser();
   };
-  constructor() {
+  constructor(props) {
     this.state = { data: [] };
   }
 
   componentDidMount() {
     fetch(`/posts/user/${this.props.auth.name}`)
       .then((e) => e.json())
-      .then((e) => this.setState(e));
+      .then((e) => this.setState({ data: e }));
   }
 
   render() {
