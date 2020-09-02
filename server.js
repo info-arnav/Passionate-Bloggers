@@ -72,6 +72,13 @@ app.post("/contact/messages", (req, res) => {
     .then((e) => res.redirect("/"));
 });
 
+app.get("/posts/user/:id", (req, res) => {
+  user = req.params.id;
+  eventModel.find({ name: user }, (error, data) => {
+    res.json(data);
+  });
+});
+
 app.post("/teams/submit", (req, res) => {
   body = req.body;
   eventModel.create(req.body, (error, success) => {

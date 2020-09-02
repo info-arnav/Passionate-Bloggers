@@ -8,9 +8,19 @@ class Dashboard extends Component {
     e.preventDefault();
     this.props.logoutUser();
   };
-  render() {
-    const { user } = this.props.auth;
+  constructor() {
+    this.state = { data: [] };
+  }
 
+  componentDidMount() {
+    fetch(`/posts/user/${this.props.auth.name}`)
+      .then((e) => e.json())
+      .then((e) => this.setState(e));
+  }
+
+  render() {
+    const { userPosts } = this.state;
+    const { user } = this.props.auth;
     return (
       <div>
         <div>
@@ -92,6 +102,36 @@ class Dashboard extends Component {
                     </button>
                   </div>
                 </form>
+              </div>
+            </section>
+          </main>
+          <h1>FEED</h1>
+          <main class="page projets-page">
+            <section class="portfolio-block project-no-images">
+              <div class="container">
+                <div class="heading">
+                  <h2>Projects</h2>
+                </div>
+                <div class="row">
+                  {userPosts.map((e) => (
+                    <div class="col-md-6 col-lg-4">
+                      <div class="project-card-no-image">
+                        <h3>{e.subject}</h3>
+                        <h4>{e.name}</h4>
+                        <a
+                          class="btn btn-outline-primary btn-sm"
+                          role="button"
+                          href="#"
+                        >
+                          See More
+                        </a>
+                        <div class="tags">
+                          <a href="#" />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </section>
           </main>
