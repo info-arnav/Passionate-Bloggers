@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "./actions/authActions";
-import Dashboard from "./components/dashboard/Dashboard";
 
 class Feed extends Component {
   onLogoutClick = (e) => {
@@ -49,16 +48,7 @@ class Feed extends Component {
                   </li>
                   <li class="nav-item" role="presentation">
                     <a class="nav-link" href="/dashboard">
-                      New Post
-                    </a>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <a
-                      class="nav-link"
-                      href="/login"
-                      onClick={this.onLogoutClick}
-                    >
-                      {user.name.split(" ")[0]} - logout
+                      New Post / {user.name.split(" ")[0]} - logout
                     </a>
                   </li>
                 </ul>
@@ -100,7 +90,7 @@ class Feed extends Component {
   }
 }
 
-Dashboard.propTypes = {
+Feed.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 };
