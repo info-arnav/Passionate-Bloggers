@@ -9,6 +9,7 @@ class Dashboard extends Component {
     this.props.logoutUser();
   };
   constructor(props) {
+    super(props);
     this.state = { data: [] };
   }
 
