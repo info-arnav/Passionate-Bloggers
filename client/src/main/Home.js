@@ -9,11 +9,8 @@ const Home = () => {
       <main class="page landing-page">
         <section class="clean-block clean-hero">
           <div class="text">
-            <h2>Lorem ipsum dolor sit amet.</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
-              urna, dignissim nec auctor in, mattis vitae leo.
-            </p>
+            <h2>Blogs for all </h2>
+            <p>share your blogs with the world</p>
             <a
               href="/register"
               class="btn btn-outline-light btn-lg"
@@ -23,7 +20,7 @@ const Home = () => {
             </a>
           </div>
         </section>
-        <section class="clean-block about-us">
+        {/*<section class="clean-block about-us">
           <div class="container">
             <div class="block-heading">
               <h2 class="text-info">About Us</h2>
@@ -85,7 +82,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section>*/}
       </main>
     </div>
   );
