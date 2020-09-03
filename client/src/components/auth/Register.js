@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
+import Navigation from "../../elements/Navigation";
 
 class Register extends Component {
   constructor() {
@@ -54,124 +55,83 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container">
-        {" "}
-        <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-          <div class="container">
-            <a class="navbar-brand logo" href="/">
-              Arnav Gupta
-            </a>
-            <button
-              data-toggle="collapse"
-              class="navbar-toggler"
-              data-target="#navbarNav"
-            >
-              <span class="sr-only">Navigation</span>
-              <span class="navbar-toggler-icon" />
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/">
-                    Home
-                  </a>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/projects">
-                    Projects
-                  </a>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/contact">
-                    Contact
-                  </a>
-                </li>
-
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/login">
-                    Login
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <main className="page contact-page">
-          <section className="portfolio-block contact">
-            <div className="container">
-              <div className="row">
-                <div className="col s8 offset-s2">
-                  <div className="heading">
-                    <h2>Register</h2>
-                  </div>
-                  <form noValidate onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                      <label htmlFor="name">Name</label>
-                      <input
-                        onChange={this.onChange}
-                        value={this.state.name}
-                        error={errors.name}
-                        id="name"
-                        type="text"
-                        className="form-control item"
-                      />
-                      <span className="red-text">{errors.name}</span>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="email">Email</label>
-                      <input
-                        onChange={this.onChange}
-                        value={this.state.email}
-                        error={errors.email}
-                        id="email"
-                        type="email"
-                        className="form-control item"
-                      />
-                      <span className="red-text">{errors.email}</span>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="password">Password</label>
-                      <input
-                        onChange={this.onChange}
-                        value={this.state.password}
-                        error={errors.password}
-                        id="password"
-                        type="password"
-                        className="form-control item"
-                      />
-                      <span className="red-text">{errors.password}</span>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="password2">Confirm Password</label>
-                      <input
-                        onChange={this.onChange}
-                        value={this.state.password2}
-                        error={errors.password2}
-                        id="password2"
-                        type="password"
-                        className="form-control item"
-                      />
-                      <span className="red-text">{errors.password2}</span>
-                    </div>
-                    <div
-                      class="g-recaptcha"
-                      data-sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
-                      required
-                    />
-                    <div className="form-group">
-                      <p className="grey-text text-darken-1">
-                        Already have an account? <Link to="/login">Log in</Link>
-                      </p>
-                      <button
-                        type="submit"
-                        className="btn btn-primary btn-block btn-lg"
-                      >
-                        Sign up
-                      </button>
-                    </div>
-                  </form>
-                </div>
+      <div>
+        <Navigation />
+        <h1>empty</h1>
+        <main class="page registration-page">
+          <section class="clean-block clean-form dark">
+            <div class="container">
+              <div class="block-heading">
+                <h2 class="text-info">Registration</h2>
               </div>
+              <form noValidate onSubmit={this.onSubmit}>
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.name}
+                    error={errors.name}
+                    class="form-control item"
+                    type="text"
+                    required
+                    id="name"
+                  />
+
+                  <span className="red-text">{errors.name}</span>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    class="form-control item"
+                    onChange={this.onChange}
+                    value={this.state.email}
+                    required
+                    error={errors.email}
+                    type="email"
+                    id="email"
+                  />
+
+                  <span className="red-text">{errors.email}</span>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    class="form-control item"
+                    type="password"
+                    id="password"
+                    onChange={this.onChange}
+                    value={this.state.password}
+                    required
+                    error={errors.password}
+                  />
+
+                  <span className="red-text">{errors.password}</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="password2">Confirm Password</label>
+                  <input
+                    class="form-control item"
+                    onChange={this.onChange}
+                    value={this.state.password2}
+                    error={errors.password2}
+                    type="password"
+                    id="password2"
+                    required
+                  />
+
+                  <span className="red-text">{errors.password2}</span>
+                </div>
+
+                <div
+                  class="g-recaptcha"
+                  data-sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
+                  required
+                />
+                <button class="btn btn-primary btn-block" type="submit">
+                  Sign Up
+                </button>
+              </form>
             </div>
           </section>
         </main>

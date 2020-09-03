@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import Navigation from "../../elements/Navigation";
 
 class Dashboard extends Component {
   onLogoutClick = (e) => {
@@ -26,49 +27,13 @@ class Dashboard extends Component {
     return (
       <div>
         <div>
-          <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-            <div class="container">
-              <a class="navbar-brand logo" href="/">
-                Arnav Gupta
-              </a>
-              <button
-                data-toggle="collapse"
-                class="navbar-toggler"
-                data-target="#navbarNav"
-              >
-                <span class="sr-only">Navigation</span>
-                <span class="navbar-toggler-icon" />
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="nav navbar-nav ml-auto">
-                  <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/feed">
-                      Feed
-                    </a>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/dashboard">
-                      New Post
-                    </a>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <a
-                      class="nav-link"
-                      href="/login"
-                      onClick={this.onLogoutClick}
-                    >
-                      {user.name.split(" ")[0]} - logout
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-          <main className="page contact-page">
-            <section className="portfolio-block contact">
-              <div className="container">
-                <div className="heading">
-                  <h2>Team - {user.name.split(" ")[0]}</h2>
+          <Navigation />
+          <main class="page registration-page">
+            <section class="clean-block clean-form dark">
+              <h1>empty</h1>
+              <div class="container">
+                <div class="block-heading">
+                  <h2 class="text-info">Registration</h2>
                 </div>
                 <form action="/teams/submit" method="POST">
                   <div className="form-group">

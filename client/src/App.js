@@ -15,13 +15,12 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 
 import "./App.css";
-import Navigation from "./Navigation";
-import Footer from "./Footer";
-import Home from "./Home";
-import Event from "./Event";
-import Contact from "./Contact";
-import Team from "./Team";
-import Feed from "./Feed";
+import Navigation from "./elements/Navigation";
+import Home from "./main/Home";
+import Footer from "./elements/Footer";
+import Event from "./main/Event";
+import Contact from "./main/Contact";
+import Feed from "./main/Feed";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -49,10 +48,13 @@ class App extends Component {
         <Router>
           <div class="App">
             <Route exact path="/" component={Home} />
+            <Route path="/index" component={Home} />
             <Route exact path="/register" component={Register} />
+            <Route exact path="/registration" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route path="/projects" component={Event} />
             <Route path="/contact" component={Contact} />
+            <Route path="/contact-us" component={Contact} />
             <Route path="/feed" component={Feed} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
