@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navigation from "../elements/Navigation";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 
 const Single = () => {
   let { id } = useParams();
