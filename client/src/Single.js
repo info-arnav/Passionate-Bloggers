@@ -16,7 +16,16 @@ const Single = () => {
       <main class="page blog-post">
         <section class="clean-block clean-post dark">
           <div class="container">
-            <div class="block-content">{posts.blog}</div>
+            <div class="block-content">
+              <div class="post-body">
+                <h3>{posts.subject}</h3>
+                <div class="post-info">
+                  <span>By {posts.name}</span>
+                  <span>{posts.date}</span>
+                </div>
+                <p>{posts.blog}</p>
+              </div>
+            </div>
           </div>
         </section>
       </main>
