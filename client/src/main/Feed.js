@@ -48,7 +48,7 @@ class Feed extends Component {
                         <a
                           class="btn btn-outline-primary btn-sm"
                           type="button"
-                          href={`/post/${e._id}`}
+                          href={`/posted${e._id}`}
                         >
                           Read More
                         </a>

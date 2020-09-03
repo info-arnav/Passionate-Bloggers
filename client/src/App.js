@@ -21,7 +21,7 @@ import Footer from "./elements/Footer";
 import Event from "./main/Event";
 import Contact from "./main/Contact";
 import Feed from "./main/Feed";
-import Single from "./main/Single";
+import Single from "./Single";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -56,7 +56,7 @@ class App extends Component {
             <Route path="/projects" component={Event} />
             <Route path="/contact" component={Contact} />
             <Route path="/contact-us" component={Contact} />
-            <Route path="/post/:id" component={Single} />
+            <Route path="/posted:id" component={Single} />
             <Route path="/feed" component={Feed} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Navigation from "../elements/Navigation";
+import Navigation from "./elements/Navigation";
 import { useParams } from "react-router-dom";
 
 const Single = () => {
   let { id } = useParams();
   const [post, updater] = useState({});
   useEffect(() =>
-    fetch(`/single/post${id}`)
+    fetch(`/single/post/${id}`)
       .then((e) => e.json())
       .then((e) => updater(e))
   );
