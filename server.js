@@ -83,6 +83,12 @@ app.get("/posts/user/:id", (req, res) => {
   });
 });
 
+app.get("/single/post/:id", (req, res) => {
+  eventModel.findOne({ _id: req.params.id }, (error, user) => {
+    res.json(user);
+  });
+});
+
 app.post("/teams/submit", (req, res) => {
   body = req.body;
   eventModel.create(req.body, (error, success) => {

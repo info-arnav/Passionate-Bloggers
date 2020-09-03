@@ -45,12 +45,13 @@ class Feed extends Component {
                             {e.date} by&nbsp;<a href="#">{e.name}</a>
                           </span>
                         </div>
-                        <button
+                        <a
                           class="btn btn-outline-primary btn-sm"
                           type="button"
+                          href={`/post/${e._id}`}
                         >
                           Read More
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>

@@ -84,6 +84,11 @@ class Navigation extends Component {
                     </a>
                   </li>
                   <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="/dashboard">
+                      New Blog
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
                     <a class="nav-link" href="/contact-us">
                       Contact Us
                     </a>
