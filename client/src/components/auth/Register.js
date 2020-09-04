@@ -53,7 +53,7 @@ class Register extends Component {
 
   render() {
     const { errors } = this.state;
-
+    let recapchaStatus = false;
     return (
       <div>
         <Navigation />
@@ -126,11 +126,22 @@ class Register extends Component {
                 <div
                   class="g-recaptcha"
                   data-sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
+                  onClick={(e) => (recapchaStatus = true)}
                   required
                 />
-                <button class="btn btn-primary btn-block" type="submit">
-                  Sign Up
-                </button>
+                {recapchaStatus ? (
+                  <button class="btn btn-primary btn-block" type="submit">
+                    Sign Up
+                  </button>
+                ) : (
+                  <button
+                    class="btn btn-primary btn-block"
+                    type="submit"
+                    disabled
+                  >
+                    Sign Up
+                  </button>
+                )}
               </form>
             </div>
           </section>
