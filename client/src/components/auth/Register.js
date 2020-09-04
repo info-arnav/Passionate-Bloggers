@@ -15,6 +15,7 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
+      rstatus: false,
       errors: {},
     };
   }
@@ -52,12 +53,11 @@ class Register extends Component {
   };
 
   recaptchaCallback = () => {
-    document.getElementById("#rbutton").removeAttr("disabled");
+    this.setState({ rstatus: true });
   };
 
   render() {
-    const { errors } = this.state;
-
+    const { errors, rstatus } = this.state;
     return (
       <div>
         <Navigation />
@@ -133,14 +133,24 @@ class Register extends Component {
                   data-callback={this.recaptchaCallback}
                   required
                 />
-                <button
-                  class="btn btn-primary btn-block"
-                  type="submit"
-                  disabled
-                  id="rbutton"
-                >
-                  Sign Up
-                </button>
+                {rstatus ? (
+                  <button
+                    class="btn btn-primary btn-block"
+                    type="submit"
+                    id="rbutton"
+                  >
+                    Sign Up
+                  </button>
+                ) : (
+                  <button
+                    class="btn btn-primary btn-block"
+                    type="submit"
+                    disabled
+                    id="rbutton"
+                  >
+                    Sign Up
+                  </button>
+                )}
               </form>
             </div>
           </section>
