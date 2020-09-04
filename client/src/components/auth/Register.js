@@ -15,6 +15,7 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
+      rststus: false,
       errors: {},
     };
   }
@@ -38,9 +39,9 @@ class Register extends Component {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-  correctCaptcha = function(response) {
-    alert(response);
-  };
+  capcha_filled() {
+    this.setState({ rststus: true });
+  }
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +57,7 @@ class Register extends Component {
   };
 
   render() {
-    const { errors } = this.state;
+    const { errors, rststus } = this.state;
 
     return (
       <div>
@@ -129,13 +130,23 @@ class Register extends Component {
 
                 <div
                   class="g-recaptcha"
+                  data-callback={this.capcha_filled}
                   data-sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
-                  callback={this.correctCaptcha}
                   required
                 />
-                <button class="btn btn-primary btn-block" type="submit">
-                  Sign Up
-                </button>
+                {rststus ? (
+                  <button class="btn btn-primary btn-block" type="submit">
+                    Sign Up
+                  </button>
+                ) : (
+                  <button
+                    class="btn btn-primary btn-block"
+                    disabled
+                    type="submit"
+                  >
+                    Sign Up
+                  </button>
+                )}
               </form>
             </div>
           </section>
