@@ -30,7 +30,7 @@ class Dashboard extends Component {
           <Navigation />
           <main class="page registration-page">
             <section class="clean-block clean-form dark">
-              <h1>empty</h1>
+              <h1 />
               <div class="container">
                 <div class="block-heading">
                   <h2 class="text-info">New Blog</h2>

@@ -56,7 +56,7 @@ class Login extends Component {
     return (
       <div>
         <Navigation />
-        <h1>empty</h1>
+        <h1 />
         <main class="page login-page">
           <section class="clean-block clean-form dark">
             <div class="container">

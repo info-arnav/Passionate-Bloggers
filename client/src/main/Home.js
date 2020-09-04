@@ -6,6 +6,7 @@ const Home = () => {
   return (
     <div>
       <Navigation />
+      <h1 />
       <main class="page landing-page">
         <section class="clean-block clean-hero">
           <div class="text">
