@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const mailgun = require("mailgun-js");
 const path = require("path");
+var http = require("http").createServer(app);
+var io = require("socket.io")(http);
 const passport = require("passport");
 const algoliasearch = require("algoliasearch");
 
