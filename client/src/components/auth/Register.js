@@ -128,6 +128,7 @@ class Register extends Component {
                   type="submit"
                   required
                 />
+                <input type="submit" value="Submit" />
               </form>
             </div>
           </section>
