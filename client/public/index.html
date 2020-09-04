@@ -63,7 +63,13 @@
     r.customerly_queue = [], n.c = function (e) { r.customerly_queue.push(e) },
       r.customerly = n, r.attachEvent ? r.attachEvent("onload", e) : r.addEventListener("load", e, !1)
   }();
-
+  var onloadCallback = function () {
+    grecaptcha.render('unique', {
+      'sitekey': '6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy',
+      'callback': capcha_filled,
+      'expired-callback': capcha_expired,
+    });
+  };
 </script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>

@@ -129,6 +129,7 @@ class Register extends Component {
                 </div>
 
                 <div
+                  id="unique"
                   class="g-recaptcha"
                   data-callback={this.capcha_filled}
                   data-sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
