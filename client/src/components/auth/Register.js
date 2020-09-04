@@ -51,9 +51,13 @@ class Register extends Component {
     this.props.registerUser(newUser, this.props.history);
   };
 
+  recaptchaCallback = () => {
+    document.getElementById("#rbutton").removeAttr("disabled");
+  };
+
   render() {
     const { errors } = this.state;
-    let recapchaStatus = false;
+
     return (
       <div>
         <Navigation />
@@ -126,22 +130,17 @@ class Register extends Component {
                 <div
                   class="g-recaptcha"
                   data-sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
-                  onClick={(e) => (recapchaStatus = true)}
+                  data-callback={this.recaptchaCallback}
                   required
                 />
-                {recapchaStatus ? (
-                  <button class="btn btn-primary btn-block" type="submit">
-                    Sign Up
-                  </button>
-                ) : (
-                  <button
-                    class="btn btn-primary btn-block"
-                    type="submit"
-                    disabled
-                  >
-                    Sign Up
-                  </button>
-                )}
+                <button
+                  class="btn btn-primary btn-block"
+                  type="submit"
+                  disabled
+                  id="rbutton"
+                >
+                  Sign Up
+                </button>
               </form>
             </div>
           </section>
