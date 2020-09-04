@@ -15,7 +15,6 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
-      rstatus: false,
       errors: {},
     };
   }
@@ -52,12 +51,8 @@ class Register extends Component {
     this.props.registerUser(newUser, this.props.history);
   };
 
-  recaptchaCallback = () => {
-    this.setState({ rstatus: true });
-  };
-
   render() {
-    const { errors, rstatus } = this.state;
+    const { errors } = this.state;
     return (
       <div>
         <Navigation />
@@ -130,27 +125,9 @@ class Register extends Component {
                 <div
                   class="g-recaptcha"
                   data-sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
-                  data-callback={this.recaptchaCallback}
+                  type="submit"
                   required
                 />
-                {rstatus ? (
-                  <button
-                    class="btn btn-primary btn-block"
-                    type="submit"
-                    id="rbutton"
-                  >
-                    Sign Up
-                  </button>
-                ) : (
-                  <button
-                    class="btn btn-primary btn-block"
-                    type="submit"
-                    disabled
-                    id="rbutton"
-                  >
-                    Sign Up
-                  </button>
-                )}
               </form>
             </div>
           </section>
