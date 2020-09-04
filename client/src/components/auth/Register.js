@@ -15,7 +15,6 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
-      rststus: false,
       errors: {},
     };
   }
@@ -39,10 +38,6 @@ class Register extends Component {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-  capcha_filled() {
-    this.setState({ rststus: true });
-  }
-
   onSubmit = (e) => {
     e.preventDefault();
 
@@ -57,7 +52,7 @@ class Register extends Component {
   };
 
   render() {
-    const { errors, rststus } = this.state;
+    const { errors } = this.state;
 
     return (
       <div>
@@ -129,25 +124,19 @@ class Register extends Component {
                 </div>
 
                 <div
-                  id="unique"
                   class="g-recaptcha"
-                  data-callback={this.capcha_filled}
                   data-sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
                   required
                 />
-                {rststus ? (
-                  <button class="btn btn-primary btn-block" type="submit">
-                    Sign Up
-                  </button>
-                ) : (
-                  <button
-                    class="btn btn-primary btn-block"
-                    disabled
-                    type="submit"
-                  >
-                    Sign Up
-                  </button>
-                )}
+                <br />
+                <p>
+                  if recapcha is left unfilled on submit it may affect your
+                  account
+                </p>
+                <br />
+                <button class="btn btn-primary btn-block" type="submit">
+                  Sign Up
+                </button>
               </form>
             </div>
           </section>
