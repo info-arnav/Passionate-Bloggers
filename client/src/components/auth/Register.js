@@ -38,6 +38,10 @@ class Register extends Component {
     this.setState({ [e.target.id]: e.target.value });
   };
 
+  correctCaptcha = function(response) {
+    alert(response);
+  };
+
   onSubmit = (e) => {
     e.preventDefault();
 
@@ -53,6 +57,7 @@ class Register extends Component {
 
   render() {
     const { errors } = this.state;
+
     return (
       <div>
         <Navigation />
@@ -125,10 +130,12 @@ class Register extends Component {
                 <div
                   class="g-recaptcha"
                   data-sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
-                  type="submit"
+                  callback={this.correctCaptcha}
                   required
                 />
-                <input type="submit" value="Submit" />
+                <button class="btn btn-primary btn-block" type="submit">
+                  Sign Up
+                </button>
               </form>
             </div>
           </section>
