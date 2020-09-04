@@ -56,7 +56,7 @@ class Login extends Component {
     return (
       <div>
         <Navigation />
-        <h1 />
+        {`\n`}
         <main class="page login-page">
           <section class="clean-block clean-form dark">
             <div class="container">

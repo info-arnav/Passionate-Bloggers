@@ -35,7 +35,7 @@ class Feed extends Component {
         <Navigation />
         <main class="page blog-post-list">
           <section class="clean-block clean-blog-list dark">
-            <h1 />
+            {`\n`}
             <div class="container">
               <div class="block-heading">
                 <h2 class="text-info">Your Blogs</h2>
