@@ -22,8 +22,14 @@ class Feed extends Component {
   }
 
   render() {
-    const { data } = this.state;
+    let { data } = this.state;
     const { user } = this.props.auth;
+    const reversed = [];
+    const lenth = data.length - 1;
+    for (let i = lenth; i >= 0; i--) {
+      reversed.push(data[i]);
+    }
+    data = reversed;
     return (
       <div>
         <Navigation />

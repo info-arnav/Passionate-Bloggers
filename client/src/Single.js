@@ -9,6 +9,12 @@ const Single = () => {
     fetch(`/single/post/${id}`)
       .then((e) => e.json())
       .then((e) => updater(e));
+    const reversed = [];
+    const lenth = updater.length - 1;
+    for (let i = lenth; i >= 0; i--) {
+      reversed.push(updater[i]);
+    }
+    updater(reversed);
   });
   return (
     <div>
