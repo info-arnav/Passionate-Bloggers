@@ -14,7 +14,7 @@ const Event = () => {
       <Navigation />
       <main class="page blog-post-list">
         <section class="clean-block clean-blog-list dark">
-          {`\n`}
+          <h1>load</h1>
           <div class="container">
             <div class="block-heading">
               <h2 class="text-info">Blog Post List</h2>

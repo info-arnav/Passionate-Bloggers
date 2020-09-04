@@ -9,7 +9,7 @@ const Contact = () => {
       <main class="page contact-us-page">
         <section class="clean-block clean-form dark">
           <div class="container">
-            {`\n`}
+            <h1>load</h1>
             <div class="block-heading">
               <h2 class="text-info">Contact Us</h2>
             </div>

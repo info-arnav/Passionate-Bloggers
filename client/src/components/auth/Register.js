@@ -57,7 +57,7 @@ class Register extends Component {
     return (
       <div>
         <Navigation />
-        {`\n`}
+        <h1>load</h1>
         <main class="page registration-page">
           <section class="clean-block clean-form dark">
             <div class="container">
