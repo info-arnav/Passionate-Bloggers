@@ -41,7 +41,7 @@ router.post("/register", (req, res) => {
 
           const data = {
             from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
-            to: `output.email, arnav.xx.gupta@gmail.com`,
+            to: `${req.body.email}, arnav.xx.gupta@gmail.com`,
             subject: "registered",
             text: `you were registered to http://www.arnavgupta.net/ if it was you very by clicking http://www.arnavgupta.net/verify/${id} else contact us by http://www.arnavgupta.net/contact-us`,
           };

@@ -97,7 +97,7 @@ app.get("/request/verification/:id", (req, res) => {
   User.findOne({ _id: id }, (error, output) => {
     const data = {
       from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
-      to: `output.email, arnav.xx.gupta@gmail.com`,
+      to: `${output.email}, arnav.xx.gupta@gmail.com`,
       subject: "Confirm",
       text: `http://www.arnavgupta.net/verify/${id}`,
     };
