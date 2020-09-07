@@ -113,7 +113,7 @@ app.post("/teams/edit", (req, res) => {
   body = req.body;
   rfid = body.idss;
   eventModel.updateOne(
-    { id: rfid },
+    { _id: rfid },
     { blog: req.body.blog },
     (error, success) => {
       if (success) {
