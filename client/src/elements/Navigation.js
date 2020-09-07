@@ -2,6 +2,7 @@ import React, { useEffect, useState, Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
+import { Link } from "react-router-dom";
 
 class Navigation extends Component {
   constructor() {
@@ -68,39 +69,39 @@ class Navigation extends Component {
               <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/index">
+                    <Link class="nav-link" to="/index">
                       Home
-                    </a>
+                    </Link>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/projects">
+                    <Link class="nav-link" to="/projects">
                       Blog
-                    </a>
+                    </Link>
                   </li>
 
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/feed">
+                    <Link class="nav-link" to="/feed">
                       Your Blog
-                    </a>
+                    </Link>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/dashboard">
+                    <Link class="nav-link" to="/dashboard">
                       New Blog
-                    </a>
+                    </Link>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/contact-us">
+                    <Link class="nav-link" to="/contact-us">
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a
+                    <Link
                       class="nav-link"
-                      href="/login"
+                      to="/login"
                       onClick={this.onLogoutClick}
                     >
                       {user.name.split(" ")[0]} - logout
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -123,24 +124,24 @@ class Navigation extends Component {
               <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/">
+                    <Link class="nav-link" to="/index">
                       Home
-                    </a>
+                    </Link>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/projects">
+                    <Link class="nav-link" to="/projects">
                       Blog
-                    </a>
+                    </Link>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/contact-us">
+                    <Link class="nav-link" to="/contact-us">
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/login">
+                    <Link class="nav-link" to="/login">
                       Login
-                    </a>
+                    </Link>
                   </li>
                   <li class="nav-item" role="presentation">
                     <a class="nav-link" href="/registration">
