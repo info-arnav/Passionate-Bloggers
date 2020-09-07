@@ -26,59 +26,63 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
     return (
       <div>
-        <div>
-          <Navigation />
-          <main className="page registration-page">
-            <section className="clean-block clean-form dark">
-              <h1>load</h1>
-              <div className="container">
-                <div className="block-heading">
-                  <h2 className="text-info">New Blog - {data.name}</h2>
+        {data[0].confirmed == true ? (
+          <div>
+            <Navigation />
+            <main className="page registration-page">
+              <section className="clean-block clean-form dark">
+                <h1>load</h1>
+                <div className="container">
+                  <div className="block-heading">
+                    <h2 className="text-info">New Blog</h2>
+                  </div>
+                  <form action="/teams/submit" method="POST">
+                    <div className="form-group">
+                      <input
+                        value={user.name}
+                        className="form-control item"
+                        type="text"
+                        id="name"
+                        name="name"
+                        hidden
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label for="subject">Subject</label>
+                      <input
+                        className="form-control item"
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label for="blog">Blog</label>
+                      <input
+                        className="form-control item"
+                        type="text"
+                        id="blog"
+                        name="blog"
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <button
+                        className="btn btn-primary btn-block btn-lg"
+                        type="submit"
+                      >
+                        Submit Form
+                      </button>
+                    </div>
+                  </form>
                 </div>
-                <form action="/teams/submit" method="POST">
-                  <div className="form-group">
-                    <input
-                      value={user.name}
-                      className="form-control item"
-                      type="text"
-                      id="name"
-                      name="name"
-                      hidden
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label for="subject">Subject</label>
-                    <input
-                      className="form-control item"
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label for="blog">Blog</label>
-                    <input
-                      className="form-control item"
-                      type="text"
-                      id="blog"
-                      name="blog"
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <button
-                      className="btn btn-primary btn-block btn-lg"
-                      type="submit"
-                    >
-                      Submit Form
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </section>
-          </main>
-        </div>
+              </section>
+            </main>
+          </div>
+        ) : (
+          <a href="">Request Verification Email by clicking here</a>
+        )}
       </div>
     );
   }

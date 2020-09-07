@@ -82,7 +82,7 @@ app.get("/posts/user/:id", (req, res) => {
 
 app.get("/verify/:id", (req, res) => {
   body = req.params.id;
-  User.findOne({ _id: body }, { $set: { confirmed: true } });
+  User.updateOne({ _id: body }, { $set: { confirmed: true } });
 });
 
 app.get("/single/post/:id", (req, res) => {
