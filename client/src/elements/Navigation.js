@@ -101,8 +101,8 @@ class Navigation extends Component {
                   </li>
                   <li className="nav-item" role="presentation">
                     <a
-                      hreflassName="nav-link"
-                      to="/login"
+                      className="nav-link"
+                      href="/login"
                       onClick={this.onLogoutClick}
                     >
                       {user.name.split(" ")[0]} - logout
