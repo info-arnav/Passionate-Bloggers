@@ -4,13 +4,27 @@ const bodyParser = require("body-parser");
 const mailgun = require("mailgun-js");
 const path = require("path");
 const passport = require("passport");
+const AWS = require("aws-sdk");
 const algoliasearch = require("algoliasearch");
 
 const User = require("./models/User");
 
 const users = require("./routes/api/users");
 
+const eventModel = require("./models/eventModal");
+
 const extra = "";
+
+//aws
+
+// Enter copied or downloaded access ID and secret key here
+const ID = "";
+const SECRET = "";
+
+// The name of the bucket that you have created
+const BUCKET_NAME = "test-bucket";
+
+//mails
 
 const DOMAIN = "arnavgupta.net";
 const mg = mailgun({
@@ -18,17 +32,7 @@ const mg = mailgun({
   domain: DOMAIN,
 });
 
-const eventRegisteration = new mongoose.Schema({
-  name: String,
-  date: {
-    type: String,
-    default: new Date(),
-  },
-  subject: String,
-  blog: String,
-});
-
-const eventModel = mongoose.model("eventModel", eventRegisteration);
+//algolia
 
 const client = algoliasearch("8PCXEU15SU", "fc652d91b2d6db2718b47254be4c5d6e");
 const index = client.initIndex("dev_Name");

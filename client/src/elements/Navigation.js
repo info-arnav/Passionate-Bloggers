@@ -55,7 +55,7 @@ class Navigation extends Component {
           <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
             <div class="container">
               <a class="navbar-brand logo" href="/">
-                Arnav Gupta
+                BlogPost
               </a>
               <button
                 data-toggle="collapse"
@@ -110,7 +110,7 @@ class Navigation extends Component {
           <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
             <div class="container">
               <a class="navbar-brand logo" href="/">
-                Arnav Gupta
+                BlogPost
               </a>
               <button
                 data-toggle="collapse"
