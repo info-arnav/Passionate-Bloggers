@@ -4,6 +4,14 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
+const mailgun = require("mailgun-js");
+
+//mail
+const DOMAIN = "arnavgupta.net";
+const mg = mailgun({
+  apiKey: "f43757e86a021590b4b527908f2cedc3-4d640632-0ae03457",
+  domain: DOMAIN,
+});
 
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
@@ -25,45 +33,40 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  User.findOne({ name: req.body.name }).then((nuser) => {
-    if (nuser) {
-      return res.status(400).json({ name: "username already exists" });
-    }
-  });
-
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
       return res.status(400).json({ email: "Email already exists" });
     } else {
-      const newUser = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-      });
+      User.findOne({ name: req.body.name }).then((nuser) => {
+        if (nuser) {
+          return res.status(400).json({ name: "username already exists" });
+        } else {
+          const newUser = new User({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
+          });
 
-      const userMailData = {
-        from: "Arnav Gupta <postmaster@arnavgupta.net>",
-        to: `${req.body.email}, arnav.xx.gupta@gmail.com`,
-        subject: "registered",
-        text: `you were registered to http://www.arnavgupta.net/ if it was you very by clicking http://www.arnavgupta.net/verify/${req.body._id} else contact us by http://www.arnavgupta.net/contact-us`,
-      };
+          const userMailData = {
+            from: "Arnav Gupta <postmaster@arnavgupta.net>",
+            to: `${req.body.email}, arnav.xx.gupta@gmail.com`,
+            subject: "registered",
+            text: `you were registered to http://www.arnavgupta.net/ if it was you very by clicking http://www.arnavgupta.net/verify/${req.body._id} else contact us by http://www.arnavgupta.net/contact-us`,
+          };
+          mg.messages().send(userMailData, function (error, body) {});
 
-      const newUser = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-      });
-
-      // Hash password before saving in database
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw err;
-          newUser.password = hash;
-          newUser
-            .save()
-            .then((user) => res.json(user))
-            .catch((err) => console.log(err));
-        });
+          // Hash password before saving in database
+          bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+              if (err) throw err;
+              newUser.password = hash;
+              newUser
+                .save()
+                .then((user) => res.json(user))
+                .catch((err) => console.log(err));
+            });
+          });
+        }
       });
     }
   });
