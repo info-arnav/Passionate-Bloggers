@@ -46,13 +46,8 @@ class Feed extends Component {
                   <div className="clean-blog-post">
                     <div className="row">
                       <div className="col-lg-7">
-                        <h3>{e.subject}</h3>
+                        <h3>{e.subject} - </h3>
                         <a href={`/delete/${e._id}`}>delete</a>
-                        <div className="info">
-                          <span className="text-muted">
-                            {e.date} by&nbsp;<a href="/profile">{e.name}</a>
-                          </span>
-                        </div>
                         <Link
                           className="btn btn-outline-primary btn-sm"
                           type="button"
@@ -60,6 +55,11 @@ class Feed extends Component {
                         >
                           Read More
                         </Link>
+                        <div className="info">
+                          <span className="text-muted">
+                            {e.date} by&nbsp;<a href="/profile">{e.name}</a>
+                          </span>
+                        </div>
                         <form action={`/teams/edit/${e._id}`} method="POST">
                           <div className="form-group">
                             <label for="blog">Blog</label>
@@ -76,7 +76,7 @@ class Feed extends Component {
                               className="btn btn-primary btn-block btn-lg"
                               type="submit"
                             >
-                              Submit Form
+                              Make Changes
                             </button>
                           </div>
                         </form>
