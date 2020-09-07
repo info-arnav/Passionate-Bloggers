@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Event = () => {
   const [posts, updater] = useState([]);
-  useEffect(() => {
+  useEffect(async () => {
     fetch("/all/posts")
       .then((e) => e.json())
       .then((e) => updater(e));
