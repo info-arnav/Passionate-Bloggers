@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navigation from "../elements/Navigation";
 import Footer from "../elements/Footer";
+import { Link } from "react-router-dom";
 
 const Event = () => {
   const [posts, updater] = useState([]);
@@ -30,13 +31,13 @@ const Event = () => {
                           {e.date} by&nbsp;<a href="#">{e.name}</a>
                         </span>
                       </div>
-                      <a
+                      <Link
                         class="btn btn-outline-primary btn-sm"
                         type="button"
-                        href={`/posted${e._id}`}
+                        to={`/posted${e._id}`}
                       >
                         Read More
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

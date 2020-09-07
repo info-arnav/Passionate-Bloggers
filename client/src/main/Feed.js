@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import Navigation from "../elements/Navigation";
+import { Link } from "react-router-dom";
 
 class Feed extends Component {
   onLogoutClick = (e) => {
@@ -51,13 +52,13 @@ class Feed extends Component {
                             {e.date} by&nbsp;<a href="#">{e.name}</a>
                           </span>
                         </div>
-                        <a
+                        <Link
                           class="btn btn-outline-primary btn-sm"
                           type="button"
-                          href={`/posted${e._id}`}
+                          to={`/posted${e._id}`}
                         >
                           Read More
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
