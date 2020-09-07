@@ -94,8 +94,8 @@ app.post("/teams/submit", (req, res) => {
         if (user) {
           const teamdata = {
             from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
-            to: `arnav.xx.gupta@gmail.com`,
-            subject: "Hello",
+            to: user.email,
+            subject: "New Post",
             template: "post_confirmation",
             "h:X-Mailgun-Variables": { test: "test" },
           };
