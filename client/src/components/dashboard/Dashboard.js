@@ -30,7 +30,7 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
     return (
       <div>
-        {sdata[0].confirmed == true ? (
+        {sdata.confirmed == true ? (
           <div>
             <Navigation />
             <main className="page registration-page">
@@ -85,7 +85,7 @@ class Dashboard extends Component {
             </main>
           </div>
         ) : (
-          <a href={`/request/verification/${sdata[0]._id}`}>
+          <a href={`/request/verification/${sdata._id}`}>
             Request Verification Email by clicking here
           </a>
         )}
