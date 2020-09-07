@@ -33,7 +33,7 @@ class Dashboard extends Component {
               <h1>load</h1>
               <div className="container">
                 <div className="block-heading">
-                  <h2 className="text-info">New Blog</h2>
+                  <h2 className="text-info">New Blog - {data.name}</h2>
                 </div>
                 <form action="/teams/submit" method="POST">
                   <div className="form-group">
