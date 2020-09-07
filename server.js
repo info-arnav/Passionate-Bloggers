@@ -77,7 +77,13 @@ app.post("/contact/messages", (req, res) => {
 
 app.get("/delete/:id", (req, res) => {
   body = req.params.id;
-  eventModel.removeById(body).then((e) => res.redirect("/feed"));
+  eventModel.findByIdAndDelete(body, (error, success) => {
+    if (success) {
+      res.redirect("/feed");
+    } else {
+      console.log(error);
+    }
+  });
 });
 
 app.get("/posts/user/:id", (req, res) => {
