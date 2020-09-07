@@ -9,7 +9,7 @@ const Single = () => {
     await fetch(`/single/post/${id}`)
       .then((e) => e.json())
       .then((e) => updater(e));
-  });
+  }, []);
   return (
     <div>
       <Navigation />

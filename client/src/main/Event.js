@@ -9,7 +9,7 @@ const Event = () => {
     await fetch("/all/posts")
       .then((e) => e.json())
       .then((e) => updater(e));
-  });
+  }, []);
   return (
     <div>
       <Navigation />
