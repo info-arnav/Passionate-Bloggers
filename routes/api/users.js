@@ -39,15 +39,13 @@ router.post("/register", (req, res) => {
             password: req.body.password,
           });
 
-          const data = {
+          const userMailData = {
             from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
             to: `${req.body.email}, arnav.xx.gupta@gmail.com`,
             subject: "registered",
-            text: `you were registered to http://www.arnavgupta.net/ if it was you very by clicking http://www.arnavgupta.net/verify/${id} else contact us by http://www.arnavgupta.net/contact-us`,
+            text: `you were registered to http://www.arnavgupta.net/ if it was you very by clicking http://www.arnavgupta.net/verify/${req.body._id} else contact us by http://www.arnavgupta.net/contact-us`,
           };
-          mg.messages().send(data, function (error, body) {
-            console.log(body);
-          });
+          mg.messages().send(userMailData, function (error, body) {});
 
           // Hash password before saving in database
           bcrypt.genSalt(10, (err, salt) => {
