@@ -23,6 +23,7 @@ import Contact from "./main/Contact";
 import Feed from "./main/Feed";
 import Single from "./Single";
 import Profile from "./main/Profile";
+import Active from "./main/Active";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -55,7 +56,8 @@ class App extends Component {
             <Route exact path="/registration" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route path="/projects" component={Event} />
-            <Route path="/profile" component={Profile} />
+            <Route path="/active" component={Active} />
+            <Route path="/profile:id" component={Profile} />
             <Route path="/contact" component={Contact} />
             <Route path="/contact-us" component={Contact} />
             <Route path="/posted:id" component={Single} />

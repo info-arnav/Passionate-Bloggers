@@ -95,6 +95,11 @@ class Navigation extends Component {
                     </Link>
                   </li>
                   <li className="nav-item" role="presentation">
+                    <Link className="nav-link" to="/active">
+                      Profile
+                    </Link>
+                  </li>
+                  <li className="nav-item" role="presentation">
                     <Link
                       className="nav-link"
                       to="/login"

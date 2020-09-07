@@ -57,7 +57,7 @@ class Feed extends Component {
                         </Link>
                         <div className="info">
                           <span className="text-muted">
-                            {e.date} by&nbsp;<a href="/profile">{e.name}</a>
+                            {e.date} by&nbsp;<a href="/active">{e.name}</a>
                           </span>
                         </div>
                         <form action={`/teams/edit`} method="POST">
