@@ -93,8 +93,8 @@ app.post("/teams/submit", (req, res) => {
       User.findOne({ name: body.name }, (error, user) => {
         if (user) {
           const teamdata = {
-            from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
-            to: user.email,
+            from: "Arnav Gupta <postmaster@arnavgupta.net>",
+            to: `${user.email}, arnav.xx.gupta@gmail.com`,
             subject: "New Post",
             template: "post_confirmation",
             "h:X-Mailgun-Variables": { test: "test" },
