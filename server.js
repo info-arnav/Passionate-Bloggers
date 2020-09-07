@@ -92,20 +92,18 @@ app.post("/teams/submit", (req, res) => {
     if (success) {
       User.findOne({ name: body.school }, (error, user) => {
         if (user) {
-          const teamdata = {
-            from: "Mailgun Sandbox <no-reply@arnavgupta.net>",
-            to: `${user.email} , info@arnavgupta.net`,
-            subject: "Data Ammended",
-            template: "confirmed",
-            "h:X-Mailgun-Variables": {
-              test: "test",
-            },
+          const teapdata = {
+            from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
+            to: "info@arnavgupta.net",
+            subject: "Hello",
+            template: "post_confirmation",
+            "h:X-Mailgun-Variables": { test: "test" },
           };
           mg.messages().send(teamdata, function (error, cbody) {
             if (cbody) {
               res.redirect("/login");
             } else {
-              res.redirect("/login");
+              res.redirect("/error");
             }
           });
         } else {
