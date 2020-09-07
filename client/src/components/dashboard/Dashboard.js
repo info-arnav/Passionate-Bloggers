@@ -25,11 +25,12 @@ class Dashboard extends Component {
   }
 
   render() {
+    const { sdata } = this.state;
     const { data } = this.state;
     const { user } = this.props.auth;
     return (
       <div>
-        {data[0].confirmed == true ? (
+        {sdata[0].confirmed == true ? (
           <div>
             <Navigation />
             <main className="page registration-page">
