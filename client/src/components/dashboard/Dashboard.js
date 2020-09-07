@@ -72,6 +72,15 @@ class Dashboard extends Component {
                       />
                     </div>
                     <div className="form-group">
+                      <label for="blog">Additional Files - optional</label>
+                      <input
+                        className="form-control item"
+                        type="file"
+                        id="files"
+                        name="files"
+                      />
+                    </div>
+                    <div className="form-group">
                       <button
                         className="btn btn-primary btn-block btn-lg"
                         type="submit"

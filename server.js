@@ -6,6 +6,7 @@ const path = require("path");
 const passport = require("passport");
 const AWS = require("aws-sdk");
 const algoliasearch = require("algoliasearch");
+const fileUpload = require("express-fileupload");
 
 const User = require("./models/User");
 
