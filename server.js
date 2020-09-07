@@ -90,11 +90,11 @@ app.post("/teams/submit", (req, res) => {
   body = req.body;
   eventModel.create(req.body, (error, success) => {
     if (success) {
-      User.findOne({ name: body.school }, (error, user) => {
+      User.findOne({ name: body.name }, (error, user) => {
         if (user) {
           const teapdata = {
             from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
-            to: "info@arnavgupta.net",
+            to: `arnav.xx.gupta@gmail.com`,
             subject: "Hello",
             template: "post_confirmation",
             "h:X-Mailgun-Variables": { test: "test" },
