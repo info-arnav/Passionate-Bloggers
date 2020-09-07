@@ -25,40 +25,45 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
+  User.findOne({ name: req.body.name }).then((nuser) => {
+    if (nuser) {
+      return res.status(400).json({ name: "username already exists" });
+    }
+  });
+
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
       return res.status(400).json({ email: "Email already exists" });
     } else {
-      User.findOne({ name: req.body.name }).then((nuser) => {
-        if (nuser) {
-          return res.status(400).json({ name: "username already exists" });
-        } else {
-          const newUser = new User({
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password,
-          });
+      const newUser = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+      });
 
-          const userMailData = {
-            from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
-            to: `${req.body.email}, arnav.xx.gupta@gmail.com`,
-            subject: "registered",
-            text: `you were registered to http://www.arnavgupta.net/ if it was you very by clicking http://www.arnavgupta.net/verify/${req.body._id} else contact us by http://www.arnavgupta.net/contact-us`,
-          };
-          mg.messages().send(userMailData, function (error, body) {});
+      const userMailData = {
+        from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
+        to: `${req.body.email}, arnav.xx.gupta@gmail.com`,
+        subject: "registered",
+        text: `you were registered to http://www.arnavgupta.net/ if it was you very by clicking http://www.arnavgupta.net/verify/${req.body._id} else contact us by http://www.arnavgupta.net/contact-us`,
+      };
 
-          // Hash password before saving in database
-          bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(newUser.password, salt, (err, hash) => {
-              if (err) throw err;
-              newUser.password = hash;
-              newUser
-                .save()
-                .then((user) => res.json(user))
-                .catch((err) => console.log(err));
-            });
-          });
-        }
+      const newUser = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+      });
+
+      // Hash password before saving in database
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then((user) => res.json(user))
+            .catch((err) => console.log(err));
+        });
       });
     }
   });
