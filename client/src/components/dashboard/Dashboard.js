@@ -81,7 +81,9 @@ class Dashboard extends Component {
             </main>
           </div>
         ) : (
-          <a href="">Request Verification Email by clicking here</a>
+          <a href={`/request/verification/${data[0]._id}`}>
+            Request Verification Email by clicking here
+          </a>
         )}
       </div>
     );

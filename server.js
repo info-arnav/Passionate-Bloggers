@@ -85,6 +85,19 @@ app.get("/verify/:id", (req, res) => {
   User.updateOne({ _id: body }, { $set: { confirmed: true } });
 });
 
+app.get("/request/verification/:id", (req, res) => {
+  id = req.params.id;
+  const data = {
+    from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
+    to: "info@arnavgupta.net",
+    subject: "Hello",
+    text: `http://www.arnavgupta.net/verify/${id}`,
+  };
+  mg.messages().send(data, function (error, body) {
+    console.log(body);
+  });
+});
+
 app.get("/single/post/:id", (req, res) => {
   eventModel.findOne({ _id: req.params.id }, (error, user) => {
     res.json(user);
