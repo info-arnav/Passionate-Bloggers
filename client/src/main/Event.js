@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 
 const Event = () => {
   const [posts, updater] = useState([]);
-  useEffect(async () => {
-    await fetch("/all/posts")
-      .then((e) => e.json())
-      .then((e) => updater(e));
+  useEffect(() => {
+    const fetcher = async () => {
+      await fetch("/all/posts")
+        .then((e) => e.json())
+        .then((e) => updater(e));
+    };
+    fetcher();
   }, []);
   return (
     <div>
@@ -32,13 +35,13 @@ const Event = () => {
                           <a href={`/profile${e.name}`}>{e.name}</a>
                         </span>
                       </div>
-                      <Link
+                      <a
                         className="btn btn-outline-primary btn-sm"
                         type="button"
-                        to={`/posted${e._id}`}
+                        href={`/posted${e._id}`}
                       >
                         Read More
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 </div>

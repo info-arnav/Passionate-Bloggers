@@ -69,44 +69,44 @@ class Navigation extends Component {
               <div className="collapse navbar-collapse" id="navcol-1">
                 <ul className="nav navbar-nav ml-auto">
                   <li className="nav-item" role="presentation">
-                    <Link className="nav-link" to="/index">
+                    <a className="nav-link" href="/index">
                       Home
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <Link className="nav-link" to="/projects">
+                    <a className="nav-link" href="/projects">
                       Blog
-                    </Link>
+                    </a>
                   </li>
 
                   <li className="nav-item" role="presentation">
-                    <Link className="nav-link" to="/feed">
+                    <a className="nav-link" href="/feed">
                       Your Blog
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <Link className="nav-link" to="/dashboard">
+                    <a className="nav-link" href="/dashboard">
                       New Blog
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <Link className="nav-link" to="/contact-us">
+                    <a className="nav-link" href="/contact-us">
                       Contact Us
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <Link className="nav-link" to="/active">
+                    <a className="nav-link" href="/active">
                       Profile
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <Link
-                      className="nav-link"
+                    <a
+                      hreflassName="nav-link"
                       to="/login"
                       onClick={this.onLogoutClick}
                     >
                       {user.name.split(" ")[0]} - logout
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -129,24 +129,24 @@ class Navigation extends Component {
               <div className="collapse navbar-collapse" id="navcol-1">
                 <ul className="nav navbar-nav ml-auto">
                   <li className="nav-item" role="presentation">
-                    <Link className="nav-link" to="/index">
+                    <a className="nav-link" href="/index">
                       Home
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <Link className="nav-link" to="/projects">
+                    <a className="nav-link" href="/projects">
                       Blog
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <Link className="nav-link" to="/contact-us">
+                    <a className="nav-link" href="/contact-us">
                       Contact Us
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <Link className="nav-link" to="/login">
+                    <a className="nav-link" href="/login">
                       Login
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item" role="presentation">
                     <a className="nav-link" href="/registration">

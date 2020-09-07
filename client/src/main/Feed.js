@@ -48,13 +48,13 @@ class Feed extends Component {
                       <div className="col-lg-7">
                         <h3>{e.subject} - </h3>
                         <a href={`/delete/${e._id}`}>delete</a>
-                        <Link
+                        <a
                           className="btn btn-outline-primary btn-sm"
                           type="button"
-                          to={`/posted${e._id}`}
+                          href={`/posted${e._id}`}
                         >
                           Read More
-                        </Link>
+                        </a>
                         <div className="info">
                           <span className="text-muted">
                             {e.date} by&nbsp;<a href="/active">{e.name}</a>

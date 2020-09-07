@@ -5,10 +5,13 @@ import { useParams } from "react-router-dom";
 const Single = () => {
   let { id } = useParams();
   const [posts, updater] = useState({});
-  useEffect(async () => {
-    await fetch(`/single/post/${id}`)
-      .then((e) => e.json())
-      .then((e) => updater(e));
+  useEffect(() => {
+    const fetcher = async () => {
+      await fetch(`/single/post/${id}`)
+        .then((e) => e.json())
+        .then((e) => updater(e));
+    };
+    fetcher();
   }, []);
   return (
     <div>
