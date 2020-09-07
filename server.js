@@ -89,8 +89,11 @@ app.get("/datas/user/:id", (req, res) => {
 
 app.get("/verify/:id", (req, res) => {
   body = req.params.id;
-  User.updateOne({ _id: body }, { confirmed: true });
-  res.redirect("/dashboard");
+  User.updateOne({ _id: body }, { confirmed: true }, (error, success) => {
+    if (success) {
+      res.redirect("/dashboard");
+    }
+  });
 });
 
 app.get("/request/verification/:id", (req, res) => {
