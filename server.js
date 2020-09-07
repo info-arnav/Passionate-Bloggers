@@ -109,14 +109,18 @@ app.get("/verify/:id", (req, res) => {
   });
 });
 
-app.post("/teams/edit/:id", (req, res) => {
+app.post("/teams/edit", (req, res) => {
   body = req.body;
-  rfid = req.params.id;
-  eventModel.updateOne({ id: rfid }, { blog: req.body }, (error, success) => {
-    if (success) {
-      res.redirect("/feed");
+  rfid = body.idss;
+  eventModel.updateOne(
+    { id: rfid },
+    { blog: req.body.blog },
+    (error, success) => {
+      if (success) {
+        res.redirect("/feed");
+      }
     }
-  });
+  );
 });
 
 app.get("/request/verification/:id", (req, res) => {

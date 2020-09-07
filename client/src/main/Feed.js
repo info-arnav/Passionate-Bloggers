@@ -60,8 +60,16 @@ class Feed extends Component {
                             {e.date} by&nbsp;<a href="/profile">{e.name}</a>
                           </span>
                         </div>
-                        <form action={`/teams/edit/${e._id}`} method="POST">
+                        <form action={`/teams/edit`} method="POST">
                           <div className="form-group">
+                            <input
+                              className="form-control item"
+                              type="text"
+                              id="idss"
+                              value={e._id}
+                              name="idss"
+                              hidden
+                            />
                             <label for="blog">Blog</label>
                             <input
                               className="form-control item"
