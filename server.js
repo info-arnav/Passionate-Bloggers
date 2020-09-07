@@ -5,6 +5,7 @@ const mailgun = require("mailgun-js");
 const path = require("path");
 const passport = require("passport");
 const AWS = require("aws-sdk");
+const fs = require("fs");
 const algoliasearch = require("algoliasearch");
 const fileUpload = require("express-fileupload");
 
