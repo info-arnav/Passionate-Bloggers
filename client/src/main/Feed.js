@@ -34,26 +34,26 @@ class Feed extends Component {
     return (
       <div>
         <Navigation />
-        <main class="page blog-post-list">
-          <section class="clean-block clean-blog-list dark">
+        <main className="page blog-post-list">
+          <section className="clean-block clean-blog-list dark">
             <h1>load</h1>
-            <div class="container">
-              <div class="block-heading">
-                <h2 class="text-info">Your Blogs</h2>
+            <div className="container">
+              <div className="block-heading">
+                <h2 className="text-info">Your Blogs</h2>
               </div>
-              <div class="block-content">
+              <div className="block-content">
                 {data.map((e) => (
-                  <div class="clean-blog-post">
-                    <div class="row">
-                      <div class="col-lg-7">
+                  <div className="clean-blog-post">
+                    <div className="row">
+                      <div className="col-lg-7">
                         <h3>{e.subject}</h3>
-                        <div class="info">
-                          <span class="text-muted">
+                        <div className="info">
+                          <span className="text-muted">
                             {e.date} by&nbsp;<a href="#">{e.name}</a>
                           </span>
                         </div>
                         <Link
-                          class="btn btn-outline-primary btn-sm"
+                          className="btn btn-outline-primary btn-sm"
                           type="button"
                           to={`/posted${e._id}`}
                         >

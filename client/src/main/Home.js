@@ -7,75 +7,75 @@ const Home = () => {
     <div>
       <Navigation />
       <h1>load</h1>
-      <main class="page landing-page">
-        <section class="clean-block clean-hero">
-          <div class="text">
+      <main className="page landing-page">
+        <section className="clean-block clean-hero">
+          <div className="text">
             <h2>Blogs for all </h2>
             <p>share your blogs with the world</p>
             <a
               href="/register"
-              class="btn btn-outline-light btn-lg"
+              className="btn btn-outline-light btn-lg"
               type="button"
             >
               Callaborate
             </a>
           </div>
         </section>
-        {/*<section class="clean-block about-us">
-          <div class="container">
-            <div class="block-heading">
-              <h2 class="text-info">About Us</h2>
+        {/*<section className="clean-block about-us">
+          <div className="container">
+            <div className="block-heading">
+              <h2 className="text-info">About Us</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                 quam urna, dignissim nec auctor in, mattis vitae leo.
               </p>
             </div>
-            <div class="row justify-content-center">
-              <div class="col-sm-6 col-lg-4">
-                <div class="card clean-card text-center">
+            <div className="row justify-content-center">
+              <div className="col-sm-6 col-lg-4">
+                <div className="card clean-card text-center">
                   <img
-                    class="card-img-top w-100 d-block"
+                    className="card-img-top w-100 d-block"
                     src="assets/img/avatars/avatar1.jpg"
                   />
-                  <div class="card-body info">
-                    <h4 class="card-title">John Smith</h4>
-                    <p class="card-text">
+                  <div className="card-body info">
+                    <h4 className="card-title">John Smith</h4>
+                    <p className="card-text">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </p>
-                    <div class="icons">
+                    <div className="icons">
                       <a href="#">
-                        <i class="icon-social-facebook" />
+                        <i className="icon-social-facebook" />
                       </a>
                       <a href="#">
-                        <i class="icon-social-instagram" />
+                        <i className="icon-social-instagram" />
                       </a>
                       <a href="#">
-                        <i class="icon-social-twitter" />
+                        <i className="icon-social-twitter" />
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6 col-lg-4">
-                <div class="card clean-card text-center">
+              <div className="col-sm-6 col-lg-4">
+                <div className="card clean-card text-center">
                   <img
-                    class="card-img-top w-100 d-block"
+                    className="card-img-top w-100 d-block"
                     src="assets/img/avatars/avatar2.jpg"
                   />
-                  <div class="card-body info">
-                    <h4 class="card-title">Robert Downturn</h4>
-                    <p class="card-text">
+                  <div className="card-body info">
+                    <h4 className="card-title">Robert Downturn</h4>
+                    <p className="card-text">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </p>
-                    <div class="icons">
+                    <div className="icons">
                       <a href="#">
-                        <i class="icon-social-facebook" />
+                        <i className="icon-social-facebook" />
                       </a>
                       <a href="#">
-                        <i class="icon-social-instagram" />
+                        <i className="icon-social-instagram" />
                       </a>
                       <a href="#">
-                        <i class="icon-social-twitter" />
+                        <i className="icon-social-twitter" />
                       </a>
                     </div>
                   </div>

@@ -6,42 +6,47 @@ const Contact = () => {
   return (
     <div>
       <Navigation />
-      <main class="page contact-us-page">
-        <section class="clean-block clean-form dark">
-          <div class="container">
+      <main className="page contact-us-page">
+        <section className="clean-block clean-form dark">
+          <div className="container">
             <h1>load</h1>
-            <div class="block-heading">
-              <h2 class="text-info">Contact Us</h2>
+            <div className="block-heading">
+              <h2 className="text-info">Contact Us</h2>
             </div>
             <form action="/contact/messages" method="POST">
-              <div class="form-group">
+              <div className="form-group">
                 <label>Name</label>
-                <input required name="name" class="form-control" type="text" />
+                <input
+                  required
+                  name="name"
+                  className="form-control"
+                  type="text"
+                />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label>Subject</label>
                 <input
                   required
-                  class="form-control"
+                  className="form-control"
                   name="subject"
                   type="text"
                 />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label>Email</label>
                 <input
                   required
-                  class="form-control"
+                  className="form-control"
                   name="email"
                   type="email"
                 />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label>Message</label>
-                <textarea required class="form-control" name="message" />
+                <textarea required className="form-control" name="message" />
               </div>
-              <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">
+              <div className="form-group">
+                <button className="btn btn-primary btn-block" type="submit">
                   Send
                 </button>
               </div>

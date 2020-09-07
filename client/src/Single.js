@@ -13,13 +13,13 @@ const Single = () => {
   return (
     <div>
       <Navigation />
-      <main class="page blog-post">
-        <section class="clean-block clean-post dark">
-          <div class="container">
-            <div class="block-content">
-              <div class="post-body">
+      <main className="page blog-post">
+        <section className="clean-block clean-post dark">
+          <div className="container">
+            <div className="block-content">
+              <div className="post-body">
                 <h3>{posts.subject}</h3>
-                <div class="post-info">
+                <div className="post-info">
                   <span>By {posts.name}</span>
                   <span>{posts.date}</span>
                 </div>

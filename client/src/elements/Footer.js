@@ -6,10 +6,10 @@ import { logoutUser } from "../actions/authActions";
 class Footer extends Component {
   render() {
     return (
-      <footer class="page-footer dark">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-3">
+      <footer className="page-footer dark">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-3">
               <h5>Get started</h5>
               <ul>
                 <li>
@@ -23,7 +23,7 @@ class Footer extends Component {
                 </li>
               </ul>
             </div>
-            <div class="col-sm-3">
+            <div className="col-sm-3">
               <h5>About us</h5>
               <ul>
                 <li>
@@ -37,7 +37,7 @@ class Footer extends Component {
                 </li>
               </ul>
             </div>
-            <div class="col-sm-3">
+            <div className="col-sm-3">
               <h5>Support</h5>
               <ul>
                 <li>
@@ -51,7 +51,7 @@ class Footer extends Component {
                 </li>
               </ul>
             </div>
-            <div class="col-sm-3">
+            <div className="col-sm-3">
               <h5>Legal</h5>
               <ul>
                 <li>
@@ -67,7 +67,7 @@ class Footer extends Component {
             </div>
           </div>
         </div>
-        <div class="footer-copyright">
+        <div className="footer-copyright">
           <p>© 2020 Arnav Gupta</p>
         </div>
       </footer>

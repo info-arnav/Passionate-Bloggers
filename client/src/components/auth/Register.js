@@ -58,20 +58,20 @@ class Register extends Component {
       <div>
         <Navigation />
         <h1>load</h1>
-        <main class="page registration-page">
-          <section class="clean-block clean-form dark">
-            <div class="container">
-              <div class="block-heading">
-                <h2 class="text-info">Registration</h2>
+        <main className="page registration-page">
+          <section className="clean-block clean-form dark">
+            <div className="container">
+              <div className="block-heading">
+                <h2 className="text-info">Registration</h2>
               </div>
               <form noValidate onSubmit={this.onSubmit}>
-                <div class="form-group">
+                <div className="form-group">
                   <label for="name">Name</label>
                   <input
                     onChange={this.onChange}
                     value={this.state.name}
                     error={errors.name}
-                    class="form-control item"
+                    className="form-control item"
                     type="text"
                     required
                     id="name"
@@ -79,10 +79,10 @@ class Register extends Component {
 
                   <span className="red-text">{errors.name}</span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label for="email">Email</label>
                   <input
-                    class="form-control item"
+                    className="form-control item"
                     onChange={this.onChange}
                     value={this.state.email}
                     required
@@ -93,10 +93,10 @@ class Register extends Component {
 
                   <span className="red-text">{errors.email}</span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label for="password">Password</label>
                   <input
-                    class="form-control item"
+                    className="form-control item"
                     type="password"
                     id="password"
                     onChange={this.onChange}
@@ -108,10 +108,10 @@ class Register extends Component {
                   <span className="red-text">{errors.password}</span>
                 </div>
 
-                <div class="form-group">
+                <div className="form-group">
                   <label for="password2">Confirm Password</label>
                   <input
-                    class="form-control item"
+                    className="form-control item"
                     onChange={this.onChange}
                     value={this.state.password2}
                     error={errors.password2}
@@ -124,7 +124,7 @@ class Register extends Component {
                 </div>
 
                 <div
-                  class="g-recaptcha"
+                  className="g-recaptcha"
                   data-sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
                   required
                 />
@@ -134,7 +134,7 @@ class Register extends Component {
                   account
                 </p>
                 <br />
-                <button class="btn btn-primary btn-block" type="submit">
+                <button className="btn btn-primary btn-block" type="submit">
                   Sign Up
                 </button>
               </form>

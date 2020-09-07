@@ -28,12 +28,12 @@ class Dashboard extends Component {
       <div>
         <div>
           <Navigation />
-          <main class="page registration-page">
-            <section class="clean-block clean-form dark">
+          <main className="page registration-page">
+            <section className="clean-block clean-form dark">
               <h1>load</h1>
-              <div class="container">
-                <div class="block-heading">
-                  <h2 class="text-info">New Blog</h2>
+              <div className="container">
+                <div className="block-heading">
+                  <h2 className="text-info">New Blog</h2>
                 </div>
                 <form action="/teams/submit" method="POST">
                   <div className="form-group">

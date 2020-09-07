@@ -57,20 +57,20 @@ class Login extends Component {
       <div>
         <Navigation />
         <h1>load</h1>
-        <main class="page login-page">
-          <section class="clean-block clean-form dark">
-            <div class="container">
-              <div class="block-heading">
-                <h2 class="text-info">Log In</h2>
+        <main className="page login-page">
+          <section className="clean-block clean-form dark">
+            <div className="container">
+              <div className="block-heading">
+                <h2 className="text-info">Log In</h2>
               </div>{" "}
               <form noValidate onSubmit={this.onSubmit}>
-                <div class="form-group">
+                <div className="form-group">
                   <label for="email">Email</label>
                   <input
                     onChange={this.onChange}
                     value={this.state.email}
                     error={errors.email}
-                    class="form-control item"
+                    className="form-control item"
                     type="email"
                     name="email"
                     required
@@ -81,13 +81,13 @@ class Login extends Component {
                     {errors.emailnotfound}
                   </span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label for="password">Password</label>
                   <input
                     onChange={this.onChange}
                     value={this.state.password}
                     error={errors.password}
-                    class="form-control"
+                    className="form-control"
                     type="password"
                     name="password"
                     required
@@ -98,19 +98,19 @@ class Login extends Component {
                     {errors.passwordincorrect}
                   </span>
                 </div>
-                <div class="form-group">
-                  <div class="form-check">
+                <div className="form-group">
+                  <div className="form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       id="checkbox"
                     />
-                    <label class="form-check-label" for="checkbox">
+                    <label className="form-check-label" for="checkbox">
                       Remember me
                     </label>
                   </div>
                 </div>
-                <button class="btn btn-primary btn-block" type="submit">
+                <button className="btn btn-primary btn-block" type="submit">
                   Log In
                 </button>
               </form>

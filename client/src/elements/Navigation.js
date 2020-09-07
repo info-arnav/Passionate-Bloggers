@@ -53,50 +53,50 @@ class Navigation extends Component {
     return (
       <div>
         {user.name ? (
-          <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-            <div class="container">
-              <a class="navbar-brand logo" href="/">
+          <nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+            <div className="container">
+              <a className="navbar-brand logo" href="/">
                 BlogPost
               </a>
               <button
                 data-toggle="collapse"
-                class="navbar-toggler"
+                className="navbar-toggler"
                 data-target="#navcol-1"
               >
-                <span class="sr-only">Toggle navigation</span>
-                <span class="navbar-toggler-icon" />
+                <span className="sr-only">Toggle navigation</span>
+                <span className="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                  <li class="nav-item" role="presentation">
-                    <Link class="nav-link" to="/index">
+              <div className="collapse navbar-collapse" id="navcol-1">
+                <ul className="nav navbar-nav ml-auto">
+                  <li className="nav-item" role="presentation">
+                    <Link className="nav-link" to="/index">
                       Home
                     </Link>
                   </li>
-                  <li class="nav-item" role="presentation">
-                    <Link class="nav-link" to="/projects">
+                  <li className="nav-item" role="presentation">
+                    <Link className="nav-link" to="/projects">
                       Blog
                     </Link>
                   </li>
 
-                  <li class="nav-item" role="presentation">
-                    <Link class="nav-link" to="/feed">
+                  <li className="nav-item" role="presentation">
+                    <Link className="nav-link" to="/feed">
                       Your Blog
                     </Link>
                   </li>
-                  <li class="nav-item" role="presentation">
-                    <Link class="nav-link" to="/dashboard">
+                  <li className="nav-item" role="presentation">
+                    <Link className="nav-link" to="/dashboard">
                       New Blog
                     </Link>
                   </li>
-                  <li class="nav-item" role="presentation">
-                    <Link class="nav-link" to="/contact-us">
+                  <li className="nav-item" role="presentation">
+                    <Link className="nav-link" to="/contact-us">
                       Contact Us
                     </Link>
                   </li>
-                  <li class="nav-item" role="presentation">
+                  <li className="nav-item" role="presentation">
                     <Link
-                      class="nav-link"
+                      className="nav-link"
                       to="/login"
                       onClick={this.onLogoutClick}
                     >
@@ -108,43 +108,43 @@ class Navigation extends Component {
             </div>
           </nav>
         ) : (
-          <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-            <div class="container">
-              <a class="navbar-brand logo" href="/">
+          <nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+            <div className="container">
+              <a className="navbar-brand logo" href="/">
                 BlogPost
               </a>
               <button
                 data-toggle="collapse"
-                class="navbar-toggler"
+                className="navbar-toggler"
                 data-target="#navcol-1"
               >
-                <span class="sr-only">Toggle navigation</span>
-                <span class="navbar-toggler-icon" />
+                <span className="sr-only">Toggle navigation</span>
+                <span className="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                  <li class="nav-item" role="presentation">
-                    <Link class="nav-link" to="/index">
+              <div className="collapse navbar-collapse" id="navcol-1">
+                <ul className="nav navbar-nav ml-auto">
+                  <li className="nav-item" role="presentation">
+                    <Link className="nav-link" to="/index">
                       Home
                     </Link>
                   </li>
-                  <li class="nav-item" role="presentation">
-                    <Link class="nav-link" to="/projects">
+                  <li className="nav-item" role="presentation">
+                    <Link className="nav-link" to="/projects">
                       Blog
                     </Link>
                   </li>
-                  <li class="nav-item" role="presentation">
-                    <Link class="nav-link" to="/contact-us">
+                  <li className="nav-item" role="presentation">
+                    <Link className="nav-link" to="/contact-us">
                       Contact Us
                     </Link>
                   </li>
-                  <li class="nav-item" role="presentation">
-                    <Link class="nav-link" to="/login">
+                  <li className="nav-item" role="presentation">
+                    <Link className="nav-link" to="/login">
                       Login
                     </Link>
                   </li>
-                  <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/registration">
+                  <li className="nav-item" role="presentation">
+                    <a className="nav-link" href="/registration">
                       Register
                     </a>
                   </li>
