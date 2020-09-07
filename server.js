@@ -92,7 +92,7 @@ app.post("/teams/submit", (req, res) => {
     if (success) {
       User.findOne({ name: body.name }, (error, user) => {
         if (user) {
-          const teapdata = {
+          const teamdata = {
             from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
             to: `arnav.xx.gupta@gmail.com`,
             subject: "Hello",
