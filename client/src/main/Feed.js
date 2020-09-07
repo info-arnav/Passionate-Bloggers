@@ -66,35 +66,35 @@ class Feed extends Component {
                         >
                           Edit
                         </button>
-                        <div id="myModal" className="modal">
-                          <div className="modal-content">
-                            <span className="close">&times;</span>
-                            <form action={`/teams/edit/${e._id}`} method="POST">
-                              <div className="form-group">
-                                <label for="blog">Blog</label>
-                                <input
-                                  className="form-control item"
-                                  type="text"
-                                  id="blog"
-                                  name="blog"
-                                  required
-                                />
-                              </div>
-                              <div className="form-group">
-                                <button
-                                  className="btn btn-primary btn-block btn-lg"
-                                  type="submit"
-                                >
-                                  Submit Form
-                                </button>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
                 ))}
+                <div id="myModal" className="modal">
+                  <div className="modal-content">
+                    <span className="close">&times;</span>
+                    <form action={`/teams/edit/`} method="POST">
+                      <div className="form-group">
+                        <label for="blog">Blog</label>
+                        <input
+                          className="form-control item"
+                          type="text"
+                          id="blog"
+                          name="blog"
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <button
+                          className="btn btn-primary btn-block btn-lg"
+                          type="submit"
+                        >
+                          Submit Form
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
