@@ -28,7 +28,7 @@ const Event = () => {
                       <h3>{e.subject}</h3>
                       <div className="info">
                         <span className="text-muted">
-                          {e.date} by&nbsp;<a href="#">{e.name}</a>
+                          {e.date} by&nbsp;<a href="/profile">{e.name}</a>
                         </span>
                       </div>
                       <Link

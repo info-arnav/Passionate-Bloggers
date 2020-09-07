@@ -75,6 +75,11 @@ app.post("/contact/messages", (req, res) => {
     .then((e) => res.redirect("/"));
 });
 
+app.get("/delete/:id", (req, res) => {
+  body = req.params.id;
+  eventModel.removeById(body).then((e) => res.redirect("/feed"));
+});
+
 app.get("/posts/user/:id", (req, res) => {
   user = req.params.id;
   eventModel.find({ name: user }, (error, data) => {
@@ -94,6 +99,16 @@ app.get("/verify/:id", (req, res) => {
   User.updateOne({ _id: body }, { confirmed: true }, (error, success) => {
     if (success) {
       res.redirect("/dashboard");
+    }
+  });
+});
+
+app.post("/teams/edit/:id", (req, res) => {
+  body = req.body;
+  rfid = req.params.id;
+  eventModel.updateOne({ id: rfid }, { blog: req.body }, (error, success) => {
+    if (success) {
+      res.redirect("/feed");
     }
   });
 });

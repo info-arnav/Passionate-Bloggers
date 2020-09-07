@@ -47,9 +47,10 @@ class Feed extends Component {
                     <div className="row">
                       <div className="col-lg-7">
                         <h3>{e.subject}</h3>
+                        <a href={`/delete/${e._id}`}>delete</a>
                         <div className="info">
                           <span className="text-muted">
-                            {e.date} by&nbsp;<a href="#">{e.name}</a>
+                            {e.date} by&nbsp;<a href="/profile">{e.name}</a>
                           </span>
                         </div>
                         <Link
@@ -59,6 +60,37 @@ class Feed extends Component {
                         >
                           Read More
                         </Link>
+                        <button
+                          className="btn btn-outline-primary btn-sm"
+                          id="myBtn"
+                        >
+                          Edit
+                        </button>
+                        <div id="myModal" className="modal">
+                          <div className="modal-content">
+                            <span className="close">&times;</span>
+                            <form action={`/teams/edit/${e._id}`} method="POST">
+                              <div className="form-group">
+                                <label for="blog">Blog</label>
+                                <input
+                                  className="form-control item"
+                                  type="text"
+                                  id="blog"
+                                  name="blog"
+                                  required
+                                />
+                              </div>
+                              <div className="form-group">
+                                <button
+                                  className="btn btn-primary btn-block btn-lg"
+                                  type="submit"
+                                >
+                                  Submit Form
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
