@@ -11,7 +11,7 @@ class Dashboard extends Component {
   };
   constructor(props) {
     super(props);
-    this.state = { data: [], sdata: [{ confirmed: false }] };
+    this.state = { data: [], sdata: [{ confirmed: true }] };
   }
 
   componentDidMount() {
@@ -85,7 +85,7 @@ class Dashboard extends Component {
             </main>
           </div>
         ) : (
-          <a href={`/request/verification/${data[0]._id}`}>
+          <a href={`/request/verification/${sdata[0]._id}`}>
             Request Verification Email by clicking here
           </a>
         )}
