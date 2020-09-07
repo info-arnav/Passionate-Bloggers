@@ -89,7 +89,7 @@ app.get("/datas/user/:id", (req, res) => {
 
 app.get("/verify/:id", (req, res) => {
   body = req.params.id;
-  User.updateOne({ _id: body }, { $set: { confirmed: true } });
+  User.updateOne({ _id: body }, { confirmed: true });
   res.redirect("/dashboard");
 });
 
@@ -97,7 +97,7 @@ app.get("/request/verification/:id", (req, res) => {
   id = req.params.id;
   User.findOne({ _id: id }, (error, output) => {
     const data = {
-      from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
+      from: "Arnav Gupta <postmaster@arnavgupta.net>",
       to: `${output.email}, arnav.xx.gupta@gmail.com`,
       subject: "Confirm",
       text: `http://www.arnavgupta.net/verify/${id}`,
