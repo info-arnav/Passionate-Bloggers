@@ -11,7 +11,7 @@ class Dashboard extends Component {
   };
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = { data: [], sdata: [{ confirmed: false }] };
   }
 
   componentDidMount() {
@@ -19,6 +19,9 @@ class Dashboard extends Component {
     fetch(`/posts/user/${user.name}`)
       .then((e) => e.json())
       .then((e) => this.setState({ data: e }));
+    fetch(`/datas/user/${user.name}`)
+      .then((e) => e.json())
+      .then((e) => this.setState({ sdata: e }));
   }
 
   render() {

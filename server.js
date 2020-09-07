@@ -80,6 +80,13 @@ app.get("/posts/user/:id", (req, res) => {
   });
 });
 
+app.get("/datas/user/:id", (req, res) => {
+  body = req.params.id;
+  User.findOne({ name: body }, (error, data) => {
+    res.json(data);
+  });
+});
+
 app.get("/verify/:id", (req, res) => {
   body = req.params.id;
   User.updateOne({ _id: body }, { $set: { confirmed: true } });
