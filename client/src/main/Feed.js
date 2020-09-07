@@ -60,6 +60,26 @@ class Feed extends Component {
                         >
                           Read More
                         </Link>
+                        <form action={`/teams/edit/${e._id}`} method="POST">
+                          <div className="form-group">
+                            <label for="blog">Blog</label>
+                            <input
+                              className="form-control item"
+                              type="text"
+                              id="blog"
+                              name="blog"
+                              required
+                            />
+                          </div>
+                          <div className="form-group">
+                            <button
+                              className="btn btn-primary btn-block btn-lg"
+                              type="submit"
+                            >
+                              Submit Form
+                            </button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
