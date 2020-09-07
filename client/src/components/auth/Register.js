@@ -66,7 +66,7 @@ class Register extends Component {
               </div>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
-                  <label for="name">Name</label>
+                  <label for="name">Username</label>
                   <input
                     onChange={this.onChange}
                     value={this.state.name}

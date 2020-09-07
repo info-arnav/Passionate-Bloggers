@@ -94,14 +94,16 @@ app.get("/verify/:id", (req, res) => {
 
 app.get("/request/verification/:id", (req, res) => {
   id = req.params.id;
-  const data = {
-    from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
-    to: "info@arnavgupta.net",
-    subject: "Hello",
-    text: `http://www.arnavgupta.net/verify/${id}`,
-  };
-  mg.messages().send(data, function (error, body) {
-    console.log(body);
+  User.findOne({ _id: id }, (error, output) => {
+    const data = {
+      from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
+      to: `output.email, arnav.xx.gupta@gmail.com`,
+      subject: "Confirm",
+      text: `http://www.arnavgupta.net/verify/${id}`,
+    };
+    mg.messages().send(data, function (error, body) {
+      console.log(body);
+    });
   });
 });
 

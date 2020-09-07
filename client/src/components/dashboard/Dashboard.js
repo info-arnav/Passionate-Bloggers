@@ -85,9 +85,24 @@ class Dashboard extends Component {
             </main>
           </div>
         ) : (
-          <a href={`/request/verification/${sdata._id}`}>
-            Request Verification Email by clicking here
-          </a>
+          <div>
+            <Navigation />
+            <main className="page registration-page">
+              <section className="clean-block clean-form dark">
+                <h1>load</h1>
+                <div className="container">
+                  <div className="block-heading">
+                    <h2 className="text-info">Verify</h2>
+                  </div>
+                  <form>
+                    <a href={`/request/verification/${sdata._id}`}>
+                      Request Verification Email by clicking here
+                    </a>
+                  </form>
+                </div>
+              </section>
+            </main>
+          </div>
         )}
       </div>
     );
