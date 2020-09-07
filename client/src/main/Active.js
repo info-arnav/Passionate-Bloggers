@@ -20,8 +20,8 @@ class Active extends Component {
     this.props.logoutUser();
   };
 
-  componentDidMount() {
-    fetch("/user/auth/status")
+  async componentDidMount() {
+    await fetch("/user/auth/status")
       .then((e) => e.text())
       .then((e) => this.setState({ status: e }));
   }

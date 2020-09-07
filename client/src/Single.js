@@ -6,7 +6,7 @@ const Single = () => {
   let { id } = useParams();
   const [posts, updater] = useState({});
   useEffect(async () => {
-    fetch(`/single/post/${id}`)
+    await fetch(`/single/post/${id}`)
       .then((e) => e.json())
       .then((e) => updater(e));
   });

@@ -14,12 +14,12 @@ class Dashboard extends Component {
     this.state = { data: [], sdata: { confirmed: true } };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { user } = this.props.auth;
-    fetch(`/posts/user/${user.name}`)
+    await fetch(`/posts/user/${user.name}`)
       .then((e) => e.json())
       .then((e) => this.setState({ data: e }));
-    fetch(`/datas/user/${user.name}`)
+    await fetch(`/datas/user/${user.name}`)
       .then((e) => e.json())
       .then((e) => this.setState({ sdata: e }));
   }
