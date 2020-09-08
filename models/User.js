@@ -20,7 +20,7 @@ const UserSchema = new Schema({
     default: Date.now,
   },
   biology: { type: String, default: "" },
-  followers: { type: Array, default: [] },
+  following: { type: Array, default: [] },
   followers: { type: Array, default: [] },
   confirmed: {
     type: Boolean,
