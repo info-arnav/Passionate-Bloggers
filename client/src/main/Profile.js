@@ -21,6 +21,7 @@ const Profile = () => {
       <main className="page">
         <section className="clean-block about-us">
           <div className="container">
+            <h1>load</h1>
             <div className="block-heading">
               <h2 className="text-info">About</h2>
             </div>
