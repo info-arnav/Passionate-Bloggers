@@ -123,6 +123,27 @@ app.post("/teams/edit", (req, res) => {
   );
 });
 
+app.get("/user/profile/data/:id", (req, res) => {
+  User.findOne({ name: req.body.parmas }, (error, object) => {
+    if (object) {
+      res.json(object);
+    }
+  });
+});
+
+app.post("/profile/update/data", (req, res) => {
+  body = req.body;
+  User.updateOne(
+    { name: req.body.name },
+    { biology: req.body.biology },
+    (error, success) => {
+      if (success) {
+        res.redirect("/active");
+      }
+    }
+  );
+});
+
 app.get("/request/verification/:id", (req, res) => {
   id = req.params.id;
   User.findOne({ _id: id }, (error, output) => {

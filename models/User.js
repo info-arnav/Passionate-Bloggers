@@ -19,6 +19,9 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  biology: { type: String, default: "" },
+  followers: { type: Array, default: [] },
+  followers: { type: Array, default: [] },
   confirmed: {
     type: Boolean,
     default: false,
