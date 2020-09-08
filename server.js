@@ -62,7 +62,7 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 
-app.post("/contact/messages", (req, res) => {
+app.post("/contact/messages", async (req, res) => {
   body = req.body;
   const queryData = {
     from: "Arnav Gupta <no-reply@arnavgupta.net>",
@@ -70,14 +70,15 @@ app.post("/contact/messages", (req, res) => {
     subject: "Queries",
     text: `email : ${body.email} name : ${body.name} subject : ${body.subject} message : ${body.message}`,
   };
-  mg.messages()
+  await mg
+    .messages()
     .send(queryData)
     .then((e) => res.redirect("/"));
 });
 
-app.get("/delete/:id", (req, res) => {
+app.get("/delete/:id", async (req, res) => {
   body = req.params.id;
-  eventModel.findByIdAndDelete(body, (error, success) => {
+  await eventModel.findByIdAndDelete(body, (error, success) => {
     if (success) {
       res.redirect("/feed");
     } else {
@@ -86,33 +87,33 @@ app.get("/delete/:id", (req, res) => {
   });
 });
 
-app.get("/posts/user/:id", (req, res) => {
+app.get("/posts/user/:id", async (req, res) => {
   user = req.params.id;
-  eventModel.find({ name: user }, (error, data) => {
+  await eventModel.find({ name: user }, (error, data) => {
     res.json(data);
   });
 });
 
-app.get("/datas/user/:id", (req, res) => {
+app.get("/datas/user/:id", async (req, res) => {
   body = req.params.id;
-  User.findOne({ name: body }, (error, data) => {
+  await User.findOne({ name: body }, (error, data) => {
     res.json(data);
   });
 });
 
-app.get("/verify/:id", (req, res) => {
+app.get("/verify/:id", async (req, res) => {
   body = req.params.id;
-  User.updateOne({ _id: body }, { confirmed: true }, (error, success) => {
+  await User.updateOne({ _id: body }, { confirmed: true }, (error, success) => {
     if (success) {
       res.redirect("/dashboard");
     }
   });
 });
 
-app.post("/teams/edit", (req, res) => {
+app.post("/teams/edit", async (req, res) => {
   body = req.body;
   rfid = body.idss;
-  eventModel.updateOne(
+  await eventModel.updateOne(
     { _id: rfid },
     { blog: req.body.blog },
     (error, success) => {
@@ -123,17 +124,17 @@ app.post("/teams/edit", (req, res) => {
   );
 });
 
-app.get("/user/profile/data/:id", (req, res) => {
-  User.findOne({ name: req.body.parmas }, (error, object) => {
+app.get("/user/profile/data/:id", async (req, res) => {
+  await User.findOne({ name: req.body.parmas }, (error, object) => {
     if (object) {
       res.json(object);
     }
   });
 });
 
-app.post("/profile/update/data", (req, res) => {
+app.post("/profile/update/data", async (req, res) => {
   body = req.body;
-  User.updateOne(
+  await User.updateOne(
     { name: req.body.name },
     { biology: req.body.biology },
     (error, success) => {
@@ -144,32 +145,32 @@ app.post("/profile/update/data", (req, res) => {
   );
 });
 
-app.get("/request/verification/:id", (req, res) => {
+app.get("/request/verification/:id", async (req, res) => {
   id = req.params.id;
-  User.findOne({ _id: id }, (error, output) => {
+  await User.findOne({ _id: id }, async (error, output) => {
     const data = {
       from: "Arnav Gupta <postmaster@arnavgupta.net>",
       to: `${output.email}, arnav.xx.gupta@gmail.com`,
       subject: "Confirm",
       text: `http://www.arnavgupta.net/verify/${id}`,
     };
-    mg.messages().send(data, function (error, body) {
+    await mg.messages().send(data, async function (error, body) {
       console.log(body);
     });
   }).then((e) => res.redirect("/dashboard"));
 });
 
-app.get("/single/post/:id", (req, res) => {
-  eventModel.findOne({ _id: req.params.id }, (error, user) => {
+app.get("/single/post/:id", async (req, res) => {
+  await eventModel.findOne({ _id: req.params.id }, async (error, user) => {
     res.json(user);
   });
 });
 
-app.post("/teams/submit", (req, res) => {
+app.post("/teams/submit", async (req, res) => {
   body = req.body;
-  eventModel.create(req.body, (error, success) => {
+  await eventModel.create(req.body, async (error, success) => {
     if (success) {
-      User.findOne({ name: body.name }, (error, user) => {
+      await User.findOne({ name: body.name }, async (error, user) => {
         if (user) {
           const teamdata = {
             from: "Arnav Gupta <postmaster@arnavgupta.net>",
@@ -178,7 +179,7 @@ app.post("/teams/submit", (req, res) => {
             template: "post_confirmation",
             "h:X-Mailgun-Variables": { test: "test" },
           };
-          mg.messages().send(teamdata, function (error, cbody) {
+          await mg.messages().send(teamdata, async function (error, cbody) {
             if (cbody) {
               res.redirect("/login");
             } else {
@@ -195,15 +196,15 @@ app.post("/teams/submit", (req, res) => {
   });
 });
 
-app.get("/all/posts", (req, res) => {
-  eventModel.find({}, (error, data) => {
+app.get("/all/posts", async (req, res) => {
+  await eventModel.find({}, (error, data) => {
     if (data) {
       res.json(data);
     }
   });
 });
 
-app.get("*", (req, res) => {
+app.get("*", async (req, res) => {
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 
