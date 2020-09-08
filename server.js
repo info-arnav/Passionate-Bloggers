@@ -125,7 +125,7 @@ app.post("/teams/edit", async (req, res) => {
 });
 
 app.get("/user/profile/data/:id", async (req, res) => {
-  await User.findOne({ name: req.body.parmas }, (error, object) => {
+  await User.findOne({ name: req.params.id }, (error, object) => {
     if (object) {
       res.json(object);
     }
