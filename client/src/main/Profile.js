@@ -14,7 +14,7 @@ const Profile = () => {
         .then((e) => updater(e));
     };
     fetcher();
-  });
+  }, []);
   return (
     <div>
       <Navigation />
