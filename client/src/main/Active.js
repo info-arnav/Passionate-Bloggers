@@ -65,7 +65,7 @@ class Active extends Component {
           <section className="clean-block about-us">
             <div className="container">
               <div className="block-heading">
-                <h2 className="text-info">About</h2>
+                <h2 className="text-info">Your Profile</h2>
               </div>
               <div className="row justify-content-center">
                 <div className="col-sm-6 col-lg-4">
@@ -79,6 +79,34 @@ class Active extends Component {
                       <p className="card-text">{datass.biology}</p>
                       <p>followers - {datass.followers.length}</p>
                       <p>followers - {datass.following.length}</p>
+                      <form action="/profile/update/data" method="POST">
+                        <div className="form-group">
+                          <input
+                            className="form-control item"
+                            type="text"
+                            id="name"
+                            value={user.name}
+                            name="name"
+                            hidden
+                          />
+                          <label for="blog">About</label>
+                          <input
+                            className="form-control item"
+                            type="text"
+                            id="biology"
+                            name="biology"
+                            required
+                          />
+                        </div>
+                        <div className="form-group">
+                          <button
+                            className="btn btn-primary btn-block btn-lg"
+                            type="submit"
+                          >
+                            Make Changes
+                          </button>
+                        </div>
+                      </form>
                       <div className="icons">
                         <a href="#">
                           <i className="icon-social-facebook" />
