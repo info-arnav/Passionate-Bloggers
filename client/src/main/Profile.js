@@ -34,6 +34,22 @@ const Profile = () => {
                   <div className="col-sm-6 col-lg-4">
                     <div className="card clean-card text-center">
                       <Skeleton></Skeleton>
+                      <div className="card-body info">
+                        <h4 className="card-title"><Skeleton></Skeleton></h4>
+                        <p className="card-text"><Skeleton></Skeleton></p>
+                        <p><Skeleton></Skeleton></p>
+                        <p><Skeleton></Skeleton></p>
+                        <div className="icons">
+                          <a href="#">
+                            <i className="icon-social-facebook" />
+                          </a>
+                          <a href="#">
+                            <i className="icon-social-instagram" />
+                          </a>
+                          <a href="#">
+                            <i className="icon-social-twitter" />
+                          </a>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -62,7 +78,7 @@ const Profile = () => {
                         <h4 className="card-title">{data.name}</h4>
                         <p className="card-text">{data.biology}</p>
                         <p>followers - {data.followers.length}</p>
-                        <p>followers - {data.following.length}</p>
+                        <p>following - {data.following.length}</p>
                         <div className="icons">
                           <a href="#">
                             <i className="icon-social-facebook" />

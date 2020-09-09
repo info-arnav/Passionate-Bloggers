@@ -26,7 +26,16 @@ const Single = () => {
               <div className="container">
                 <div className="block-content">
                   <div className="post-body">
-                    <Skeleton />
+                    <h3>
+                    <Skeleton /></h3>
+                    <div className="post-info">
+                      <span>
+                    <Skeleton /></span>
+                      <span>
+                    <Skeleton /></span>
+                    </div>
+                    <p>
+                    <Skeleton /></p>
                   </div>
                 </div>
               </div>

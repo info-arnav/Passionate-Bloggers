@@ -42,7 +42,33 @@ class Dashboard extends Component {
                       <div className="block-heading">
                         <h2 className="text-info"><Skeleton></Skeleton></h2>
                       </div>
-                      <Skeleton></Skeleton>
+                  <form>
+                        <div className="form-group">
+                          <input
+                            value={user.name}
+                            className="form-control item"
+                            type="text"
+                            id="name"
+                            name="name"
+                            hidden
+                          />
+                        </div>
+                        <div className="form-group">
+                          
+                  <Skeleton></Skeleton>
+                          
+                  <Skeleton></Skeleton>
+                        </div>
+                        <div className="form-group">
+                          
+                  <Skeleton></Skeleton>
+                  <Skeleton></Skeleton>
+                        </div>
+                        <div className="form-group">
+                          
+                  <Skeleton></Skeleton>
+                        </div>
+                      </form>
                     </div>
                   </section>
                 </main>

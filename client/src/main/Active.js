@@ -81,7 +81,67 @@ class Active extends Component {
                     <h2 className="text-info"><Skeleton></Skeleton></h2>
                   </div>
                   <div className="row justify-content-center">
-                   <Skeleton></Skeleton>
+                   <div className="col-sm-6 col-lg-4">
+                      <div className="card clean-card text-center">
+                        <Skeleton></Skeleton>
+                        <div className="card-body info">
+                          <h4 className="card-title"><Skeleton></Skeleton></h4>
+                          <p className="card-text"><Skeleton></Skeleton></p>
+                          <p><Skeleton></Skeleton></p>
+                          <p><Skeleton></Skeleton></p>
+                          <center>
+                            <Skeleton></Skeleton>
+                          </center>
+                          <Modal
+                            show={show}
+                            onHide={this.handleClose}
+                            backdrop="static"
+                            keyboard={false}
+                          >
+                            <Modal.Header closeButton>
+                              <Modal.Title><Skeleton></Skeleton></Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                              <form>
+                                <div className="form-group">
+                                  <input
+                                    className="form-control item"
+                                    type="text"
+                                    id="name"
+                                    value={user.name}
+                                    name="name"
+                                    hidden
+                                  />
+                                  <Skeleton></Skeleton><Skeleton></Skeleton>
+                                </div>
+                                <div className="form-group">
+                                  <Skeleton></Skeleton>
+                                </div>
+                              </form>
+                            </Modal.Body>
+                            <Modal.Footer>
+                              <Button
+                                variant="secondary"
+                                onClick={this.handleClose}
+                              >
+                                Close
+                              </Button>
+                            </Modal.Footer>
+                          </Modal>
+                          <div className="icons">
+                            <a href="#">
+                              <i className="icon-social-facebook" />
+                            </a>
+                            <a href="#">
+                              <i className="icon-social-instagram" />
+                            </a>
+                            <a href="#">
+                              <i className="icon-social-twitter" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -110,7 +170,7 @@ class Active extends Component {
                           <h4 className="card-title">{datass.name}</h4>
                           <p className="card-text">{datass.biology}</p>
                           <p>followers - {datass.followers.length}</p>
-                          <p>followers - {datass.following.length}</p>
+                          <p>following - {datass.following.length}</p>
                           <center>
                             <a
                               variant="primary"

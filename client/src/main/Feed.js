@@ -53,7 +53,21 @@ class Feed extends Component {
                     <h2 className="text-info">Your Blogs</h2>
                   </div>
                   <div className="block-content">
-                    <Skeleton></Skeleton>
+                    <div className="clean-blog-post">
+                        <div className="row">
+                          <div className="col-lg-7">
+                            <h3><Skeleton></Skeleton></h3>
+                            <Skeleton></Skeleton>
+                            <div className="info">
+                              <span className="text-muted">
+                                <Skeleton></Skeleton>
+                                <Skeleton></Skeleton>
+                              </span>
+                            </div>
+                            <Skeleton></Skeleton>
+                          </div>
+                        </div>
+                      </div>
                   </div>
                 </div>
               </section>
@@ -68,7 +82,7 @@ class Feed extends Component {
                 <Modal.Title>Make Changed</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <form action={`/teams/edit`} method="POST">
+                <form>
                   <div className="form-group">
                     <input
                       className="form-control item"
@@ -78,22 +92,10 @@ class Feed extends Component {
                       name="idss"
                       hidden
                     />
-                    <label for="blog">Blog</label>
-                    <input
-                      className="form-control item"
-                      type="text"
-                      id="blog"
-                      name="blog"
-                      required
-                    />
+                    <Skeleton></Skeleton>
                   </div>
                   <div className="form-group">
-                    <button
-                      className="btn btn-primary btn-block btn-lg"
-                      type="submit"
-                    >
-                      Make Changes
-                    </button>
+                    <Skeleton></Skeleton>
                     <a href={`/delete/${active._id}`}>delete</a>
                   </div>
                 </form>

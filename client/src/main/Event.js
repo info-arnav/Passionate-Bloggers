@@ -29,7 +29,20 @@ const Event = () => {
                   <h2 className="text-info">Blog Post List</h2>
                 </div>
                 <div className="block-content">
-                  <Skeleton></Skeleton>
+                  <div className="clean-blog-post">
+                      <div className="row">
+                        <div className="col-lg-7">
+                          <h3><Skeleton></Skeleton></h3>
+                          <div className="info">
+                            <span className="text-muted">
+                              <Skeleton></Skeleton>&nbsp;
+                              <Skeleton></Skeleton>
+                            </span>
+                          </div>
+                          <Skeleton></Skeleton>
+                        </div>
+                      </div>
+                    </div>
                 </div>
               </div>
             </section>
