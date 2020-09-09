@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import Navigation from "../elements/Navigation";
@@ -15,14 +17,20 @@ class Feed extends Component {
     this.state = { data: [] };
   }
 
+  handleClose = () => this.setState({ show: false });
+
+  handleShow = () => this.setState({ show: true });
+
   async componentDidMount() {
     const { user } = this.props.auth;
+    this.state = { show: false };
     await fetch(`/posts/user/${user.name}`)
       .then((e) => e.json())
       .then((e) => this.setState({ data: e }));
   }
 
   render() {
+    let { show } = this.state;
     let { data } = this.state;
     const { user } = this.props.auth;
     const reversed = [];
@@ -81,6 +89,8 @@ class Feed extends Component {
                           </div>
                           <div className="form-group">
                             <button
+                              variant="primary"
+                              onClick={this.handleShow}
                               className="btn btn-primary btn-block btn-lg"
                               type="submit"
                             >
@@ -92,6 +102,22 @@ class Feed extends Component {
                     </div>
                   </div>
                 ))}
+                <Modal show={show} onHide={this.handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    Woohoo, you're reading this text in a modal!
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={this.handleClose}>
+                      Close
+                    </Button>
+                    <Button variant="primary" onClick={this.handleClose}>
+                      Save Changes
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
               </div>
             </div>
           </section>
