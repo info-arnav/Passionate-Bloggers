@@ -64,9 +64,13 @@ class Feed extends Component {
                         <a
                           variant="primary"
                           onClick={() => {
-                            this.setState({
-                              active: { datas },
-                            });
+                            () => {
+                              this.setState({
+                                active: {
+                                  datas,
+                                },
+                              });
+                            };
                             this.handleShow;
                           }}
                           className="btn btn-outline-primary btn-sm"
