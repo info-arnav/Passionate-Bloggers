@@ -24,6 +24,7 @@ import Feed from "./main/Feed";
 import Single from "./Single";
 import Profile from "./main/Profile";
 import Active from "./main/Active";
+import NotFound from "./NotFound";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -62,6 +63,7 @@ class App extends Component {
             <Route path="/contact-us" component={Contact} />
             <Route path="/posted:id" component={Single} />
             <Route path="/feed" component={Feed} />
+            <Route path="*" component={NotFound} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
