@@ -23,7 +23,7 @@ class Feed extends Component {
 
   async componentDidMount() {
     const { user } = this.props.auth;
-    this.state = { show: false };
+    this.state = { show: false, active: {} };
     await fetch(`/posts/user/${user.name}`)
       .then((e) => e.json())
       .then((e) => this.setState({ data: e }));
@@ -32,6 +32,7 @@ class Feed extends Component {
   render() {
     let { show } = this.state;
     let { data } = this.state;
+    let { active } = this.state;
     const { user } = this.props.auth;
     const reversed = [];
     const lenth = data.length - 1;
@@ -50,64 +51,74 @@ class Feed extends Component {
                 <h2 className="text-info">Your Blogs</h2>
               </div>
               <div className="block-content">
-                {data.map((e) => (
+                {data.map((datas) => (
                   <div className="clean-blog-post">
                     <div className="row">
                       <div className="col-lg-7">
-                        <h3>{e.subject} - </h3>
-                        <a href={`/delete/${e._id}`}>delete</a>
+                        <h3>{datas.subject} - </h3>
                         <a
                           className="btn btn-outline-primary btn-sm"
                           type="button"
-                          href={`/posted${e._id}`}
+                          href={`/posted${datas._id}`}
                         >
                           Read More
                         </a>
+                        <a
+                          variant="primary"
+                          onClick={this.setState({
+                            active: { datas },
+                          }).then((e) => this.handleShow)}
+                          className="btn btn-outline-primary btn-sm"
+                          type="button"
+                        >
+                          Edit
+                        </a>
                         <div className="info">
                           <span className="text-muted">
-                            {e.date} by&nbsp;<a href="/active">{e.name}</a>
+                            {datas.date} by&nbsp;
+                            <a href="/active">{datas.name}</a>
                           </span>
                         </div>
-                        <form action={`/teams/edit`} method="POST">
-                          <div className="form-group">
-                            <input
-                              className="form-control item"
-                              type="text"
-                              id="idss"
-                              value={e._id}
-                              name="idss"
-                              hidden
-                            />
-                            <label for="blog">Blog</label>
-                            <input
-                              className="form-control item"
-                              type="text"
-                              id="blog"
-                              name="blog"
-                              required
-                            />
-                          </div>
-                          <div className="form-group">
-                            <button
-                              variant="primary"
-                              onClick={this.handleShow}
-                              className="btn btn-primary btn-block btn-lg"
-                              type="submit"
-                            >
-                              Make Changes
-                            </button>
-                          </div>
-                        </form>
                       </div>
                     </div>
                   </div>
                 ))}
                 <Modal show={show} onHide={this.handleClose}>
                   <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Make Changed</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    Woohoo, you're reading this text in a modal!
+                    <form action={`/teams/edit`} method="POST">
+                      <div className="form-group">
+                        <input
+                          className="form-control item"
+                          type="text"
+                          id="idss"
+                          value={active._id}
+                          name="idss"
+                          hidden
+                        />
+                        <label for="blog">Blog</label>
+                        <input
+                          className="form-control item"
+                          type="text"
+                          id="blog"
+                          name="blog"
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <button
+                          variant="primary"
+                          onClick={this.handleShow}
+                          className="btn btn-primary btn-block btn-lg"
+                          type="submit"
+                        >
+                          Make Changes
+                        </button>
+                        <a href={`/delete/${active._id}`}>delete</a>
+                      </div>
+                    </form>
                   </Modal.Body>
                   <Modal.Footer>
                     <Button variant="secondary" onClick={this.handleClose}>
