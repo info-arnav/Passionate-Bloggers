@@ -81,7 +81,12 @@ class Feed extends Component {
                     </div>
                   </div>
                 ))}
-                <Modal show={show} onHide={this.handleClose}>
+                <Modal
+                  show={show}
+                  onHide={this.handleClose}
+                  backdrop="static"
+                  keyboard={false}
+                >
                   <Modal.Header closeButton>
                     <Modal.Title>Make Changed</Modal.Title>
                   </Modal.Header>
