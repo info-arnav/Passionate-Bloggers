@@ -19,7 +19,20 @@ const Single = () => {
   return (
     <div>
       {loading ? (
-        <Skeleton />
+        <div>
+          <Navigation />
+          <main className="page blog-post">
+            <section className="clean-block clean-post dark">
+              <div className="container">
+                <div className="block-content">
+                  <div className="post-body">
+                    <Skeleton />
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </div>
       ) : (
         <div>
           <Navigation />

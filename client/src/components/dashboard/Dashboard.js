@@ -33,7 +33,19 @@ class Dashboard extends Component {
     return (
       <div>
         {loading ? (
-          <Skeleton />
+                    <div>
+            {sdata.confirmed == true ? (
+              <div>
+                <Navigation />
+                <main className="page registration-page">
+                  <section className="clean-block clean-form dark">
+                    <h1>load</h1>
+                    <div className="container">
+                      <Skeleton></Skeleton>
+                    </div>
+                  </section>
+                </main>
+              </div>
         ) : (
           <div>
             {sdata.confirmed == true ? (

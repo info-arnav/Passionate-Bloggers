@@ -43,7 +43,68 @@ class Feed extends Component {
     return (
       <div>
         {loading ? (
-          <Skeleton />
+          <div>
+            <Navigation />
+            <main className="page blog-post-list">
+              <section className="clean-block clean-blog-list dark">
+                <h1>load</h1>
+                <div className="container">
+                  <div className="block-heading">
+                    <h2 className="text-info">Your Blogs</h2>
+                  </div>
+                  <div className="block-content">
+                    <Skeleton></Skeleton>
+                  </div>
+                </div>
+              </section>
+            </main>
+            <Modal
+              show={show}
+              onHide={this.handleClose}
+              backdrop="static"
+              keyboard={false}
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>Make Changed</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <form action={`/teams/edit`} method="POST">
+                  <div className="form-group">
+                    <input
+                      className="form-control item"
+                      type="text"
+                      id="idss"
+                      value={active._id}
+                      name="idss"
+                      hidden
+                    />
+                    <label for="blog">Blog</label>
+                    <input
+                      className="form-control item"
+                      type="text"
+                      id="blog"
+                      name="blog"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <button
+                      className="btn btn-primary btn-block btn-lg"
+                      type="submit"
+                    >
+                      Make Changes
+                    </button>
+                    <a href={`/delete/${active._id}`}>delete</a>
+                  </div>
+                </form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={this.handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
         ) : (
           <div>
             <Navigation />

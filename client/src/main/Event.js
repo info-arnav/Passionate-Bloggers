@@ -19,7 +19,22 @@ const Event = () => {
   return (
     <div>
       {loading ? (
-        <Skeleton />
+        <div>
+          <Navigation />
+          <main className="page blog-post-list">
+            <section className="clean-block clean-blog-list dark">
+              <h1>load</h1>
+              <div className="container">
+                <div className="block-heading">
+                  <h2 className="text-info">Blog Post List</h2>
+                </div>
+                <div className="block-content">
+                  <Skeleton></Skeleton>
+                </div>
+              </div>
+            </section>
+          </main>
+        </div>
       ) : (
         <div>
           <Navigation />

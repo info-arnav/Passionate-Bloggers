@@ -21,7 +21,26 @@ const Profile = () => {
   return (
     <div>
       {loading ? (
-        <Skeleton />
+        <div>
+          <Navigation />
+          <main className="page">
+            <section className="clean-block about-us">
+              <div className="container">
+                <h1>load</h1>
+                <div className="block-heading">
+                  <h2 className="text-info">About</h2>
+                </div>
+                <div className="row justify-content-center">
+                  <div className="col-sm-6 col-lg-4">
+                    <div className="card clean-card text-center">
+                      <Skeleton></Skeleton>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </div>
       ) : (
         <div>
           <Navigation />

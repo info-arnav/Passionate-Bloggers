@@ -70,7 +70,24 @@ class Active extends Component {
     return (
       <div>
         {loading ? (
-          <Skeleton />
+          <div>
+            {" "}
+            <Navigation />
+            <main className="page">
+              <section className="clean-block about-us">
+                <div className="container">
+                  <h1>load</h1>
+                  <div className="block-heading">
+                    <h2 className="text-info"><Skeleton></Skeleton></h2>
+                  </div>
+                  <div className="row justify-content-center">
+                   <Skeleton></Skeleton>
+                  </div>
+                </div>
+              </section>
+            </main>
+          </div>
+        
         ) : (
           <div>
             {" "}
