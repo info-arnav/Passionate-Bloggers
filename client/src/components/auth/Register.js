@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
+import Skeleton from "react-loading-skeleton";
 import classnames from "classnames";
 import Navigation from "../../elements/Navigation";
 
@@ -11,6 +12,7 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
+      loading:true,
       name: "",
       email: "",
       password: "",
@@ -19,11 +21,12 @@ class Register extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
+    await fetch("https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit").then(e => this.setState({loading : false}))
   }
 
   componentWillReceiveProps(nextProps) {
@@ -52,10 +55,26 @@ class Register extends Component {
   };
 
   render() {
-    const { errors } = this.state;
+    const { errors, loading } = this.state;
 
     return (
-      <div>
+    <div>
+     {loading ?  <div>
+        <Navigation />
+        <h1>load</h1>
+        <main className="page registration-page">
+          <section className="clean-block clean-form dark">
+            <div className="container">
+              <div className="block-heading">
+                <h2 className="text-info"><Skeleton></Skeleton></h2>
+              </div>
+              <form>
+                <Skeleton></Skeleton>
+              </form>
+            </div>
+          </section>
+        </main>
+      </div> :  <div>
         <Navigation />
         <h1>load</h1>
         <main className="page registration-page">
@@ -141,7 +160,8 @@ class Register extends Component {
             </div>
           </section>
         </main>
-      </div>
+          </div>}
+        </div>
     );
   }
 }
