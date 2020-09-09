@@ -14,7 +14,8 @@
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "react-bootstrap": "^1.3.0"
+    "react-bootstrap": "^1.3.0",
+    "@yisheng90/react-loading": "^1.3.4"
   },
   "scripts": {
     "start": "react-scripts start",
