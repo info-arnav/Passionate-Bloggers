@@ -33,7 +33,7 @@ class Feed extends Component {
 
   render() {
     const { user } = this.props.auth;
-    let { show, active, data } = this.state;
+    let { show, active, data, loading } = this.state;
     const reversed = [];
     const lenth = data.length - 1;
     for (let i = lenth; i >= 0; i--) {

@@ -63,7 +63,7 @@ class Active extends Component {
   }
 
   render() {
-    const { data, show } = this.state;
+    const { data, show, loading } = this.state;
     const { datass } = this.state;
     const { user } = this.props.auth;
     const status = this.state.status;
