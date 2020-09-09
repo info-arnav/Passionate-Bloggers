@@ -89,9 +89,7 @@ class Active extends Component {
                       <center>
                         <a
                           variant="primary"
-                          onClick={() => {
-                            this.handleShow;
-                          }}
+                          onClick={this.handleShow}
                           className="btn btn-outline-primary btn-sm"
                           type="button"
                         >
