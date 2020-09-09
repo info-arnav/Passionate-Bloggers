@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import Recaptcha from "react-grecaptcha";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
-import Skeleton from "react-loading-skeleton";
 import classnames from "classnames";
 import Navigation from "../../elements/Navigation";
 
@@ -12,7 +12,7 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
-      loading:true,
+      recapcha:false,
       name: "",
       email: "",
       password: "",
@@ -21,12 +21,11 @@ class Register extends Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
-    await fetch("/home/").then(e => this.setState({loading : false}))
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,6 +39,8 @@ class Register extends Component {
   onChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
   };
+
+  verifyCallback = response => {this.setState({recapcha:true})};
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -55,26 +56,10 @@ class Register extends Component {
   };
 
   render() {
-    const { errors, loading } = this.state;
+    const { errors, recapcha } = this.state;
 
     return (
-    <div>
-     {loading ?  <div>
-        <Navigation />
-        <h1>load</h1>
-        <main className="page registration-page">
-          <section className="clean-block clean-form dark">
-            <div className="container">
-              <div className="block-heading">
-                <h2 className="text-info"><Skeleton></Skeleton></h2>
-              </div>
-              <form>
-                <Skeleton></Skeleton>
-              </form>
-            </div>
-          </section>
-        </main>
-      </div> :  <div>
+      <div>
         <Navigation />
         <h1>load</h1>
         <main className="page registration-page">
@@ -142,26 +127,23 @@ class Register extends Component {
                   <span className="red-text">{errors.password2}</span>
                 </div>
 
-                <div
-                  className="g-recaptcha"
-                  data-sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
-                  required
-                />
-                <br />
-                <p>
-                  if recapcha is left unfilled on submit it may affect your
-                  account
-                </p>
-                <br />
-                <button className="btn btn-primary btn-block" type="submit">
+                <Recaptcha
+  sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
+  callback={this.verifyCallback}
+  locale="zh-TW"
+  className="customClassName"
+/>
+                
+                {recapcha ? <button className="btn btn-primary btn-block" type="submit">
                   Sign Up
-                </button>
+                </button> : <button className="btn btn-primary btn-block" type="submit" disabled>
+                  Sign Up
+                </button>}
               </form>
             </div>
           </section>
         </main>
-          </div>}
-        </div>
+      </div>
     );
   }
 }
