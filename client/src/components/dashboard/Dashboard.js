@@ -33,14 +33,15 @@ class Dashboard extends Component {
     return (
       <div>
         {loading ? (
-                    <div>
-            {sdata.confirmed == true ? (
-              <div>
+          <div>
                 <Navigation />
                 <main className="page registration-page">
                   <section className="clean-block clean-form dark">
                     <h1>load</h1>
                     <div className="container">
+                      <div className="block-heading">
+                        <h2 className="text-info"><Skeleton></Skeleton></h2>
+                      </div>
                       <Skeleton></Skeleton>
                     </div>
                   </section>
