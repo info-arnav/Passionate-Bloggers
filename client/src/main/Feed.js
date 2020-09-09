@@ -14,7 +14,7 @@ class Feed extends Component {
   };
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = { data: [], active: {} };
   }
 
   handleClose = () => this.setState({ show: false });
@@ -23,7 +23,7 @@ class Feed extends Component {
 
   async componentDidMount() {
     const { user } = this.props.auth;
-    this.state = { show: false, active: {} };
+    this.state = { show: false };
     await fetch(`/posts/user/${user.name}`)
       .then((e) => e.json())
       .then((e) => this.setState({ data: e }));
