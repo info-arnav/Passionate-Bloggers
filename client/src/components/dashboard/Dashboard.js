@@ -28,7 +28,7 @@ class Dashboard extends Component {
 
   render() {
     const { sdata } = this.state;
-    const { data } = this.state;
+    const { data, loading } = this.state;
     const { user } = this.props.auth;
     return (
       <div>
