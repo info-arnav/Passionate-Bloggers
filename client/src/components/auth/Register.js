@@ -26,7 +26,7 @@ class Register extends Component {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
-    await fetch("/home").then(e => this.setState({loading : false}))
+    await fetch("/home/").then(e => this.setState({loading : false}))
   }
 
   componentWillReceiveProps(nextProps) {
