@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Component } from "react";
 import PropTypes from "prop-types";
 import Modal from "react-bootstrap/Modal";
-import Skeleton from "@yisheng90/react-loading";
+import SkeletonContent from "react-native-skeleton-content";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
@@ -70,7 +70,7 @@ class Active extends Component {
     return (
       <div>
         {loading ? (
-          <Skeleton />
+          <SkeletonContent />
         ) : (
           <div>
             {" "}

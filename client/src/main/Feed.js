@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import Navigation from "../elements/Navigation";
-import Skeleton from "@yisheng90/react-loading";
+import SkeletonContent from "react-native-skeleton-content";
 import { Link } from "react-router-dom";
 
 class Feed extends Component {
@@ -43,7 +43,7 @@ class Feed extends Component {
     return (
       <div>
         {loading ? (
-          <Skeleton />
+          <SkeletonContent />
         ) : (
           <div>
             <Navigation />

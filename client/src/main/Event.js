@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navigation from "../elements/Navigation";
-import Skeleton from "@yisheng90/react-loading";
+import SkeletonContent from "react-native-skeleton-content";
 import Footer from "../elements/Footer";
 import { Link } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const Event = () => {
   return (
     <div>
       {loading ? (
-        <Skeleton />
+        <SkeletonContent />
       ) : (
         <div>
           <Navigation />
