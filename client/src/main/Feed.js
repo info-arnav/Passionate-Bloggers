@@ -109,8 +109,6 @@ class Feed extends Component {
                       </div>
                       <div className="form-group">
                         <button
-                          variant="primary"
-                          onClick={this.handleShow}
                           className="btn btn-primary btn-block btn-lg"
                           type="submit"
                         >
