@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SkeletonContent from "react-native-skeleton-content";
+import Skeleton from "react-loading-skeleton";
 import Navigation from "./elements/Navigation";
 import { useParams } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const Single = () => {
   return (
     <div>
       {loading ? (
-        <SkeletonContent />
+        <Skeleton />
       ) : (
         <div>
           <Navigation />

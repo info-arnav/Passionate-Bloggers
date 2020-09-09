@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SkeletonContent from "react-native-skeleton-content";
+import Skeleton from "react-loading-skeleton";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
@@ -33,7 +33,7 @@ class Dashboard extends Component {
     return (
       <div>
         {loading ? (
-          <SkeletonContent />
+          <Skeleton />
         ) : (
           <div>
             {sdata.confirmed == true ? (

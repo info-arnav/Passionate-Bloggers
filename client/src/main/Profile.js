@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Component } from "react";
 import PropTypes from "prop-types";
-import SkeletonContent from "react-native-skeleton-content";
+import Skeleton from "react-loading-skeleton";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import { Link, useParams } from "react-router-dom";
@@ -21,7 +21,7 @@ const Profile = () => {
   return (
     <div>
       {loading ? (
-        <SkeletonContent />
+        <Skeleton />
       ) : (
         <div>
           <Navigation />
