@@ -19,7 +19,7 @@ class Feed extends Component {
 
   handleClose = () => this.setState({ show: false });
 
-  handleShow = () => this.setState({ show: true });
+  handleShow = (e) => this.setState({ active: e, show: true });
 
   async componentDidMount() {
     const { user } = this.props.auth;
@@ -64,14 +64,7 @@ class Feed extends Component {
                         <a
                           variant="primary"
                           onClick={() => {
-                            () => {
-                              this.setState({
-                                active: {
-                                  datas,
-                                },
-                              });
-                            };
-                            this.handleShow;
+                            this.handleShow(datas);
                           }}
                           className="btn btn-outline-primary btn-sm"
                           type="button"
