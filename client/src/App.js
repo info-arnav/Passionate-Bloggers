@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, browserHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 
@@ -49,24 +49,24 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router>
+        <Router history = {browserHistory}>
           <div className="App">
-            <Route exact path="/" component={Home} />
+            <Switch><Route exact path="/" component={Home} />
             <Route path="/index" component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/registration" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route path="/projects" component={Event} />
-            <Route path="/active" component={Active} />
             <Route path="/profile:id" component={Profile} />
             <Route path="/contact" component={Contact} />
             <Route path="/contact-us" component={Contact} />
             <Route path="/posted:id" component={Single} />
             <Route path="/feed" component={Feed} />
             <Switch>
+            <PrivateRoute exact path="/active" component={Active} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
-            <Route path="*" component={NotFound} />
+            <Route component={NotFound} /></Switch>
             <Footer />
           </div>
         </Router>
