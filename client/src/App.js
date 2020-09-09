@@ -63,10 +63,10 @@ class App extends Component {
             <Route path="/contact-us" component={Contact} />
             <Route path="/posted:id" component={Single} />
             <Route path="/feed" component={Feed} />
-            <Route path="*" component={NotFound} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
+            <Route path="*" component={NotFound} />
             <Footer />
           </div>
         </Router>
