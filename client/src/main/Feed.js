@@ -61,6 +61,12 @@ class Feed extends Component {
                         >
                           Read More
                         </a>
+                        <div className="info">
+                          <span className="text-muted">
+                            {datas.date} by&nbsp;
+                            <a href="/active">{datas.name}</a>
+                          </span>
+                        </div>
                         <a
                           variant="primary"
                           onClick={() => {
@@ -71,12 +77,6 @@ class Feed extends Component {
                         >
                           Edit
                         </a>
-                        <div className="info">
-                          <span className="text-muted">
-                            {datas.date} by&nbsp;
-                            <a href="/active">{datas.name}</a>
-                          </span>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -128,9 +128,6 @@ class Feed extends Component {
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>
               Close
-            </Button>
-            <Button variant="primary" onClick={this.handleClose}>
-              Save Changes
             </Button>
           </Modal.Footer>
         </Modal>
