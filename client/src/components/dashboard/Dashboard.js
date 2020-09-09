@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Skeleton from "@yisheng90/react-loading";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
@@ -11,17 +12,18 @@ class Dashboard extends Component {
   };
   constructor(props) {
     super(props);
-    this.state = { data: [], sdata: { confirmed: true } };
+    this.state = { data: [], sdata: { confirmed: true }, loading: true };
   }
 
   async componentDidMount() {
     const { user } = this.props.auth;
     await fetch(`/posts/user/${user.name}`)
       .then((e) => e.json())
-      .then((e) => this.setState({ data: e }));
-    await fetch(`/datas/user/${user.name}`)
+      .then((e) => this.setState({ data: e }))
+      .then(async (e) => await fetch(`/datas/user/${user.name}`))
       .then((e) => e.json())
-      .then((e) => this.setState({ sdata: e }));
+      .then((e) => this.setState({ sdata: e }))
+      .then((e) => this.setState({ loading: false }));
   }
 
   render() {
@@ -30,78 +32,84 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
     return (
       <div>
-        {sdata.confirmed == true ? (
-          <div>
-            <Navigation />
-            <main className="page registration-page">
-              <section className="clean-block clean-form dark">
-                <h1>load</h1>
-                <div className="container">
-                  <div className="block-heading">
-                    <h2 className="text-info">New Blog</h2>
-                  </div>
-                  <form action="/teams/submit" method="POST">
-                    <div className="form-group">
-                      <input
-                        value={user.name}
-                        className="form-control item"
-                        type="text"
-                        id="name"
-                        name="name"
-                        hidden
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label for="subject">Subject</label>
-                      <input
-                        className="form-control item"
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label for="blog">Blog</label>
-                      <input
-                        className="form-control item"
-                        type="text"
-                        id="blog"
-                        name="blog"
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <button
-                        className="btn btn-primary btn-block btn-lg"
-                        type="submit"
-                      >
-                        Submit Form
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </section>
-            </main>
-          </div>
+        {loading ? (
+          <Skeleton />
         ) : (
           <div>
-            <Navigation />
-            <main className="page registration-page">
-              <section className="clean-block clean-form dark">
-                <h1>load</h1>
-                <div className="container">
-                  <div className="block-heading">
-                    <h2 className="text-info">Verify</h2>
-                  </div>
-                  <form>
-                    <a href={`/request/verification/${sdata._id}`}>
-                      Request Verification Email by clicking here
-                    </a>
-                  </form>
-                </div>
-              </section>
-            </main>
+            {sdata.confirmed == true ? (
+              <div>
+                <Navigation />
+                <main className="page registration-page">
+                  <section className="clean-block clean-form dark">
+                    <h1>load</h1>
+                    <div className="container">
+                      <div className="block-heading">
+                        <h2 className="text-info">New Blog</h2>
+                      </div>
+                      <form action="/teams/submit" method="POST">
+                        <div className="form-group">
+                          <input
+                            value={user.name}
+                            className="form-control item"
+                            type="text"
+                            id="name"
+                            name="name"
+                            hidden
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label for="subject">Subject</label>
+                          <input
+                            className="form-control item"
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            required
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label for="blog">Blog</label>
+                          <input
+                            className="form-control item"
+                            type="text"
+                            id="blog"
+                            name="blog"
+                            required
+                          />
+                        </div>
+                        <div className="form-group">
+                          <button
+                            className="btn btn-primary btn-block btn-lg"
+                            type="submit"
+                          >
+                            Submit Form
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </section>
+                </main>
+              </div>
+            ) : (
+              <div>
+                <Navigation />
+                <main className="page registration-page">
+                  <section className="clean-block clean-form dark">
+                    <h1>load</h1>
+                    <div className="container">
+                      <div className="block-heading">
+                        <h2 className="text-info">Verify</h2>
+                      </div>
+                      <form>
+                        <a href={`/request/verification/${sdata._id}`}>
+                          Request Verification Email by clicking here
+                        </a>
+                      </form>
+                    </div>
+                  </section>
+                </main>
+              </div>
+            )}
           </div>
         )}
       </div>

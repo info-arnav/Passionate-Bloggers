@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import Navigation from "../elements/Navigation";
+import Skeleton from "@yisheng90/react-loading";
 import { Link } from "react-router-dom";
 
 class Feed extends Component {
@@ -14,7 +15,7 @@ class Feed extends Component {
   };
   constructor(props) {
     super(props);
-    this.state = { data: [], active: {} };
+    this.state = { data: [], active: {}, loading: true };
   }
 
   handleClose = () => this.setState({ show: false });
@@ -26,7 +27,8 @@ class Feed extends Component {
     this.state = { show: false };
     await fetch(`/posts/user/${user.name}`)
       .then((e) => e.json())
-      .then((e) => this.setState({ data: e }));
+      .then((e) => this.setState({ data: e }))
+      .then((e) => this.setState({ loading: false }));
   }
 
   render() {
@@ -40,97 +42,103 @@ class Feed extends Component {
     data = reversed;
     return (
       <div>
-        <Navigation />
-        <main className="page blog-post-list">
-          <section className="clean-block clean-blog-list dark">
-            <h1>load</h1>
-            <div className="container">
-              <div className="block-heading">
-                <h2 className="text-info">Your Blogs</h2>
-              </div>
-              <div className="block-content">
-                {data.map((datas) => (
-                  <div className="clean-blog-post">
-                    <div className="row">
-                      <div className="col-lg-7">
-                        <h3>{datas.subject} - </h3>
-                        <a
-                          className="btn btn-outline-primary btn-sm"
-                          type="button"
-                          href={`/posted${datas._id}`}
-                        >
-                          Read More
-                        </a>
-                        <div className="info">
-                          <span className="text-muted">
-                            {datas.date} by&nbsp;
-                            <a href="/active">{datas.name}</a>
-                          </span>
-                        </div>
-                        <a
-                          variant="primary"
-                          onClick={() => {
-                            this.handleShow(datas);
-                          }}
-                          className="btn btn-outline-primary btn-sm"
-                          type="button"
-                        >
-                          Edit
-                        </a>
-                      </div>
-                    </div>
+        {loading ? (
+          <Skeleton />
+        ) : (
+          <div>
+            <Navigation />
+            <main className="page blog-post-list">
+              <section className="clean-block clean-blog-list dark">
+                <h1>load</h1>
+                <div className="container">
+                  <div className="block-heading">
+                    <h2 className="text-info">Your Blogs</h2>
                   </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        </main>
-        <Modal
-          show={show}
-          onHide={this.handleClose}
-          backdrop="static"
-          keyboard={false}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Make Changed</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form action={`/teams/edit`} method="POST">
-              <div className="form-group">
-                <input
-                  className="form-control item"
-                  type="text"
-                  id="idss"
-                  value={active._id}
-                  name="idss"
-                  hidden
-                />
-                <label for="blog">Blog</label>
-                <input
-                  className="form-control item"
-                  type="text"
-                  id="blog"
-                  name="blog"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <button
-                  className="btn btn-primary btn-block btn-lg"
-                  type="submit"
-                >
-                  Make Changes
-                </button>
-                <a href={`/delete/${active._id}`}>delete</a>
-              </div>
-            </form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+                  <div className="block-content">
+                    {data.map((datas) => (
+                      <div className="clean-blog-post">
+                        <div className="row">
+                          <div className="col-lg-7">
+                            <h3>{datas.subject} - </h3>
+                            <a
+                              className="btn btn-outline-primary btn-sm"
+                              type="button"
+                              href={`/posted${datas._id}`}
+                            >
+                              Read More
+                            </a>
+                            <div className="info">
+                              <span className="text-muted">
+                                {datas.date} by&nbsp;
+                                <a href="/active">{datas.name}</a>
+                              </span>
+                            </div>
+                            <a
+                              variant="primary"
+                              onClick={() => {
+                                this.handleShow(datas);
+                              }}
+                              className="btn btn-outline-primary btn-sm"
+                              type="button"
+                            >
+                              Edit
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            </main>
+            <Modal
+              show={show}
+              onHide={this.handleClose}
+              backdrop="static"
+              keyboard={false}
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>Make Changed</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <form action={`/teams/edit`} method="POST">
+                  <div className="form-group">
+                    <input
+                      className="form-control item"
+                      type="text"
+                      id="idss"
+                      value={active._id}
+                      name="idss"
+                      hidden
+                    />
+                    <label for="blog">Blog</label>
+                    <input
+                      className="form-control item"
+                      type="text"
+                      id="blog"
+                      name="blog"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <button
+                      className="btn btn-primary btn-block btn-lg"
+                      type="submit"
+                    >
+                      Make Changes
+                    </button>
+                    <a href={`/delete/${active._id}`}>delete</a>
+                  </div>
+                </form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={this.handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
+        )}
       </div>
     );
   }
