@@ -300,20 +300,40 @@ class Active extends Component {
                               </Button>
                             </Modal.Footer>
                           </Modal>
-                          <a href={datass.website}> website</a>
+                          {datass.website ? (
+                            <a href={datass.website}> website</a>
+                          ) : (
+                            <div></div>
+                          )}
                           <div className="icons">
-                            <a href={datass.facebook}>
-                              <i className="icon-social-facebook" />
-                            </a>
-                            <a href={datass.instagram}>
-                              <i className="icon-social-instagram" />
-                            </a>
-                            <a href={datass.twitter}>
-                              <i className="icon-social-twitter" />
-                            </a>
-                            <a href={datass.linkedin}>
-                              <i className="icon-social-linkedin" />
-                            </a>
+                            {datass.facebook ? (
+                              <a href={datass.facebook}>
+                                <i className="icon-social-facebook" />
+                              </a>
+                            ) : (
+                              <div></div>
+                            )}
+                            {datass.instagram ? (
+                              <a href={datass.instagram}>
+                                <i className="icon-social-instagram" />
+                              </a>
+                            ) : (
+                              <div></div>
+                            )}
+                            {datass.twitter ? (
+                              <a href={datass.twitter}>
+                                <i className="icon-social-twitter" />
+                              </a>
+                            ) : (
+                              <div></div>
+                            )}
+                            {datass.linkedin ? (
+                              <a href={datass.linkedin}>
+                                <i className="icon-social-linkedin" />
+                              </a>
+                            ) : (
+                              <div></div>
+                            )}
                           </div>
                         </div>
                       </div>

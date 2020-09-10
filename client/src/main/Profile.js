@@ -119,20 +119,40 @@ const Profile = () => {
                         <p className="card-text">{data.biology}</p>
                         <p>followers - {data.followers.length}</p>
                         <p>following - {data.following.length}</p>
-                        <a href={data.website}> website</a>
+                        {data.website ? (
+                          <a href={data.website}> website</a>
+                        ) : (
+                          <div></div>
+                        )}
                         <div className="icons">
-                          <a href={data.facebook}>
-                            <i className="icon-social-facebook" />
-                          </a>
-                          <a href={data.instagram}>
-                            <i className="icon-social-instagram" />
-                          </a>
-                          <a href={data.twitter}>
-                            <i className="icon-social-twitter" />
-                          </a>
-                          <a href={data.linkedin}>
-                            <i className="icon-social-linkedin" />
-                          </a>
+                          {data.facebook ? (
+                            <a href={data.facebook}>
+                              <i className="icon-social-facebook" />
+                            </a>
+                          ) : (
+                            <div></div>
+                          )}
+                          {data.instagram ? (
+                            <a href={data.instagram}>
+                              <i className="icon-social-instagram" />
+                            </a>
+                          ) : (
+                            <div></div>
+                          )}
+                          {data.twitter ? (
+                            <a href={data.twitter}>
+                              <i className="icon-social-twitter" />
+                            </a>
+                          ) : (
+                            <div></div>
+                          )}
+                          {data.linkedin ? (
+                            <a href={data.linkedin}>
+                              <i className="icon-social-linkedin" />
+                            </a>
+                          ) : (
+                            <div></div>
+                          )}
                         </div>
                       </div>
                     </div>
