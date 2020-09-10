@@ -182,10 +182,10 @@ class Feed extends Component {
                       type="text"
                       id="blog"
                       name="blog"
-                      value={active.blog}
                       required
                     />
                   </div>
+                  <p>oldPost - {active.blog}</p>
                   <div className="form-group">
                     <button
                       className="btn btn-primary btn-block btn-lg"

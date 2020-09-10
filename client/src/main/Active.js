@@ -204,6 +204,8 @@ class Active extends Component {
                             </Modal.Header>
                             <Modal.Body>
                               <form action="/profile/update/data" method="POST">
+                                Dont leave boxes empty unless you want to delete
+                                that data
                                 <div className="form-group">
                                   <input
                                     className="form-control item"
@@ -219,10 +221,10 @@ class Active extends Component {
                                     type="text"
                                     id="biology"
                                     name="biology"
-                                    value={datass.biology}
                                     required
                                   />
                                 </div>
+                                <p>old - {datass.biology}</p>
                                 <div className="form-group">
                                   <label for="blog">Website Link</label>
                                   <input
@@ -230,9 +232,9 @@ class Active extends Component {
                                     type="text"
                                     id="website"
                                     name="website"
-                                    value={datass.website}
                                   />
                                 </div>
+                                <p>old - {datass.website}</p>
                                 <div className="form-group">
                                   <label for="blog">Instagram</label>
                                   <input
@@ -240,9 +242,9 @@ class Active extends Component {
                                     type="text"
                                     id="instagram"
                                     name="instagram"
-                                    value={datass.instagram}
                                   />
                                 </div>
+                                <p>old - {datass.instagram}</p>
                                 <div className="form-group">
                                   <label for="blog">facebook</label>
                                   <input
@@ -250,9 +252,9 @@ class Active extends Component {
                                     type="text"
                                     id="facebook"
                                     name="facebook"
-                                    value={datass.facebook}
                                   />
                                 </div>
+                                <p>old - {datass.facebook}</p>
                                 <div className="form-group">
                                   <label for="blog">twitter</label>
                                   <input
@@ -260,9 +262,9 @@ class Active extends Component {
                                     type="text"
                                     id="twitter"
                                     name="twitter"
-                                    value={datass.twitter}
                                   />
                                 </div>
+                                <p>old - {datass.twitter}</p>
                                 <div className="form-group">
                                   <label for="blog">linkedin</label>
                                   <input
@@ -270,9 +272,9 @@ class Active extends Component {
                                     type="text"
                                     id="linkedin"
                                     name="linkedin"
-                                    value={datass.linkedin}
                                   />
                                 </div>
+                                <p>old - {datass.linkedin}</p>
                                 <div className="form-group">
                                   <button
                                     className="btn btn-primary btn-block btn-lg"
