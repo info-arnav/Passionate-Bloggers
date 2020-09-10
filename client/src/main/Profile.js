@@ -8,12 +8,16 @@ import Navigation from "../elements/Navigation";
 const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [data, updater] = useState({ followers: [], following: [] });
+  const [feedData, feedUpdater] = useState([]);
   let { id } = useParams();
   useEffect(() => {
     let fetcher = async () => {
       await fetch(`/user/profile/data/${id}`)
         .then((e) => e.json())
         .then((e) => updater(e))
+        .then(async (e) => await fetch(`/posts/user/${id}`))
+        .then((e) => e.json())
+        .then((e) => feedUpdater(e))
         .then((e) => setLoading(false));
     };
     fetcher();
@@ -35,10 +39,18 @@ const Profile = () => {
                     <div className="card clean-card text-center">
                       <Skeleton></Skeleton>
                       <div className="card-body info">
-                        <h4 className="card-title"><Skeleton></Skeleton></h4>
-                        <p className="card-text"><Skeleton></Skeleton></p>
-                        <p><Skeleton></Skeleton></p>
-                        <p><Skeleton></Skeleton></p>
+                        <h4 className="card-title">
+                          <Skeleton></Skeleton>
+                        </h4>
+                        <p className="card-text">
+                          <Skeleton></Skeleton>
+                        </p>
+                        <p>
+                          <Skeleton></Skeleton>
+                        </p>
+                        <p>
+                          <Skeleton></Skeleton>
+                        </p>
                         <div className="icons">
                           <a href="#">
                             <i className="icon-social-facebook" />
@@ -50,11 +62,11 @@ const Profile = () => {
                             <i className="icon-social-twitter" />
                           </a>
                         </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                </div>
-                </div>
+              </div>
             </section>
           </main>
         </div>
@@ -95,6 +107,30 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
+                {feedData.map((e) => (
+                  <div>
+                    <div className="clean-blog-post">
+                      <div className="row">
+                        <div className="col-lg-7">
+                          <h3>{e.subject}</h3>
+                          <div className="info">
+                            <span className="text-muted">
+                              {e.date} by&nbsp;
+                              <a href={`/profile${e.name}`}>{e.name}</a>
+                            </span>
+                          </div>
+                          <a
+                            className="btn btn-outline-primary btn-sm"
+                            type="button"
+                            href={`/posted${e._id}`}
+                          >
+                            Read More
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </section>
           </main>
