@@ -138,11 +138,11 @@ app.post("/profile/update/data", async (req, res) => {
     { name: req.body.name },
     {
       biology: req.body.biology,
-      biology: req.body.instagram,
-      biology: req.body.facebook,
-      biology: req.body.instagram,
-      biology: req.body.twitter,
-      biology: req.body.linkedin,
+      website: req.body.website,
+      facebook: req.body.facebook,
+      instagram: req.body.instagram,
+      twitter: req.body.twitter,
+      linkedin: req.body.linkedin,
     },
     (error, success) => {
       if (success) {
