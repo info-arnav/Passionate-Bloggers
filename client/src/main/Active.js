@@ -219,6 +219,7 @@ class Active extends Component {
                                     type="text"
                                     id="biology"
                                     name="biology"
+                                    value={datass.biology}
                                     required
                                   />
                                 </div>
@@ -229,6 +230,7 @@ class Active extends Component {
                                     type="text"
                                     id="website"
                                     name="website"
+                                    value={datass.website}
                                   />
                                 </div>
                                 <div className="form-group">
@@ -238,6 +240,7 @@ class Active extends Component {
                                     type="text"
                                     id="instagram"
                                     name="instagram"
+                                    value={datass.instagram}
                                   />
                                 </div>
                                 <div className="form-group">
@@ -247,6 +250,7 @@ class Active extends Component {
                                     type="text"
                                     id="facebook"
                                     name="facebook"
+                                    value={datass.facebook}
                                   />
                                 </div>
                                 <div className="form-group">
@@ -256,6 +260,7 @@ class Active extends Component {
                                     type="text"
                                     id="twitter"
                                     name="twitter"
+                                    value={datass.twitter}
                                   />
                                 </div>
                                 <div className="form-group">
@@ -265,6 +270,7 @@ class Active extends Component {
                                     type="text"
                                     id="linkedin"
                                     name="linkedin"
+                                    value={datass.linkedin}
                                   />
                                 </div>
                                 <div className="form-group">

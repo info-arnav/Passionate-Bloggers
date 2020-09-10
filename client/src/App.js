@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 
@@ -51,22 +51,24 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Switch><Route exact path="/" component={Home} />
-            <Route path="/index" component={Home} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/registration" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route path="/projects" component={Event} />
-            <Route path="/profile:id" component={Profile} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/contact-us" component={Contact} />
-            <Route path="/posted:id" component={Single} />
-            <Route path="/feed" component={Feed} />
             <Switch>
-            <PrivateRoute exact path="/active" component={Active} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/" component={Home} />
+              <Route path="/index" component={Home} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/registration" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route path="/projects" component={Event} />
+              <Route path="/profile:id" component={Profile} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/contact-us" component={Contact} />
+              <Route path="/posted:id" component={Single} />
+              <Switch>
+                <PrivateRoute exact path="/active" component={Active} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/feed" component={Feed} />
+              </Switch>
+              <Route component={NotFound} />
             </Switch>
-            <Route component={NotFound} /></Switch>
             <Footer />
           </div>
         </Router>

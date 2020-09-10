@@ -54,20 +54,22 @@ class Feed extends Component {
                   </div>
                   <div className="block-content">
                     <div className="clean-blog-post">
-                        <div className="row">
-                          <div className="col-lg-7">
-                            <h3><Skeleton></Skeleton></h3>
+                      <div className="row">
+                        <div className="col-lg-7">
+                          <h3>
                             <Skeleton></Skeleton>
-                            <div className="info">
-                              <span className="text-muted">
-                                <Skeleton></Skeleton>
-                                <Skeleton></Skeleton>
-                              </span>
-                            </div>
-                            <Skeleton></Skeleton>
+                          </h3>
+                          <Skeleton></Skeleton>
+                          <div className="info">
+                            <span className="text-muted">
+                              <Skeleton></Skeleton>
+                              <Skeleton></Skeleton>
+                            </span>
                           </div>
+                          <Skeleton></Skeleton>
                         </div>
                       </div>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -180,6 +182,7 @@ class Feed extends Component {
                       type="text"
                       id="blog"
                       name="blog"
+                      value={active.blog}
                       required
                     />
                   </div>
@@ -216,7 +219,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(Feed);
+export default connect(mapStateToProps, { logoutUser })(Feed);
