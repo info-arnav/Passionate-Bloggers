@@ -53,13 +53,19 @@ const Profile = () => {
                         </p>
                         <div className="icons">
                           <a href="#">
-                            <i className="icon-social-facebook" />
+                            <Skeleton></Skeleton>
                           </a>
                           <a href="#">
-                            <i className="icon-social-instagram" />
+                            <Skeleton></Skeleton>
                           </a>
                           <a href="#">
-                            <i className="icon-social-twitter" />
+                            <Skeleton></Skeleton>
+                          </a>
+                          <a href="#">
+                            <Skeleton></Skeleton>
+                          </a>
+                          <a href="#">
+                            <Skeleton></Skeleton>
                           </a>
                         </div>
                       </div>
