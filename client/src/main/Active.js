@@ -286,18 +286,18 @@ class Active extends Component {
                               </Button>
                             </Modal.Footer>
                           </Modal>
-                          <a href={data.website}> website</a>
+                          <a href={datass.website}> website</a>
                           <div className="icons">
-                            <a href={data.facebook}>
+                            <a href={datass.facebook}>
                               <i className="icon-social-facebook" />
                             </a>
-                            <a href={data.instagram}>
+                            <a href={datass.instagram}>
                               <i className="icon-social-instagram" />
                             </a>
-                            <a href={data.twitter}>
+                            <a href={datass.twitter}>
                               <i className="icon-social-twitter" />
                             </a>
-                            <a href={data.linkedin}>
+                            <a href={datass.linkedin}>
                               <i className="icon-social-linkedin" />
                             </a>
                           </div>
