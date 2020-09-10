@@ -113,15 +113,19 @@ const Profile = () => {
                         <p className="card-text">{data.biology}</p>
                         <p>followers - {data.followers.length}</p>
                         <p>following - {data.following.length}</p>
+                        <a href={data.website}> website</a>
                         <div className="icons">
-                          <a href="#">
+                          <a href={data.facebook}>
                             <i className="icon-social-facebook" />
                           </a>
-                          <a href="#">
+                          <a href={data.instagram}>
                             <i className="icon-social-instagram" />
                           </a>
-                          <a href="#">
+                          <a href={data.twitter}>
                             <i className="icon-social-twitter" />
+                          </a>
+                          <a href={data.linkedin}>
+                            <i className="icon-social-linkedin" />
                           </a>
                         </div>
                       </div>

@@ -20,6 +20,11 @@ const UserSchema = new Schema({
     default: Date.now,
   },
   biology: { type: String, default: "" },
+  instagram: { type: String, default: "" },
+  facebook: { type: String, default: "" },
+  website: { type: String, default: "" },
+  twitter: { type: String, default: "" },
+  linkedin: { type: String, default: "" },
   following: { type: Array, default: [] },
   followers: { type: Array, default: [] },
   confirmed: {

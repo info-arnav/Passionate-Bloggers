@@ -136,7 +136,14 @@ app.post("/profile/update/data", async (req, res) => {
   body = req.body;
   await User.updateOne(
     { name: req.body.name },
-    { biology: req.body.biology },
+    {
+      biology: req.body.biology,
+      biology: req.body.instagram,
+      biology: req.body.facebook,
+      biology: req.body.instagram,
+      biology: req.body.twitter,
+      biology: req.body.linkedin,
+    },
     (error, success) => {
       if (success) {
         res.redirect("/active");

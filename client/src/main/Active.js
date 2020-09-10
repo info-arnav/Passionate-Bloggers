@@ -78,17 +78,27 @@ class Active extends Component {
                 <div className="container">
                   <h1>load</h1>
                   <div className="block-heading">
-                    <h2 className="text-info"><Skeleton></Skeleton></h2>
+                    <h2 className="text-info">
+                      <Skeleton></Skeleton>
+                    </h2>
                   </div>
                   <div className="row justify-content-center">
-                   <div className="col-sm-6 col-lg-4">
+                    <div className="col-sm-6 col-lg-4">
                       <div className="card clean-card text-center">
                         <Skeleton></Skeleton>
                         <div className="card-body info">
-                          <h4 className="card-title"><Skeleton></Skeleton></h4>
-                          <p className="card-text"><Skeleton></Skeleton></p>
-                          <p><Skeleton></Skeleton></p>
-                          <p><Skeleton></Skeleton></p>
+                          <h4 className="card-title">
+                            <Skeleton></Skeleton>
+                          </h4>
+                          <p className="card-text">
+                            <Skeleton></Skeleton>
+                          </p>
+                          <p>
+                            <Skeleton></Skeleton>
+                          </p>
+                          <p>
+                            <Skeleton></Skeleton>
+                          </p>
                           <center>
                             <Skeleton></Skeleton>
                           </center>
@@ -99,7 +109,9 @@ class Active extends Component {
                             keyboard={false}
                           >
                             <Modal.Header closeButton>
-                              <Modal.Title><Skeleton></Skeleton></Modal.Title>
+                              <Modal.Title>
+                                <Skeleton></Skeleton>
+                              </Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                               <form>
@@ -112,7 +124,8 @@ class Active extends Component {
                                     name="name"
                                     hidden
                                   />
-                                  <Skeleton></Skeleton><Skeleton></Skeleton>
+                                  <Skeleton></Skeleton>
+                                  <Skeleton></Skeleton>
                                 </div>
                                 <div className="form-group">
                                   <Skeleton></Skeleton>
@@ -147,7 +160,6 @@ class Active extends Component {
               </section>
             </main>
           </div>
-        
         ) : (
           <div>
             {" "}
@@ -211,6 +223,51 @@ class Active extends Component {
                                   />
                                 </div>
                                 <div className="form-group">
+                                  <label for="blog">Website Link</label>
+                                  <input
+                                    className="form-control item"
+                                    type="text"
+                                    id="website"
+                                    name="website"
+                                  />
+                                </div>
+                                <div className="form-group">
+                                  <label for="blog">Instagram</label>
+                                  <input
+                                    className="form-control item"
+                                    type="text"
+                                    id="instagram"
+                                    name="instagram"
+                                  />
+                                </div>
+                                <div className="form-group">
+                                  <label for="blog">facebook</label>
+                                  <input
+                                    className="form-control item"
+                                    type="text"
+                                    id="facebook"
+                                    name="facebook"
+                                  />
+                                </div>
+                                <div className="form-group">
+                                  <label for="blog">twitter</label>
+                                  <input
+                                    className="form-control item"
+                                    type="text"
+                                    id="twitter"
+                                    name="twitter"
+                                  />
+                                </div>
+                                <div className="form-group">
+                                  <label for="blog">linkedin</label>
+                                  <input
+                                    className="form-control item"
+                                    type="text"
+                                    id="linkedin"
+                                    name="linkedin"
+                                  />
+                                </div>
+                                <div className="form-group">
                                   <button
                                     className="btn btn-primary btn-block btn-lg"
                                     type="submit"
@@ -229,15 +286,19 @@ class Active extends Component {
                               </Button>
                             </Modal.Footer>
                           </Modal>
+                          <a href={data.website}> website</a>
                           <div className="icons">
-                            <a href="#">
+                            <a href={data.facebook}>
                               <i className="icon-social-facebook" />
                             </a>
-                            <a href="#">
+                            <a href={data.instagram}>
                               <i className="icon-social-instagram" />
                             </a>
-                            <a href="#">
+                            <a href={data.twitter}>
                               <i className="icon-social-twitter" />
+                            </a>
+                            <a href={data.linkedin}>
+                              <i className="icon-social-linkedin" />
                             </a>
                           </div>
                         </div>
@@ -263,7 +324,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(Active);
+export default connect(mapStateToProps, { logoutUser })(Active);
