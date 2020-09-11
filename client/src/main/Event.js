@@ -4,9 +4,8 @@ import Skeleton from "react-loading-skeleton";
 import Footer from "../elements/Footer";
 import { Link } from "react-router-dom";
 
-const Event = ({ auth }) => {
+const Event = (props) => {
   const [loading, setLoading] = useState(true);
-  const { user } = auth;
   const [posts, updater] = useState([]);
   useEffect(() => {
     const fetcher = async () => {
@@ -61,7 +60,7 @@ const Event = ({ auth }) => {
                 <div className="block-heading">
                   <h2 className="text-info">
                     Blog Post List --
-                    {user.name}
+                    {props.auth.user.name}
                   </h2>
                 </div>
                 <div className="block-content">
