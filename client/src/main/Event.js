@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import Navigation from "../elements/Navigation";
 import Skeleton from "react-loading-skeleton";
 import Footer from "../elements/Footer";
