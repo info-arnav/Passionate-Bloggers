@@ -5,6 +5,8 @@ const eventRegisteration = new mongoose.Schema({
     type: String,
     default: new Date(),
   },
+  claps: { type: String, default: 0 },
+  comments: { type: Array, default: [] },
   subject: String,
   blog: String,
 });
