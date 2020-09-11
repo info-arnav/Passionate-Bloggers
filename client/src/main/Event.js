@@ -4,7 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import Footer from "../elements/Footer";
 import { Link } from "react-router-dom";
 
-const Event = (props) => {
+const Event = () => {
   const [loading, setLoading] = useState(true);
   const [posts, updater] = useState([]);
   useEffect(() => {
@@ -58,10 +58,7 @@ const Event = (props) => {
               <h1>load</h1>
               <div className="container">
                 <div className="block-heading">
-                  <h2 className="text-info">
-                    Blog Post List --
-                    {props.auth.user.name}
-                  </h2>
+                  <h2 className="text-info">Blog Post List</h2>
                 </div>
                 <div className="block-content">
                   {posts.map((e) => (
