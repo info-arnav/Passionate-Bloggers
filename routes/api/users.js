@@ -3,7 +3,6 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
-const nodemailer = require("nodemailer");
 const passport = require("passport");
 const mailgun = require("mailgun-js");
 
@@ -12,13 +11,6 @@ const DOMAIN = "arnavgupta.net";
 const mg = mailgun({
   apiKey: "f43757e86a021590b4b527908f2cedc3-4d640632-0ae03457",
   domain: DOMAIN,
-});
-var transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "arnav.xx.gupta@gmail.com",
-    pass: "Arnav300804",
-  },
 });
 
 // Load input validation
@@ -56,12 +48,12 @@ router.post("/register", (req, res) => {
           });
 
           const userMailData = {
-            from: "arnav.xx.gupta@gmail.com",
-            to: `${req.body.email}, info@arnavgupta.net`,
+            from: "Arnav Gupta <postmaster@arnavgupta.net>",
+            to: `${req.body.email}, arnav.xx.gupta@gmail.com`,
             subject: "registered",
             text: `you were registered to http://www.arnavgupta.net/ if it was you tthen ignore else contact us by http://www.arnavgupta.net/contact-us`,
           };
-          transporter.sendMail(userMailData, function (error, body) {});
+          mg.messages().send(userMailData, function (error, body) {});
 
           // Hash password before saving in database
           bcrypt.genSalt(10, (err, salt) => {
