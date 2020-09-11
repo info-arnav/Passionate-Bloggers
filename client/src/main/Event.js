@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Event = (props) => {
   const [loading, setLoading] = useState(true);
-  const user = this.props.auth;
+  const user = props.auth;
   const [posts, updater] = useState([]);
   useEffect(() => {
     const fetcher = async () => {
