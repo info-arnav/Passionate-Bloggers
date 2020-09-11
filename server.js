@@ -23,7 +23,7 @@ const extra = "";
 
 const DOMAIN = "arnavgupta.net";
 const mg = mailgun({
-  apiKey: "f43757e86a021590b4b527908f2cedc3-4d640632-0ae03457",
+  apiKey: "4ee26ff768a916f3160b8dfdb39b4c38",
   domain: DOMAIN,
 });
 
@@ -183,8 +183,7 @@ app.post("/teams/submit", async (req, res) => {
             from: "Arnav Gupta <postmaster@arnavgupta.net>",
             to: `${user.email}, arnav.xx.gupta@gmail.com`,
             subject: "New Post",
-            template: "post_confirmation",
-            "h:X-Mailgun-Variables": { test: "test" },
+            text: "post was published succesfully",
           };
           await mg.messages().send(teamdata, async function (error, cbody) {
             if (cbody) {

@@ -9,7 +9,7 @@ const mailgun = require("mailgun-js");
 //mail
 const DOMAIN = "arnavgupta.net";
 const mg = mailgun({
-  apiKey: "f43757e86a021590b4b527908f2cedc3-4d640632-0ae03457",
+  apiKey: "4ee26ff768a916f3160b8dfdb39b4c38",
   domain: DOMAIN,
 });
 
