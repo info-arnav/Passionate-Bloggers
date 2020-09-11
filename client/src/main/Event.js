@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Event = (props) => {
   const [loading, setLoading] = useState(true);
-  const user = props.auth;
+  const { user } = props.auth;
   const [posts, updater] = useState([]);
   useEffect(() => {
     const fetcher = async () => {
@@ -60,7 +60,7 @@ const Event = (props) => {
               <div className="container">
                 <div className="block-heading">
                   <h2 className="text-info">
-                    Blog Post List
+                    Blog Post List --
                     {user.name}
                   </h2>
                 </div>
