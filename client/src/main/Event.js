@@ -4,9 +4,9 @@ import Skeleton from "react-loading-skeleton";
 import Footer from "../elements/Footer";
 import { Link } from "react-router-dom";
 
-const Event = (props) => {
+const Event = ({ auth }) => {
   const [loading, setLoading] = useState(true);
-  const { user } = props.auth;
+  const { user } = auth;
   const [posts, updater] = useState([]);
   useEffect(() => {
     const fetcher = async () => {
