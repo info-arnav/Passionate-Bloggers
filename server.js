@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const mailgun = require("mailgun-js");
 const path = require("path");
+const nodemailer = require("nodemailer");
 const passport = require("passport");
 const AWS = require("aws-sdk");
 const fs = require("fs");
@@ -27,6 +28,13 @@ const mg = mailgun({
   domain: DOMAIN,
 });
 
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "arnav.xx.gupta@gmail.com",
+    pass: "Arnav300804",
+  },
+});
 //algolia
 
 const client = algoliasearch("8PCXEU15SU", "fc652d91b2d6db2718b47254be4c5d6e");
@@ -65,15 +73,12 @@ app.use("/api/users", users);
 app.post("/contact/messages", async (req, res) => {
   body = req.body;
   const queryData = {
-    from: "Arnav Gupta <no-reply@arnavgupta.net>",
+    from: "arnav.xx.gupta@gmail.com",
     to: `arnav.xx.gupta@gmail.com,info@arnavgupta.net`,
     subject: "Queries",
     text: `email : ${body.email} name : ${body.name} subject : ${body.subject} message : ${body.message}`,
   };
-  await mg
-    .messages()
-    .send(queryData)
-    .then((e) => res.redirect("/"));
+  transporter.sendMail(queryData).then((e) => res.redirect("/"));
 });
 
 app.get("/delete/:id", async (req, res) => {
@@ -156,12 +161,12 @@ app.get("/request/verification/:id", async (req, res) => {
   id = req.params.id;
   await User.findOne({ _id: id }, async (error, output) => {
     const data = {
-      from: "Arnav Gupta <postmaster@arnavgupta.net>",
-      to: `${output.email}, arnav.xx.gupta@gmail.com`,
+      from: "arnav.xx.gupta@gmail.com",
+      to: `${output.email}, info@arnavgupta.net`,
       subject: "Confirm",
       text: `http://www.arnavgupta.net/verify/${id}`,
     };
-    await mg.messages().send(data, async function (error, body) {
+    await transporter.sendMail(data, async function (error, body) {
       console.log(body);
     });
   }).then((e) => res.redirect("/dashboard"));
@@ -180,13 +185,12 @@ app.post("/teams/submit", async (req, res) => {
       await User.findOne({ name: body.name }, async (error, user) => {
         if (user) {
           const teamdata = {
-            from: "Arnav Gupta <postmaster@arnavgupta.net>",
-            to: `${user.email}, arnav.xx.gupta@gmail.com`,
+            from: "arnav.xx.gupta@gmail.com",
+            to: `${user.email}, info@arnavgupta.net`,
             subject: "New Post",
-            template: "post_confirmation",
-            "h:X-Mailgun-Variables": { test: "test" },
+            text: "a new post was succesfully made",
           };
-          await mg.messages().send(teamdata, async function (error, cbody) {
+          await transporter.sendMail(teamdata, async function (error, cbody) {
             if (cbody) {
               res.redirect("/login");
             } else {
