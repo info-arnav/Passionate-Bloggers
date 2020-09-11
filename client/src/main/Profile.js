@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Component } from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
 import { connect } from "react-redux";
@@ -10,6 +11,10 @@ const Profile = () => {
   const [data, updater] = useState({ followers: [], following: [] });
   const [feedData, feedUpdater] = useState([]);
   let { id } = useParams();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post();
+  };
   useEffect(() => {
     let fetcher = async () => {
       await fetch(`/user/profile/data/${id}`)
@@ -119,6 +124,7 @@ const Profile = () => {
                         <p className="card-text">{data.biology}</p>
                         <p>followers - {data.followers.length}</p>
                         <p>following - {data.following.length}</p>
+                        <form onSubmit={this.handleSubmit}></form>
                         {data.website ? (
                           <a href={data.website}> website</a>
                         ) : (

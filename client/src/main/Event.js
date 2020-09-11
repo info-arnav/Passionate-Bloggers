@@ -4,8 +4,9 @@ import Skeleton from "react-loading-skeleton";
 import Footer from "../elements/Footer";
 import { Link } from "react-router-dom";
 
-const Event = () => {
+const Event = (props) => {
   const [loading, setLoading] = useState(true);
+  const user = this.props.auth;
   const [posts, updater] = useState([]);
   useEffect(() => {
     const fetcher = async () => {
@@ -30,19 +31,21 @@ const Event = () => {
                 </div>
                 <div className="block-content">
                   <div className="clean-blog-post">
-                      <div className="row">
-                        <div className="col-lg-7">
-                          <h3><Skeleton></Skeleton></h3>
-                          <div className="info">
-                            <span className="text-muted">
-                              <Skeleton></Skeleton>&nbsp;
-                              <Skeleton></Skeleton>
-                            </span>
-                          </div>
+                    <div className="row">
+                      <div className="col-lg-7">
+                        <h3>
                           <Skeleton></Skeleton>
+                        </h3>
+                        <div className="info">
+                          <span className="text-muted">
+                            <Skeleton></Skeleton>&nbsp;
+                            <Skeleton></Skeleton>
+                          </span>
                         </div>
+                        <Skeleton></Skeleton>
                       </div>
                     </div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -56,7 +59,10 @@ const Event = () => {
               <h1>load</h1>
               <div className="container">
                 <div className="block-heading">
-                  <h2 className="text-info">Blog Post List</h2>
+                  <h2 className="text-info">
+                    Blog Post List
+                    {user.name}
+                  </h2>
                 </div>
                 <div className="block-content">
                   {posts.map((e) => (
