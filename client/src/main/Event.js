@@ -32,7 +32,7 @@ const Event = () => {
                   <div className="clean-blog-post">
                     <div className="row">
                       <div className="col-lg-7">
-                        <h3>
+                        <h3 className="">
                           <Skeleton></Skeleton>
                         </h3>
                         <div className="info">
