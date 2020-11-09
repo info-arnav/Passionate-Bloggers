@@ -1,92 +1,222 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../elements/Footer";
 import Navigation from "../elements/Navigation";
+import PropTypes from "prop-types";
+import Skeleton from "react-loading-skeleton";
+import { connect } from "react-redux";
+import { logoutUser } from "../actions/authActions";
 
-const Home = () => {
+const Home = (props) => {
+  const [loading, setLoading] = useState(true);
+  const [userData, userUpdater] = useState({ following: [] });
+  const [postData, postUpdater] = useState({});
+  const { user } = props.auth;
+  useEffect(() => {
+    const userDetails = async () => {
+      fetch(`/user/profile/data/${user.name}`)
+        .then((e) => e.json())
+        .then((e) => userUpdater(e));
+    };
+    const postDetails = async () => {
+      fetch(`/all/posts`)
+        .then((e) => e.json())
+        .then((e) => postUpdater(e))
+        .then((e) => setLoading(false));
+    };
+    userDetails().then((e) => postDetails());
+  });
   return (
     <div>
       <Navigation />
       <h1>load</h1>
-      <main className="page landing-page">
-        <section className="clean-block clean-hero">
-          <div className="text">
-            <h2>Blogs for all </h2>
-            <p>share your blogs with the world</p>
-            <a
-              href="/register"
-              className="btn btn-outline-light btn-lg"
-              type="button"
-            >
-              Callaborate
-            </a>
-          </div>
-        </section>
-        {/*<section className="clean-block about-us">
-          <div className="container">
-            <div className="block-heading">
-              <h2 className="text-info">About Us</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                quam urna, dignissim nec auctor in, mattis vitae leo.
-              </p>
-            </div>
-            <div className="row justify-content-center">
-              <div className="col-sm-6 col-lg-4">
-                <div className="card clean-card text-center">
-                  <img
-                    className="card-img-top w-100 d-block"
-                    src="assets/img/avatars/avatar1.jpg"
-                  />
-                  <div className="card-body info">
-                    <h4 className="card-title">John Smith</h4>
-                    <p className="card-text">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    </p>
-                    <div className="icons">
-                      <a href="#">
-                        <i className="icon-social-facebook" />
-                      </a>
-                      <a href="#">
-                        <i className="icon-social-instagram" />
-                      </a>
-                      <a href="#">
-                        <i className="icon-social-twitter" />
-                      </a>
+      {user.name ? (
+        loading ? (
+          <div>
+            <Navigation />
+            <main className="page blog-post-list">
+              <section className="clean-block clean-blog-list dark">
+                <h1>load{}</h1>
+                <div className="container">
+                  <div className="block-heading">
+                    <h2 className="text-info">Blog Post List</h2>
+                  </div>
+                  <div className="block-content">
+                    <div className="clean-blog-post">
+                      <div className="row">
+                        <div className="col-lg-7">
+                          <h3 className="">
+                            <Skeleton />
+                          </h3>
+                          <div className="info">
+                            <span className="text-muted">
+                              <Skeleton />
+                              &nbsp;
+                              <Skeleton />
+                            </span>
+                          </div>
+                          <Skeleton />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-sm-6 col-lg-4">
-                <div className="card clean-card text-center">
-                  <img
-                    className="card-img-top w-100 d-block"
-                    src="assets/img/avatars/avatar2.jpg"
-                  />
-                  <div className="card-body info">
-                    <h4 className="card-title">Robert Downturn</h4>
-                    <p className="card-text">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    </p>
-                    <div className="icons">
-                      <a href="#">
-                        <i className="icon-social-facebook" />
-                      </a>
-                      <a href="#">
-                        <i className="icon-social-instagram" />
-                      </a>
-                      <a href="#">
-                        <i className="icon-social-twitter" />
-                      </a>
-                    </div>
+              </section>
+            </main>
+          </div>
+        ) : (
+          <div>
+            <main className="page blog-post-list">
+              <section className="clean-block clean-blog-list dark">
+                <div className="container">
+                  <div className="block-heading">
+                    <h2 className="text-info">Home</h2>
+                  </div>
+                  <div className="block-content">
+                    {userData.following.map((e) =>
+                      postData.map((f) =>
+                        e == f.userId ? (
+                          <div>
+                            <div className="clean-blog-post">
+                              <div className="row">
+                                {f.imagePath ? (
+                                  <div class="col-lg-5">
+                                    <img
+                                      id="yaya"
+                                      class="rounded img-fluid"
+                                      src={f.imagePath}
+                                    />
+                                  </div>
+                                ) : (
+                                  <div />
+                                )}
+                                <div className="col-lg-7">
+                                  <h3>{f.subject}</h3>
+                                  <p>
+                                    {user.name ? (
+                                      f.likes.indexOf(userData._id) == -1 ? (
+                                        <form
+                                          action="/likes/append"
+                                          method="POST"
+                                        >
+                                          <input
+                                            value={f._id}
+                                            name="affected"
+                                            hidden
+                                          />
+                                          <input
+                                            value={userData._id}
+                                            name="affector"
+                                            hidden
+                                          />
+                                          <input
+                                            value="/projects"
+                                            name="path"
+                                            hidden
+                                          />
+                                          <button
+                                            className="btn btn-outline-primary btn-sm"
+                                            type="submit"
+                                          >
+                                            like - {f.likes.length}
+                                          </button>
+                                        </form>
+                                      ) : (
+                                        <form action="/likes/pop" method="POST">
+                                          <input
+                                            value={f._id}
+                                            name="affected"
+                                            hidden
+                                          />
+                                          <input
+                                            value={userData._id}
+                                            name="affector"
+                                            hidden
+                                          />
+                                          <input
+                                            value="/projects"
+                                            name="path"
+                                            hidden
+                                          />
+                                          <button
+                                            type="submit"
+                                            className="btn btn-outline-primary btn-sm"
+                                          >
+                                            unlike - {f.likes.length}
+                                          </button>
+                                        </form>
+                                      )
+                                    ) : (
+                                      <div />
+                                    )}
+                                  </p>
+                                  <div className="info">
+                                    <span className="text-muted">
+                                      {f.date.substring(0, 15)} by&nbsp;
+                                      <a href={`/profile${f.name}`}>{f.name}</a>
+                                    </span>
+                                  </div>
+                                  <a
+                                    className="btn btn-outline-primary btn-sm"
+                                    type="button"
+                                    href={`/posted${f._id}`}
+                                  >
+                                    Read More
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div />
+                        )
+                      )
+                    )}
                   </div>
                 </div>
+              </section>
+            </main>
+          </div>
+        )
+      ) : (
+        <main className="page landing-page">
+          <section className="clean-block clean-hero" id="homeImage">
+            <div className="text">
+              <h2>Blogs for all </h2>
+              <p>share your blogs with the world</p>
+              <a
+                href="/register"
+                className="btn btn-outline-light btn-lg"
+                type="button"
+              >
+                Callaborate
+              </a>
+            </div>
+          </section>
+          <section className="clean-block about-us">
+            <div className="container">
+              <div className="block-heading">
+                <h2 className="text-info">About</h2>
+                <p>
+                  CloudBlog is a platform where various people can share their
+                  blogs with each other they can als follow the users they like.
+                  We will be adding additional features in the future.
+                </p>
               </div>
             </div>
-          </div>
-        </section>*/}
-      </main>
+          </section>
+        </main>
+      )}
     </div>
   );
 };
 
-export default Home;
+Home.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logoutUser })(Home);

@@ -21,6 +21,7 @@
     "concurrently": "^4.0.1",
     "express": "^4.16.4",
     "express-fileupload": "^1.2.0",
+    "googleapis": "39",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.3.0",
     "mailgun-js": "^0.22.0",

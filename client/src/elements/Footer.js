@@ -13,13 +13,10 @@ class Footer extends Component {
               <h5>Get started</h5>
               <ul>
                 <li>
-                  <a href="#">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>
-                  <a href="#">Sign up</a>
-                </li>
-                <li>
-                  <a href="#">Downloads</a>
+                  <a href="/register">Sign up</a>
                 </li>
               </ul>
             </div>
@@ -27,13 +24,10 @@ class Footer extends Component {
               <h5>About us</h5>
               <ul>
                 <li>
-                  <a href="#">Company Information</a>
+                  <a href="/about">Company Information</a>
                 </li>
                 <li>
-                  <a href="#">Contact us</a>
-                </li>
-                <li>
-                  <a href="#">Reviews</a>
+                  <a href="/contact">Contact us</a>
                 </li>
               </ul>
             </div>
@@ -41,13 +35,13 @@ class Footer extends Component {
               <h5>Support</h5>
               <ul>
                 <li>
-                  <a href="#">FAQ</a>
+                  <a href="/">FAQ</a>
                 </li>
                 <li>
-                  <a href="#">Help desk</a>
+                  <a href="/contact">Help desk</a>
                 </li>
                 <li>
-                  <a href="#">Forums</a>
+                  <a href="/">Forums</a>
                 </li>
               </ul>
             </div>
@@ -55,13 +49,10 @@ class Footer extends Component {
               <h5>Legal</h5>
               <ul>
                 <li>
-                  <a href="#">Terms of Service</a>
+                  <a href="/License">Terms of Service</a>
                 </li>
                 <li>
-                  <a href="#">Terms of Use</a>
-                </li>
-                <li>
-                  <a href="#">Privacy Policy</a>
+                  <a href="/license">Terms of Use</a>
                 </li>
               </ul>
             </div>

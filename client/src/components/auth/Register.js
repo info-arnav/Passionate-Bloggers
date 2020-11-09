@@ -12,7 +12,7 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
-      recapcha:false,
+      recapcha: false,
       name: "",
       email: "",
       password: "",
@@ -40,7 +40,9 @@ class Register extends Component {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-  verifyCallback = response => {this.setState({recapcha:true})};
+  verifyCallback = (response) => {
+    this.setState({ recapcha: true });
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -128,17 +130,25 @@ class Register extends Component {
                 </div>
 
                 <Recaptcha
-  sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
-  callback={this.verifyCallback}
-  locale="zh-TW"
-  className="customClassName"
-/>
-                
-                {recapcha ? <button className="btn btn-primary btn-block" type="submit">
-                  Sign Up
-                </button> : <button className="btn btn-primary btn-block" type="submit" disabled>
-                  Sign Up
-                </button>}
+                  sitekey="6LdwXMQZAAAAAK_UK_Brkw_u_bsmL0hHsDLFpTUy"
+                  callback={this.verifyCallback}
+                  locale="zh-TW"
+                  className="customClassName"
+                />
+
+                {recapcha ? (
+                  <button className="btn btn-primary btn-block" type="submit">
+                    Sign Up
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-primary btn-block"
+                    type="submit"
+                    disabled
+                  >
+                    Sign Up
+                  </button>
+                )}
               </form>
             </div>
           </section>

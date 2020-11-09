@@ -9,7 +9,7 @@ const mailgun = require("mailgun-js");
 //mail
 const DOMAIN = "arnavgupta.net";
 const mg = mailgun({
-  apiKey: "4ee26ff768a916f3160b8dfdb39b4c38",
+  apiKey: "bc4ce8949101e064ebc107d55b9c1e81",
   domain: DOMAIN,
 });
 
@@ -53,7 +53,13 @@ router.post("/register", (req, res) => {
             subject: "registered",
             text: `you were registered to http://www.arnavgupta.net/ if it was you tthen ignore else contact us by http://www.arnavgupta.net/contact-us`,
           };
-          mg.messages().send(userMailData, function (error, body) {});
+          mg.messages().send(userMailData, function (error, body) {
+            if (user) {
+              console.log(body);
+            } else {
+              console.log(error);
+            }
+          });
 
           // Hash password before saving in database
           bcrypt.genSalt(10, (err, salt) => {

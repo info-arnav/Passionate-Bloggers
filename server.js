@@ -8,6 +8,9 @@ const AWS = require("aws-sdk");
 const fs = require("fs");
 const algoliasearch = require("algoliasearch");
 const fileUpload = require("express-fileupload");
+var cors = require("cors");
+const https = require("https");
+const http = require("http");
 
 const User = require("./models/User");
 
@@ -17,13 +20,31 @@ const eventModel = require("./models/eventModal");
 
 const extra = "";
 
+const tinkerFest = mongoose.Schema({
+  name: String,
+  codingsr: String,
+  codingjs: String,
+  roboticssr: String,
+  roboticsjs: String,
+  surpise: String,
+  symposium: String,
+  audiosr: String,
+  audiojr: String,
+  moviesr: String,
+  moviejr: String,
+  designing: String,
+  date: { type: Object, default: new Date() },
+});
+
+const fest = mongoose.model("tinkerFest", tinkerFest);
+
 //aws
 
 //mails
 
 const DOMAIN = "arnavgupta.net";
 const mg = mailgun({
-  apiKey: "4ee26ff768a916f3160b8dfdb39b4c38",
+  apiKey: "key-bc4ce8949101e064ebc107d55b9c1e81",
   domain: DOMAIN,
 });
 
@@ -32,9 +53,13 @@ const mg = mailgun({
 const client = algoliasearch("8PCXEU15SU", "fc652d91b2d6db2718b47254be4c5d6e");
 const index = client.initIndex("dev_Name");
 
-const app = express();
+//ssl
+var app = express();
 
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cors());
 
 // Bodyparser middleware
 app.use(
@@ -59,6 +84,22 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 
+//invites
+app.post("/request/invite", (req, res) => {
+  const data = {
+    from: "Mailgun Sandbox <postmaster@arnavgupta.net>",
+    to: `info@arnavgupta.net, ${req.body.email}`,
+    subject: "Invitation For Tinker Fest 2020",
+    template: "invitationnew",
+    "v:test": "test",
+  };
+  mg.messages().send(data, function (error, body) {
+    if (body) {
+      res.redirect("/");
+    }
+  });
+});
+
 // Routes
 app.use("/api/users", users);
 
@@ -78,19 +119,52 @@ app.post("/contact/messages", async (req, res) => {
 
 app.get("/delete/:id", async (req, res) => {
   body = req.params.id;
-  await eventModel.findByIdAndDelete(body, (error, success) => {
-    if (success) {
-      res.redirect("/feed");
-    } else {
-      console.log(error);
-    }
-  });
+  await eventModel.findByIdAndDelete(body).then((e) => res.redirect("/feed"));
 });
 
 app.get("/posts/user/:id", async (req, res) => {
   user = req.params.id;
   await eventModel.find({ name: user }, (error, data) => {
     res.json(data);
+  });
+});
+
+app.post("/tinkerfest/team/online/website/submit", (req, res) => {
+  fest.findOne({ name: req.body.name }, (error, user) => {
+    if (user) {
+      fest.updateOne(
+        { name: req.body.name },
+        {
+          codingsr: req.body.codingsr,
+          codingjs: req.body.codingjs,
+          roboticssr: req.body.roboticssr,
+          roboticsjs: req.body.roboticsjs,
+          surpise: req.body.surpise,
+          symposium: req.body.symposium,
+          audiosr: req.body.audiosr,
+          audiojr: req.body.audiojr,
+          moviesr: req.body.moviesr,
+          moviejr: req.body.moviejr,
+          designing: req.body.designing,
+        },
+        (error, success) => {
+          if (success) {
+            res.redirect("/login");
+          }
+        }
+      );
+    } else
+      fest.create(req.body, (error, success) => {
+        if (success) {
+          res.redirect("/login");
+        }
+      });
+  });
+});
+
+app.get("/tinkerfest/:id", (req, res) => {
+  fest.findOne({ name: req.params.id }, (error, user) => {
+    res.json(user);
   });
 });
 
@@ -115,7 +189,7 @@ app.post("/teams/edit", async (req, res) => {
   rfid = body.idss;
   await eventModel.updateOne(
     { _id: rfid },
-    { blog: req.body.blog },
+    { blog: req.body.blog, imagePath: body.imagePath },
     (error, success) => {
       if (success) {
         res.redirect("/feed");
@@ -137,6 +211,7 @@ app.post("/profile/update/data", async (req, res) => {
   await User.updateOne(
     { name: req.body.name },
     {
+      imagePath: req.body.imagePath,
       biology: req.body.biology,
       website: req.body.website,
       facebook: req.body.facebook,
@@ -183,7 +258,7 @@ app.post("/teams/submit", async (req, res) => {
             from: "Arnav Gupta <postmaster@arnavgupta.net>",
             to: `${user.email}, arnav.xx.gupta@gmail.com`,
             subject: "New Post",
-            text: "post was published succesfully",
+            text: "team was ammended succesfully",
           };
           await mg.messages().send(teamdata, async function (error, cbody) {
             if (cbody) {
@@ -210,10 +285,74 @@ app.get("/all/posts", async (req, res) => {
   });
 });
 
-app.get("*", async (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+app.post("/follower/append", (req, res) => {
+  body = req.body;
+  User.findByIdAndUpdate(body.affected, { $push: { followers: body.affector } })
+    .then((e) =>
+      User.findByIdAndUpdate(body.affector, {
+        $push: { following: body.affected },
+      })
+    )
+    .then((e) =>
+      User.findOne({ _id: body.affected }, (error, user) => {
+        if (user) {
+          res.redirect(`/profile${user.name}`);
+        }
+      })
+    );
+});
+
+app.post("/following/pop", (req, res) => {
+  body = req.body;
+  User.findByIdAndUpdate(body.affected, { $pull: { followers: body.affector } })
+    .then((e) =>
+      User.findByIdAndUpdate(body.affector, {
+        $pull: { following: body.affected },
+      })
+    )
+    .then((e) =>
+      User.findOne({ _id: body.affected }, (error, user) => {
+        if (user) {
+          res.redirect(`/profile${user.name}`);
+        }
+      })
+    );
+});
+
+app.post("/likes/append", (req, res) => {
+  body = req.body;
+  eventModel
+    .findByIdAndUpdate(body.affected, {
+      $push: { likes: body.affector },
+    })
+    .then((e) =>
+      eventModel.findByIdAndUpdate(body.affector, {
+        $push: { likes: body.affected },
+      })
+    )
+    .then((e) => res.redirect(body.path));
+});
+
+app.post("/likes/pop", (req, res) => {
+  body = req.body;
+  eventModel
+    .findByIdAndUpdate(body.affected, {
+      $pull: { likes: body.affector },
+    })
+    .then((e) =>
+      eventModel.findByIdAndUpdate(body.affector, {
+        $pull: { likes: body.affected },
+      })
+    )
+    .then((e) => res.redirect(body.path));
+});
+
+/* renders the react components from port 5000 */
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build", "index.html"));
 });
 
 const port = process.env.PORT || 5000;
+const sport = process.env.PORT || 443;
 
-app.listen(port, () => console.log(`Server up and running on port ${port} !`));
+app.listen("5000");

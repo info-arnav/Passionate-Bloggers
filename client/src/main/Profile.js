@@ -5,12 +5,14 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import { Link, useParams } from "react-router-dom";
 import Navigation from "../elements/Navigation";
-const Profile = () => {
+const Profile = (props) => {
+  const { user } = props.auth;
+  const [nndata, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [data, updater] = useState({ followers: [], following: [] });
   const [feedData, feedUpdater] = useState([]);
   let { id } = useParams();
-  useEffect(() => {
+  useEffect((props) => {
     let fetcher = async () => {
       await fetch(`/user/profile/data/${id}`)
         .then((e) => e.json())
@@ -21,6 +23,12 @@ const Profile = () => {
         .then((e) => setLoading(false));
     };
     fetcher();
+    const secondry = async () => {
+      await fetch(`/user/profile/data/${user.name}`)
+        .then((e) => e.json())
+        .then((e) => setData(e));
+    };
+    secondry();
   }, []);
   return (
     <div>
@@ -37,35 +45,35 @@ const Profile = () => {
                 <div className="row justify-content-center">
                   <div className="col-sm-6 col-lg-4">
                     <div className="card clean-card text-center">
-                      <Skeleton></Skeleton>
+                      <Skeleton />
                       <div className="card-body info">
                         <h4 className="card-title">
-                          <Skeleton></Skeleton>
+                          <Skeleton />
                         </h4>
                         <p className="card-text">
-                          <Skeleton></Skeleton>
+                          <Skeleton />
                         </p>
                         <p>
-                          <Skeleton></Skeleton>
+                          <Skeleton />
                         </p>
                         <p>
-                          <Skeleton></Skeleton>
+                          <Skeleton />
                         </p>
                         <div className="icons">
                           <a href="#">
-                            <Skeleton></Skeleton>
+                            <Skeleton />
                           </a>
                           <a href="#">
-                            <Skeleton></Skeleton>
+                            <Skeleton />
                           </a>
                           <a href="#">
-                            <Skeleton></Skeleton>
+                            <Skeleton />
                           </a>
                           <a href="#">
-                            <Skeleton></Skeleton>
+                            <Skeleton />
                           </a>
                           <a href="#">
-                            <Skeleton></Skeleton>
+                            <Skeleton />
                           </a>
                         </div>
                       </div>
@@ -74,22 +82,23 @@ const Profile = () => {
                 </div>
                 <div className="block-heading">
                   <h2 className="text-info">
-                    <Skeleton></Skeleton>
+                    <Skeleton />
                   </h2>
                 </div>
                 <div className="clean-blog-post">
                   <div className="row">
                     <div className="col-lg-7">
                       <h3>
-                        <Skeleton></Skeleton>
+                        <Skeleton />
                       </h3>
                       <div className="info">
                         <span className="text-muted">
-                          <Skeleton></Skeleton>&nbsp;
-                          <Skeleton></Skeleton>
+                          <Skeleton />
+                          &nbsp;
+                          <Skeleton />
                         </span>
                       </div>
-                      <Skeleton></Skeleton>
+                      <Skeleton />
                     </div>
                   </div>
                 </div>
@@ -110,19 +119,73 @@ const Profile = () => {
                 <div className="row justify-content-center">
                   <div className="col-sm-6 col-lg-4">
                     <div className="card clean-card text-center">
-                      <img
-                        className="card-img-top w-100 d-block"
-                        src="assets/img/avatars/avatar1.jpg"
-                      />
+                      {data.imagePath ? (
+                        <img
+                          className="card-img-top w-100 d-block"
+                          src={data.imagePath}
+                        />
+                      ) : (
+                        <img
+                          className="card-img-top w-100 d-block"
+                          src="l60Hf.png"
+                        />
+                      )}
                       <div className="card-body info">
                         <h4 className="card-title">{data.name}</h4>
                         <p className="card-text">{data.biology}</p>
                         <p>followers - {data.followers.length}</p>
                         <p>following - {data.following.length}</p>
+                        <p>
+                          {user.name ? (
+                            data.followers.indexOf(nndata._id) == -1 ? (
+                              <form action="/follower/append" method="POST">
+                                <input
+                                  value={data._id}
+                                  name="affected"
+                                  hidden
+                                />
+                                <input
+                                  value={nndata._id}
+                                  name="affector"
+                                  hidden
+                                />
+                                <input value="/projects" name="path" hidden />
+                                <button
+                                  className="btn btn-outline-primary btn-sm"
+                                  type="submit"
+                                >
+                                  follow
+                                </button>
+                              </form>
+                            ) : (
+                              <form action="/following/pop" method="POST">
+                                <input
+                                  value={data._id}
+                                  name="affected"
+                                  hidden
+                                />
+                                <input
+                                  value={nndata._id}
+                                  name="affector"
+                                  hidden
+                                />
+                                <input value="/projects" name="path" hidden />
+                                <button
+                                  type="submit"
+                                  className="btn btn-outline-primary btn-sm"
+                                >
+                                  unfollow
+                                </button>
+                              </form>
+                            )
+                          ) : (
+                            <div />
+                          )}
+                        </p>
                         {data.website ? (
                           <a href={data.website}> website</a>
                         ) : (
-                          <div></div>
+                          <div />
                         )}
                         <div className="icons">
                           {data.facebook ? (
@@ -130,28 +193,28 @@ const Profile = () => {
                               <i className="icon-social-facebook" />
                             </a>
                           ) : (
-                            <div></div>
+                            <div />
                           )}
                           {data.instagram ? (
                             <a href={data.instagram}>
                               <i className="icon-social-instagram" />
                             </a>
                           ) : (
-                            <div></div>
+                            <div />
                           )}
                           {data.twitter ? (
                             <a href={data.twitter}>
                               <i className="icon-social-twitter" />
                             </a>
                           ) : (
-                            <div></div>
+                            <div />
                           )}
                           {data.linkedin ? (
                             <a href={data.linkedin}>
                               <i className="icon-social-linkedin" />
                             </a>
                           ) : (
-                            <div></div>
+                            <div />
                           )}
                         </div>
                       </div>
@@ -165,11 +228,69 @@ const Profile = () => {
                   <div>
                     <div className="clean-blog-post">
                       <div className="row">
+                        {e.imagePath ? (
+                          <div class="col-lg-5">
+                            <img
+                              height="305.76px"
+                              class="rounded img-fluid"
+                              id="yaya"
+                              src={e.imagePath}
+                            />
+                          </div>
+                        ) : (
+                          <div class="col-lg-5">
+                            <img
+                              height="305.76px"
+                              class="rounded img-fluid"
+                              id="yaya"
+                              src="blog-teaser-default-full_5.jpg"
+                            />
+                          </div>
+                        )}
                         <div className="col-lg-7">
                           <h3>{e.subject}</h3>
+                          <p>
+                            {user.name ? (
+                              e.likes.indexOf(nndata._id) == -1 ? (
+                                <form action="/likes/append" method="POST">
+                                  <input value={e._id} name="affected" hidden />
+                                  <input
+                                    value={nndata._id}
+                                    name="affector"
+                                    hidden
+                                  />
+                                  <input value="/projects" name="path" hidden />
+                                  <button
+                                    className="btn btn-outline-primary btn-sm"
+                                    type="submit"
+                                  >
+                                    like - {e.likes.length}
+                                  </button>
+                                </form>
+                              ) : (
+                                <form action="/likes/pop" method="POST">
+                                  <input value={e._id} name="affected" hidden />
+                                  <input
+                                    value={nndata._id}
+                                    name="affector"
+                                    hidden
+                                  />
+                                  <input value="/projects" name="path" hidden />
+                                  <button
+                                    type="submit"
+                                    className="btn btn-outline-primary btn-sm"
+                                  >
+                                    unlike - {e.likes.length}
+                                  </button>
+                                </form>
+                              )
+                            ) : (
+                              <div />
+                            )}
+                          </p>
                           <div className="info">
                             <span className="text-muted">
-                              {e.date} by&nbsp;
+                              {e.date.substring(0, 15)} by&nbsp;
                               <a href={`/profile${e.name}`}>{e.name}</a>
                             </span>
                           </div>
@@ -194,4 +315,13 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+Profile.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logoutUser })(Profile);

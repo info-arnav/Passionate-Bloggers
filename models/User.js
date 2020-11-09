@@ -19,6 +19,7 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  imagePath: { type: String, default: "" },
   biology: { type: String, default: "" },
   instagram: { type: String, default: "" },
   facebook: { type: String, default: "" },

@@ -23,8 +23,11 @@ import Contact from "./main/Contact";
 import Feed from "./main/Feed";
 import Single from "./Single";
 import Profile from "./main/Profile";
+import SiteMap from "./main/SiteMap";
 import Active from "./main/Active";
 import NotFound from "./NotFound";
+import About from "./main/About";
+import License from "./main/License";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -53,7 +56,9 @@ class App extends Component {
           <div className="App">
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/license" component={License} />
               <Route path="/index" component={Home} />
+              <Route path="/sitemap" component={SiteMap} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/registration" component={Register} />
               <Route exact path="/login" component={Login} />
@@ -61,6 +66,7 @@ class App extends Component {
               <Route path="/profile:id" component={Profile} />
               <Route path="/contact" component={Contact} />
               <Route path="/contact-us" component={Contact} />
+              <Route path="/about" component={About} />
               <Route path="/posted:id" component={Single} />
               <Switch>
                 <PrivateRoute exact path="/active" component={Active} />

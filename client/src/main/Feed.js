@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { Editor } from "react-draft-wysiwyg";
+import "../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import draftToHtml from "draftjs-to-html";
+import htmlToDraft from "html-to-draftjs";
 import { connect } from "react-redux";
+import { convertFromRaw, ContentState } from "draft-js";
+import { EditorState, convertToRaw } from "draft-js";
 import { logoutUser } from "../actions/authActions";
 import Navigation from "../elements/Navigation";
 import Skeleton from "react-loading-skeleton";
@@ -13,14 +19,40 @@ class Feed extends Component {
     e.preventDefault();
     this.props.logoutUser();
   };
+
   constructor(props) {
     super(props);
-    this.state = { data: [], active: {}, loading: true };
+    this.state = {
+      inputValue: "",
+      data: [],
+      editorState: "",
+      funny: false,
+      active: {},
+      loading: true,
+      blog: "",
+      imagePath: "",
+    };
   }
-
   handleClose = () => this.setState({ show: false });
 
-  handleShow = (e) => this.setState({ active: e, show: true });
+  handleShow = (e) => {
+    this.setState({
+      active: e,
+      show: true,
+      blog: e.blog,
+      editorState: EditorState.createWithContent(
+        ContentState.createFromBlockArray(htmlToDraft(e.blog).contentBlocks)
+      ),
+      funny: true,
+      imagePath: e.imagePath,
+    });
+  };
+
+  onEditorStateChange = (editorState) => {
+    this.setState({
+      editorState,
+    });
+  };
 
   async componentDidMount() {
     const { user } = this.props.auth;
@@ -33,7 +65,17 @@ class Feed extends Component {
 
   render() {
     const { user } = this.props.auth;
-    let { show, active, data, loading } = this.state;
+    let {
+      show,
+      funny,
+      active,
+      data,
+      loading,
+      blog,
+      imagePath,
+      editorState,
+      inputValue,
+    } = this.state;
     const reversed = [];
     const lenth = data.length - 1;
     for (let i = lenth; i >= 0; i--) {
@@ -57,16 +99,16 @@ class Feed extends Component {
                       <div className="row">
                         <div className="col-lg-7">
                           <h3>
-                            <Skeleton></Skeleton>
+                            <Skeleton />
                           </h3>
-                          <Skeleton></Skeleton>
+                          <Skeleton />
                           <div className="info">
                             <span className="text-muted">
-                              <Skeleton></Skeleton>
-                              <Skeleton></Skeleton>
+                              <Skeleton />
+                              <Skeleton />
                             </span>
                           </div>
-                          <Skeleton></Skeleton>
+                          <Skeleton />
                         </div>
                       </div>
                     </div>
@@ -94,10 +136,10 @@ class Feed extends Component {
                       name="idss"
                       hidden
                     />
-                    <Skeleton></Skeleton>
+                    <Skeleton />
                   </div>
                   <div className="form-group">
-                    <Skeleton></Skeleton>
+                    <Skeleton />
                     <a href={`/delete/${active._id}`}>delete</a>
                   </div>
                 </form>
@@ -123,6 +165,25 @@ class Feed extends Component {
                     {data.map((datas) => (
                       <div className="clean-blog-post">
                         <div className="row">
+                          {datas.imagePath ? (
+                            <div class="col-lg-5">
+                              <img
+                                height="305.76px"
+                                class="rounded img-fluid"
+                                id="yaya"
+                                src={datas.imagePath}
+                              />
+                            </div>
+                          ) : (
+                            <div class="col-lg-5">
+                              <img
+                                height="305.76px"
+                                class="rounded img-fluid"
+                                id="yaya"
+                                src="blog-teaser-default-full_5.jpg"
+                              />
+                            </div>
+                          )}
                           <div className="col-lg-7">
                             <h3>{datas.subject} - </h3>
                             <a
@@ -134,7 +195,7 @@ class Feed extends Component {
                             </a>
                             <div className="info">
                               <span className="text-muted">
-                                {datas.date} by&nbsp;
+                                {datas.date.substring(0, 15)} by&nbsp;
                                 <a href="/active">{datas.name}</a>
                               </span>
                             </div>
@@ -177,15 +238,47 @@ class Feed extends Component {
                       hidden
                     />
                     <label for="blog">Blog</label>
+                    {funny ? (
+                      <input
+                        className="form-control item"
+                        type="text"
+                        id="blog"
+                        name="blog"
+                        required
+                        value={draftToHtml(
+                          convertToRaw(editorState.getCurrentContent())
+                        )}
+                        hidden
+                      />
+                    ) : (
+                      <div />
+                    )}
+                    <div class="wysiwyg">
+                      {funny ? (
+                        <Editor
+                          className="wsiwyg"
+                          editorState={editorState}
+                          wrapperClassName="demo-wrapper"
+                          editorClassName="demo-editor"
+                          onEditorStateChange={this.onEditorStateChange}
+                        />
+                      ) : (
+                        <div />
+                      )}
+                    </div>
+
+                    <label for="blog">Image Path</label>
                     <input
                       className="form-control item"
                       type="text"
-                      id="blog"
-                      name="blog"
-                      required
+                      id="imagePath"
+                      name="imagePath"
+                      value={imagePath}
+                      onChange={(e) =>
+                        this.setState({ imagePath: e.target.value })
+                      }
                     />
                   </div>
-                  <p>oldPost - {active.blog}</p>
                   <div className="form-group">
                     <button
                       className="btn btn-primary btn-block btn-lg"
